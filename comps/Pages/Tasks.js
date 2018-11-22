@@ -174,28 +174,19 @@ renderTasks=(tasks)=> {
                         
   
 
-          <View style={styles.contTitle}>
-            <Text style={styles.taskName}>{task.task_title}</Text>
-          </View>
-<View style={styles.contDesc}>
-            
-            <ScrollView>
-    <Text style={{fontSize:13,}}>{task.end_time.split(" ")[0]}</Text>
-    
-    
-    
-    <Text style={styles.taskDesc}>    
-        {task.task_description}
-        
-        
-    
-    
-    
-    </Text>
-        </ScrollView>
-        
+  <View style={styles.contTitle}>
+    <Text style={styles.taskName}>{task.task_title}</Text>
+  </View>
+  
+  <View style={styles.contDesc}>       
+    <ScrollView>
+      <Text style={{fontSize:13,}}>{task.end_time.split(" ")[0]}</Text>
 
-                        </View>
+      <Text style={styles.taskDesc}>    
+          {task.task_description}
+      </Text>
+    </ScrollView>
+  </View>
 
        
         

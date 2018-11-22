@@ -30,6 +30,7 @@ class CreateReward extends React.Component {
     var fd= new FormData();
       fd.append("reward_title", this.reward_title);
       fd.append("reward_points", this.reward_points);
+      fd.append("group_id", this.props.group_id);
       
       
     var resp=await fetch("https://alarmaproj2.herokuapp.com/createReward.php", {
@@ -212,6 +213,7 @@ const styles = StyleSheet.create({
 function mapStateToProps(state){
   return{
     compPage:state.Page.page,
+    group_id:state.Page.group_id
   }
 
 }

@@ -34,7 +34,7 @@ class CreateTask extends React.Component {
     var fd= new FormData();
       fd.append("task_title", this.task_title);
       fd.append("task_description", this.task_description);
-      //fd.append("end_time", this.state.date+" 00:00:00");
+      fd.append("end_time", this.state.date+" 00:00:00");
       fd.append("score", this.rating);
       fd.append("group_id", this.props.group_id);
 

@@ -10,7 +10,7 @@ import NavBar from './NavBar'
 class Rewards extends React.Component {
   
 state={
-  rewars:[],
+  rewards:[],
   reward_title:"",
   reward_points:0,
 }
@@ -28,11 +28,11 @@ state={
   }
   
     componentWillMount=()=>{
-    this.handleReward();
+    this.handleRewards();
   }
       
       
-   handleReward=async ()=>{
+   handleRewards=async ()=>{
     var fd= new FormData();
      //change id to group_id
       fd.append("group_id", this.props.group_id);
@@ -43,28 +43,38 @@ state={
     });
     
       var json=await resp.json();
-      console.log(rewars);
+      console.log(json);
       if (json.length > 0) {
         //json.id 
         //alert ("Task Created");
         this.setState({
-          rewars:json
+          rewards:json
       
         });
       } else {
         
       }
   }
-   
-renderRewards=(rewars)=> {
+renderRewards=(rewards)=> {
 
-   var rewars = rewars || [];
+   var rewards = rewards || [];
   
-   return rewars.map((rewars,index) => 
-     <View style={styles.taskCont} key={rewars.reward_title}>
-      <View style={styles.contTitle}>
-        <Text style={styles.taskName}>{rewars.reward_points}</Text>
-     </View>
+   return rewards.map((reward,index) => 
+     <View style={styles.taskCont} key={reward.id}>
+     
+<View style={styles.contTitle}>
+    <Text style={styles.taskName}>{reward.reward_title}</Text>
+  </View>
+  
+  <View style={styles.contDesc}>       
+    <ScrollView>
+
+      <Text style={styles.taskDesc}>    
+          {reward.reward_points}
+      </Text>
+    </ScrollView>
+  </View>
+     
     </View>
    );
  }      
@@ -83,7 +93,7 @@ renderRewards=(rewars)=> {
 
         <View style={styles.middleContainer}>
           <ScrollView>
-           {this.renderRewards(this.state.rewars)}
+           {this.renderRewards(this.state.rewards)}
           </ScrollView>
       </View>
   </View>
