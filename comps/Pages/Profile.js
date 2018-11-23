@@ -360,7 +360,7 @@ handleOpacity=()=>{
               <Image 
                     source={(this.state.image) ? {uri:this.state.image} : require('../Content/Imgs/ProfilePic.png')}
                     style={styles.profilePhoto}
-                    resizeMode="contain"
+                    resizeMode="cover"
               />
             </TouchableOpacity>
             <TouchableOpacity style={styles.touchPic}
