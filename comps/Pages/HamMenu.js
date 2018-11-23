@@ -32,6 +32,11 @@ ChangePage=(page)=>{
     })
 }
 
+
+handleGroupP=()=>{
+    this.props.dispatch(ChangePage(12)); 
+  }
+
 handleSettings=()=>{
     this.props.dispatch(ChangePage(4)); 
   }
@@ -94,6 +99,13 @@ handleLogOut=()=>{
             style={[styles.subView,
               {transform: [{translateX: this.state.bounceValue}]}]}
           >
+           
+           <TouchableOpacity 
+                onPress={this.handleGroupP}
+                style={styles.subViewSections} >
+                    <Text  style={styles.subViewText}>Group</Text>
+            </TouchableOpacity > 
+            
             <TouchableOpacity 
                 onPress={this.handleSettings}
                 style={styles.subViewSections} >
@@ -111,6 +123,7 @@ handleLogOut=()=>{
                 style={styles.subViewSections} >
                     <Text style={styles.subViewText}>Log Out</Text>
             </TouchableOpacity>
+            
           </Animated.View>
       </View>
     );

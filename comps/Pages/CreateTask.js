@@ -57,7 +57,7 @@ class CreateTask extends React.Component {
     }
   
   handleBack=()=>{
-    this.props.dispatch(ChangePage(4));
+    this.props.dispatch(ChangePage(16));
   }
   
   

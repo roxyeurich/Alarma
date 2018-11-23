@@ -189,18 +189,19 @@ class Profile extends React.Component {
         long_difference= Math.abs(location.coords.longitude - initialPosition.longitude)
         
         console.log(lat_difference, long_difference);
+        
 //real distance
-//        if(lat_difference < 0.004 && long_difference < 0.004){
-//          //this.handleAlert();
-//          
-//          <AlertLocation/>
-//        }
+        if(lat_difference < 0.004 && long_difference < 0.004){
+          //this.handleAlert();
           
-          
-          //for testing
-          if(lat_difference < 0.08 && long_difference < 0.08){
-            this.handleAlert();
+          <AlertLocation/>
         }
+          
+          
+//for testing
+//          if(lat_difference < 0.08 && long_difference < 0.08){
+//            this.handleAlert();
+//        }
         /*
         get your geolocation latitude and longitude
         lat_difference= Math.abs(myLatitude - initialPosition.latitude)
@@ -333,12 +334,6 @@ this.props.dispatch(ChangePage(13));
     }
   };
 
-handleReward=()=>{
-  
-  this.props.dispatch(ChangePage(14));
-}
-
-
 
 handleOpacity=()=>{
   this.setState({
@@ -358,7 +353,7 @@ handleOpacity=()=>{
             </View>
            <View style={styles.profileBox}>
               <Text style={styles.title}>
-                Profile: {this.state.un}
+                {this.state.un}
               </Text>
             <TouchableOpacity style={styles.touchPic}
              onPress={this._pickImage}>
@@ -417,19 +412,7 @@ handleOpacity=()=>{
               <Text style={styles.locationText}>Current Address: {this.state.address}</Text>
               
             </View>
-            
-          <View>
-            <TouchableOpacity style={styles.rewardCont} onPress={this.handleReward}>
-              <Image 
-                    source={require('../Content/icons/PNG/reward.png')}
-                    style={styles.reward}
-                    resizeMode="cover"
-              />
-            </TouchableOpacity>
-          </View>
-             
-          
-           
+ 
         </LinearGradient>
       </View>
       
@@ -485,10 +468,9 @@ const styles = StyleSheet.create({
   
     map: {
       width:280, 
-      height:90,
+      height:120,
       margin: 25,
-      top:250,
-   
+      top:270,
       position:'absolute',
     },
   
@@ -631,7 +613,7 @@ const styles = StyleSheet.create({
       fontSize: 15,
       color: 'white',
       textAlign:'center',
-      marginTop:-95,
+      marginTop:-85,
       right:-40,
       fontFamily: 'Raleway-Regular',
       },
@@ -640,7 +622,7 @@ const styles = StyleSheet.create({
       flex:1,
       flexDirection:'row',
       top:-200,
-      left:80,
+      left:65,
       zIndex:10,
       width:100,
       },
@@ -652,7 +634,7 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
       borderColor:'#49CBC6',
       borderWidth:2,
-      marginTop: -300,
+      marginTop: -280,
       borderRadius: 15,
       padding:8,
       fontFamily: 'Raleway-Regular',

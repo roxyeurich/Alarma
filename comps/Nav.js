@@ -23,6 +23,7 @@ import GroupP from './Pages/GroupP';
 import Camera from './Pages/Camera';
 import CreateReward from './Pages/CreateReward';
 import Rewards from './Pages/Rewards';
+import ChooseAdd from './Pages/ChooseAdd';
 
 
 import { Svg } from 'expo';
@@ -96,7 +97,10 @@ class Nav extends React.Component {
     } 
       if (this.props.compPage === 15){
       comp = <Rewards />
-    } 
+    }
+      if (this.props.compPage === 16){
+      comp = <ChooseAdd />
+    }
     
     return(
       <View style={{

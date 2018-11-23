@@ -19,20 +19,20 @@ state={
       this.state = { text: this.setState.text };
   }
   
-    handleProfile=()=>{
+  handleProfile=()=>{
     this.props.dispatch(ChangePage(4));
   }
     
-    handleAlert=()=>{
+  handleAlert=()=>{
     this.props.dispatch(ChangePage(5));
   }
   
-    componentWillMount=()=>{
+  componentWillMount=()=>{
     this.handleRewards();
   }
       
       
-   handleRewards=async ()=>{
+  handleRewards=async ()=>{
     var fd= new FormData();
      //change id to group_id
       fd.append("group_id", this.props.group_id);
@@ -49,8 +49,21 @@ state={
         //alert ("Task Created");
         this.setState({
           rewards:json
-      
         });
+        
+        //get reward_title when reaching reward_points
+        var str = json.map((obj)=>{
+          return obj.reward_title;
+        });
+        rewardPts = null;
+        rewardPts = this.state.reward_points;
+        var newreward = false;
+        
+        if (score === rewardPts && newreward === false){
+          alert("You have received a reward: "+ str.join("\n"))
+          newreward = true;
+        }
+        
       } else {
         
       }
@@ -70,7 +83,7 @@ renderRewards=(rewards)=> {
     <ScrollView>
 
       <Text style={styles.taskDesc}>    
-          {reward.reward_points}
+          {reward.reward_points} points
       </Text>
     </ScrollView>
   </View>
@@ -148,19 +161,28 @@ const styles = StyleSheet.create({
   
   taskName: {
     color: 'black',
-    fontSize: 20,
+    fontSize: 16,
     marginLeft: 10,
     textAlign: 'left',
     marginTop: 10,
     fontFamily: 'Raleway-Regular',
   },
   
-  middleContainer: {
-   marginTop: 30,
-   alignItems: 'center',
+  taskDesc: {
+    fontSize: 16,
+    marginTop: -5,
+    textAlign: 'right',
+    marginRight: 10,
+    fontFamily: 'Raleway-Regular',
+    zIndex:20,
   },
   
-    textLabel: {
+  middleContainer: {
+    marginTop:20,
+    height:'70%',
+  },
+  
+  textLabel: {
     color: 'black',
     fontSize: 20,
     textAlign: 'left',
@@ -172,24 +194,21 @@ const styles = StyleSheet.create({
     fontFamily: 'Raleway-Regular',
   },
   
-    taskCont: {
-    height: 70,
+  taskCont: {
+    height: 67,
     width: 350,
-
     borderWidth: 1,
     marginTop: 10,
     borderColor: '#49CBC6',
     padding: 10,
     borderRadius: 8,
-    
   },
   
-    textBut: {
+  textBut: {
     fontSize: 20,
     color: 'white',
     fontFamily: 'Raleway-Regular',
-  },
-    
+  },  
 });
 
 

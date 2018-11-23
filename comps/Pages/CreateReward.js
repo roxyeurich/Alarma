@@ -42,7 +42,7 @@ class CreateReward extends React.Component {
       console.log(json);
       if (json === true) {
         
-        alert ("Reward Created");
+        //alert ("Reward Created");
         this.props.dispatch(ChangePage(15));
         //this.props.dispatch(ChangePage(6));
         
@@ -52,7 +52,7 @@ class CreateReward extends React.Component {
     }
   
   handleBack=()=>{
-    this.props.dispatch(ChangePage(4));
+    this.props.dispatch(ChangePage(16));
   }
   
   

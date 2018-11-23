@@ -39,12 +39,12 @@ handleNotifications=()=>{
     this.props.dispatch(ChangePage(11)); 
   }
 
-handleCTask=()=>{
-    this.props.dispatch(ChangePage(10)); 
+handleChooseAdd=()=>{
+    this.props.dispatch(ChangePage(16)); 
   }
 
-handleGroupP=()=>{
-    this.props.dispatch(ChangePage(12)); 
+handleReward=()=>{
+    this.props.dispatch(ChangePage(15)); 
   }
 
   render() {
@@ -52,37 +52,37 @@ handleGroupP=()=>{
       <View style={styles.container}>
         <View style={styles.navbox}>
             
-          <TouchableOpacity style={styles.touch} onPress={this.handleProfile}>   
-            <Image 
-                source={(this.state.avatar) ? {uri:this.state.avatar} : require('../Content/icons/PNG/profileIcon.png')}
-                style={styles.profilephoto}
-                resizeMode="cover"
-            />
-          </TouchableOpacity>
-          
+            <TouchableOpacity style={styles.touch} onPress={this.handleProfile}>   
+              <Image 
+                  source={(this.state.avatar) ? {uri:this.state.avatar} : require('../Content/icons/PNG/profileIcon.png')}
+                  style={styles.profilephoto}
+                  resizeMode="cover"
+              />
+            </TouchableOpacity>
+
             <TouchableOpacity style={styles.touch} onPress={this.handleTaskPage}>
-                <Image style={styles.img }
-                        source={require('../Content/icons/PNG/task.png')}
-                        />
+              <Image style={styles.img }
+                      source={require('../Content/icons/PNG/task.png')}
+                      />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.touch} onPress={this.handleReward}>
+              <Image style={styles.imgG }
+                      source={require('../Content/icons/PNG/rewardBox.png')}
+                      />  
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.touch} onPress={this.handleNotifications}>
-                <Image style={styles.img }
-                        source={require('../Content/icons/PNG/noti.png')}
-                        />
-              </TouchableOpacity>
-          
-            <TouchableOpacity style={styles.touch} onPress={this.handleGroupP}>
-                <Image style={styles.imgG }
-                        source={require('../Content/icons/PNG/group.png')}
-                        />  
-              </TouchableOpacity>
-            
-            <TouchableOpacity style={styles.touch} onPress={this.handleCTask}>
-                <Image style={styles.imgAdd}
-                        source={require('../Content/icons/PNG/addButt.png')}
-                        />  
-              </TouchableOpacity>
+              <Image style={styles.img }
+                      source={require('../Content/icons/PNG/noti.png')}
+                      />
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.touch} onPress={this.handleChooseAdd}>
+              <Image style={styles.imgAdd}
+                      source={require('../Content/icons/PNG/addButt.png')}
+                      />  
+            </TouchableOpacity>
 
           </View>
       </View>
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
   },
   
   imgG: {
-    width: 45,
+    width: 40,
     height: 40,
     margin: 12,
   },
