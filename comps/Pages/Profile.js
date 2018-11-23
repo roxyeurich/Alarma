@@ -381,12 +381,12 @@ handleOpacity=()=>{
           </View>
           
             <View style={styles.lvlCont}>
-              <Text style={styles.lvlText}>Title: {this.state.lvlTitle}</Text>
+              <Text style={styles.lvlText}>Level: {this.state.lvlTitle}</Text>
            </View>
            
            <View style={styles.switchCont}>
              
-              <Text style={styles.textatHome}>At Home</Text>
+              <Text style={styles.textatHome}>Home</Text>
               <Switch
               style={styles.toogle}
               value={ this.state.value }
@@ -621,10 +621,11 @@ const styles = StyleSheet.create({
     switchCont: {
       flex:1,
       flexDirection:'row',
-      top:-200,
-      left:65,
+      top:-220,
+      left:77,
       zIndex:10,
       width:100,
+      justifyContent: 'center',
       },
 
     locationText: {
