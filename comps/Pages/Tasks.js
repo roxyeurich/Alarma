@@ -49,7 +49,7 @@ class Tasks extends React.Component {
     this.handleTasks();
     this.timer = setInterval(()=>{
       this.handleTasks();
-    },5000);
+    },1000);
   }
   
   componentWillUnmount=()=>{

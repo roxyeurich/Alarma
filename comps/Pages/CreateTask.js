@@ -11,7 +11,7 @@ class CreateTask extends React.Component {
 
   task_title = "";
   task_description = "";
-  rating=0;
+  rating=3;
   end_time="";
   
 
@@ -26,7 +26,7 @@ class CreateTask extends React.Component {
 
   
     handleProfile=async ()=>{
-    if (this.task_title.lenght == 0 || this.task_description.lenght ==0){
+    if (this.task_title === '' || this.task_description === ''){
       alert("Please fill in the inputs");
       return false;
     }

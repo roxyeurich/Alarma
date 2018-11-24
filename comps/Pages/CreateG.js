@@ -1,12 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput, ScrollView } from 'react-native';
 import {connect} from 'react-redux';
 import {ChangePage, ChangeUserId} from '../../redux/actions';
 import {MapView, Asset, Font} from 'expo';
 
 
 class CreateG extends React.Component {
-
 
 handleChooseG=()=>{
   this.props.dispatch(ChangePage(7));
@@ -17,13 +16,16 @@ handleChooseG=()=>{
     }  
   
 //DATABASE**********************
-    group_name:"default";
-    passcode: "default";
+    group_name="";
+    passcode= "";
 
     adminNum="2";
   
   handleCreateG=async ()=>{
-    
+    if (this.group_name.length === 0 || this.state.description.length === 0){
+      alert("Please fill in the inputs");
+      return false;
+    }
     
     var fd= new FormData();
       
@@ -46,7 +48,6 @@ handleChooseG=()=>{
      
         this.props.dispatch(ChangePage(4));
         this.props.dispatch(ChangeUserId(this.props.userid, json.id, json.admin));
-        
         
       } else {
         alert ("Something went wrong!");
@@ -128,53 +129,53 @@ var allP = this.state.predictions.map((obj,index)=>{
           </TouchableOpacity>
           <Text style={styles.title}>Create Group</Text>
         </View>
-        
-        <View style={styles.middleContainer}>
 
-        <TouchableOpacity style={styles.touch} onPress={this.handlePic}>
-          <Image style={styles.cameraImg} source={require('../Content/icons/PNG/takepic.png')} />
-        </TouchableOpacity>
-
-        <TextInput underlineColorAndroid='transparent'
-          style={styles.textInput}
-          placeholder="Name The Group"
-          onChangeText={(text) => this.group_name=text}
-        />
-        
-        <Text style={styles.textLabel}>Click to copy the group ID:</Text>
-        <TouchableOpacity style={styles.pinBut}
-          onPress={this.handleCopy}>
-          <Text style={styles.textBut}
-          >{this.state.rannum}</Text>
-          <Image style={styles.pinImg} source={require('../Content/icons/PNG/pin.png')} />
-        </TouchableOpacity>
-             <Text style={styles.textLabel}>Type in the location</Text>
+        <ScrollView>
+          <View style={styles.middleContainer}>
+            <TouchableOpacity style={styles.touch} onPress={this.handlePic}>
+              <Image style={styles.cameraImg} source={require('../Content/icons/PNG/takepic.png')} />
+            </TouchableOpacity>
 
             <TextInput underlineColorAndroid='transparent'
-            style={styles.locText}
-            onChangeText={this.handleTextInput}
-            value={this.state.description}
+              style={styles.textInput}
+              placeholder="Name The Group"
+              onChangeText={(text) => this.group_name=text}
             />
-              
-            <View style={styles.dropDown}>
-            
-            {allP}
 
-            </View>
-              
-            <MapView
-                style={styles.map}
-                initialRegion={this.state.initialPosition}
-                region={this.state.initialPosition}
-                >
-            </MapView>
-            
-        <TouchableOpacity style={styles.createG}
-        onPress={this.handleCreateG}>
-          <Text style={styles.textBut}>Create</Text>
-        </TouchableOpacity>
-      
-        </View>
+            <Text style={styles.textLabel}>Click to copy the group ID:</Text>
+            <TouchableOpacity style={styles.pinBut}
+              onPress={this.handleCopy}>
+              <Text style={styles.textBut}
+              >{this.state.rannum}</Text>
+              <Image style={styles.pinImg} source={require('../Content/icons/PNG/pin.png')} />
+            </TouchableOpacity>
+                 <Text style={styles.textLabel}>Type in the location</Text>
+
+                <TextInput underlineColorAndroid='transparent'
+                style={styles.locText}
+                onChangeText={this.handleTextInput}
+                value={this.state.description}
+                />
+
+                <View style={styles.dropDown}>
+
+                {allP}
+
+                </View>
+
+                <MapView
+                    style={styles.map}
+                    initialRegion={this.state.initialPosition}
+                    region={this.state.initialPosition}
+                    >
+                </MapView>
+
+            <TouchableOpacity style={styles.createG}
+            onPress={this.handleCreateG}>
+              <Text style={styles.textBut}>Create</Text>
+            </TouchableOpacity>
+          </View>
+        </ScrollView>
       </View>
     );
   }

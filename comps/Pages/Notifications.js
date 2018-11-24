@@ -11,7 +11,8 @@ import NavBar from './NavBar'
 
 class Notifications extends React.Component {
   
-
+  timer = null;
+  
     constructor(props) {
       super(props);
       this.state = { text: this.setState.text };
@@ -29,8 +30,14 @@ class Notifications extends React.Component {
   
     componentWillMount=()=>{
     this.handleNotif();
+    this.timer = setInterval(()=>{
+      this.handleNotif();
+    },1000);
   }
-      
+  
+  componentWillUnmount=()=>{
+    clearInterval(this.timer);
+  }
       
    handleNotif=async ()=>{
     var fd= new FormData();

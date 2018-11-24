@@ -20,6 +20,10 @@ class JoinG extends React.Component {
   }
   
     handleProfile=async ()=>{
+    if (this.passcode == ''){
+      alert("Please fill the inputs with your info");
+      return false;
+    }
     //this.props.dispatch(ChangePage(4));
       var fd= new FormData();
       fd.append("passcode", this.passcode);
@@ -41,10 +45,7 @@ class JoinG extends React.Component {
     } else {
       alert ("Something is wrong!");
     }
-      
-  
   }
-  
 
   render() {
     return (

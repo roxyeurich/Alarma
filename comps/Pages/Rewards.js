@@ -9,6 +9,9 @@ import NavBar from './NavBar'
 
 class Rewards extends React.Component {
   
+  
+timer = null;
+
 state={
   rewards:[],
   reward_title:"",
@@ -29,8 +32,14 @@ state={
   
   componentWillMount=()=>{
     this.handleRewards();
+    this.timer = setInterval(()=>{
+      this.handleRewards();
+    },1000);
   }
-      
+  
+  componentWillUnmount=()=>{
+    clearInterval(this.timer);
+  }
       
   handleRewards=async ()=>{
     var fd= new FormData();
@@ -55,8 +64,8 @@ state={
         var str = json.map((obj)=>{
           return obj.reward_title;
         });
-        rewardPts = null;
-        rewardPts = this.state.reward_points;
+        
+        var rewardPts = this.state.reward_points;
         var newreward = false;
         
         if (score === rewardPts && newreward === false){
@@ -170,7 +179,7 @@ const styles = StyleSheet.create({
   
   taskDesc: {
     fontSize: 16,
-    marginTop: -5,
+    marginTop: 0,
     textAlign: 'right',
     marginRight: 10,
     fontFamily: 'Raleway-Regular',

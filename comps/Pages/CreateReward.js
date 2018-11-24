@@ -22,7 +22,7 @@ class CreateReward extends React.Component {
 
   
     handleCreateR=async ()=>{
-    if (this.reward_title.lenght == 0 || this.reward_points.lenght ==0){
+    if (this.reward_title == '' || this.reward_points == ''){
       alert("Please fill in the inputs");
       return false;
     }
@@ -44,7 +44,6 @@ class CreateReward extends React.Component {
         
         //alert ("Reward Created");
         this.props.dispatch(ChangePage(15));
-        //this.props.dispatch(ChangePage(6));
         
       } else {
         alert ("Something went wrong!");

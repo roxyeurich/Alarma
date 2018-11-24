@@ -11,11 +11,10 @@ class Createacc extends React.Component {
   username = "";
   email= "";
   password = "";
-  
 
 
     handleProfile=async ()=>{
-    if (this.email.lenght == 0 || this.password.lenght ==0 || this.username == 0){
+    if (this.email == '' || this.password == '' || this.username == ''){
       alert("Please fill the inputs with your info");
       return false;
     }
@@ -82,7 +81,7 @@ class Createacc extends React.Component {
         </View>
 
         <View style={styles.middleContainer}>
-          
+          <ScrollView>
           <Text style={styles.textLabel}>Username</Text>
           
             <TextInput underlineColorAndroid='transparent'
@@ -109,10 +108,8 @@ class Createacc extends React.Component {
               onPress={this.handleProfile}>
               <Text style={styles.textBut}>Create Account</Text>
         </TouchableOpacity>
-      
-        </View>
-     
-    
+      </ScrollView>
+    </View>
   </View>
     );
   }

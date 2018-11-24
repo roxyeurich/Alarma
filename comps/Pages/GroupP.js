@@ -245,7 +245,7 @@ const styles = StyleSheet.create({
     position:'relative',
     backgroundColor:'#ffffff',
     borderRadius:10,
-    width:100,
+    width:150,
     height:300,
     top:10,
     zIndex:0,
