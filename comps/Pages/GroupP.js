@@ -36,6 +36,7 @@ class GroupP extends React.Component {
     //this.handlePoints();
     this.handleGroupName();
     this.handleGroupPin();
+    this.handlePoints();
   }
     
     handleCamera=()=>{
@@ -85,9 +86,10 @@ this.props.dispatch(ChangePage(13));
   };
 
  handlePoints=async ()=>{
-    var fd= new FormData();
+    /*var fd= new FormData();
       fd.append("user_id", this.props.userid);
-    var resp=await fetch("https://alarmaproj2.herokuapp.com/getPoints.php", {
+      fd.append("group_id", this.props.group_id);
+    var resp=await fetch("http://localhost:8888/alarma_DB/getPoints.php", {
       method:"POST",
       body:fd
     });
@@ -101,7 +103,7 @@ this.props.dispatch(ChangePage(13));
       } else {
         
       }
-    console.log(score);
+    console.log(score);*/
   };
 
 
@@ -179,15 +181,10 @@ this.props.dispatch(ChangePage(13));
         var allusers=this.state.userid.map((obj, index)=> {
           return (
             <TouchableOpacity onPress={() => this.handleOnPress(index)}>
+              <View style={{flexDirection:'row'}}>
                 <Text>{obj.username}</Text>
-            </TouchableOpacity>
-          )
-        })  
-        
-        var allpoints=this.state.score.map((obj, index)=> {
-          return (
-            <TouchableOpacity onPress={() => this.handleOnPress(index)}>
-                <Text>{obj.score}</Text>
+                <Text>{" "}{obj.score}</Text>
+              </View>
             </TouchableOpacity>
           )
         })
@@ -216,17 +213,29 @@ this.props.dispatch(ChangePage(13));
                 />
                </TouchableOpacity>
                 <TouchableOpacity>
-                    <Text style={styles.textBtn}>Group Passcode: {this.state.pin}</Text>
+                    <Text style={styles.textBtn}>Group ID: {this.state.pin}</Text>
                 </TouchableOpacity>
             </View>
-             
+    <View style={{
+                flexDirection:'row',
+               // backgroundColor:'red', 
+                width:300,
+                position:'absolute', 
+                left:35,
+                top:220}}>
             <View style={styles.groupMembers}>
-              <Text style={styles.membersText}>{allusers}{'\n'}</Text>
-            </View>
-            
-//            <View style={styles.groupPoints}>
-//              {allpoints}
-//            </View>
+              <View style={{ 
+                  borderBottomWidth:1,
+                  textAlign:'center', 
+                //  backgroundColor:'yellow'
+                }}>
+              <Text style={{color: 'red', textAlign:'center' }}> Members </Text>
+                </View>
+                {allusers}
+            </View>           
+            <View style={styles.groupMembers}>
+            </View>           
+      </View>
       </View>
     );
   }
@@ -241,15 +250,16 @@ const styles = StyleSheet.create({
   },
   
   groupMembers: {
-    left:50,
+    left:0,
     position:'relative',
-    backgroundColor:'#ffffff',
-    borderRadius:10,
-    width:150,
+    backgroundColor:'rgba(100,100,225,0.05)',
+    //borderRightWidth:1,
+    //borderColor:'rgba(100,100,225,0.4)',
+    width:130,
     height:300,
     top:10,
     zIndex:0,
-    padding:30,
+    marginRight:10,
   },
   
   groupPoints: {
@@ -266,16 +276,22 @@ const styles = StyleSheet.create({
   },
   
   membersText: {
-    fontSize:50,
-    flexDirection:'column',
+    fontSize:20,
+    //backgroundColor:'green',
+    // flexDirection:'column',
+    // paddingTop:90,
     zIndex:2,
-    fontFamily: 'Raleway-Regular',
+    position:'absolute',
+    color:'#4B7CB0',
+    left:20,
+    top:20,
+    //fontFamily: 'Raleway-Regular',
   },
     
   text: { 
     margin: 6,
     textAlign: 'center',
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
   },
     
   row: { 
@@ -303,7 +319,7 @@ const styles = StyleSheet.create({
     position:'relative',
     left:125,
     top:-30,
-    fontFamily: 'Raleway-Regular',
+   // fontFamily: 'Raleway-Regular',
   },
     
   containerTop: {
@@ -342,7 +358,7 @@ const styles = StyleSheet.create({
     marginTop: -65,
     fontSize: 30,
     textAlign: 'center',
-    fontFamily: 'Raleway-Regular',
+   // fontFamily: 'Raleway-Regular',
   },
   
   hamMenu: {
