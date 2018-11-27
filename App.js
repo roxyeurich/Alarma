@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import Thunk from 'redux-thunk';
 import {createStore, applyMiddleware} from 'redux';
 
-import { Asset, Font } from "expo";
+import { Font, Asset } from 'expo';
 
 import combine from './redux/combine';
 //import Nav from './comps/Nav';
@@ -29,7 +29,8 @@ export default class App extends React.Component {
   
     async componentDidMount (){
     await Font.loadAsync({
-      'Raleway-Regular':require('./assets/fonts/Raleway/Raleway-Regular.ttf')
+      'Raleway-Regular':require('./assets/fonts/Raleway/Raleway-Regular.ttf'),
+       'Raleway-Bold':require('./assets/fonts/Raleway/Raleway-Bold.ttf')
     }).then(()=> {
     this.setState({fontLoaded: true})
       
@@ -39,10 +40,11 @@ export default class App extends React.Component {
   
   render() {
     return (
-   
-      <Provider store={store}>
-        <Nav />
+      
+          <Provider store={store}>
+        {this.state.fontLoaded ? <Nav /> : <View></View>}
       </Provider>
+
 
     );
   }

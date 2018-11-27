@@ -46,6 +46,8 @@ class Landing extends React.Component {
   
   render() {
     return (
+      
+      
       <LinearGradient
           colors={['#49CBC6', '#4B7CB0']}
           style={{width: '100%', height:'100%', alignItems: 'center'}}>
@@ -95,7 +97,7 @@ const styles = StyleSheet.create({
     color: 'white',
     marginTop: 20,
     fontSize: 50,
-    //fontFamily: 'Raleway',
+    fontFamily: 'Raleway-Regular',
   },
   
   buttonContainer: {
@@ -136,8 +138,8 @@ const styles = StyleSheet.create({
   
   textBut: {
     fontSize: 20,
-    color: 'black',
-    //fontFamily: 'Raleway-Regular',
+    color: '#4d4d4d',
+    fontFamily: 'Raleway-Regular',
   },
   
 });
