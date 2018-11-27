@@ -208,8 +208,8 @@ this.props.dispatch(ChangePage(13));
           return (
             <TouchableOpacity onPress={() => this.handleOnPress(index)}>
               <View style={{flexDirection:'row'}}>
-                <Text>{obj.score}</Text>
-                <Text>{" "}{obj.username}</Text>
+                <Text>{(obj.score)? obj.score : 0} </Text>
+                <Text>{"  "}{obj.username}</Text>
               </View>
             </TouchableOpacity>
           )
