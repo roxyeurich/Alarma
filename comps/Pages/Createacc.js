@@ -79,10 +79,9 @@ class Createacc extends React.Component {
 
           <Text style={styles.title}>Create Account</Text>
         </View>
-
-        <View style={styles.middleContainer}>
-          <ScrollView>
-          <Text style={styles.textLabel}>Username</Text>
+        <ScrollView>
+          <View style={styles.middleContainer}>
+            <Text style={styles.textLabel}>Username</Text>
           
             <TextInput underlineColorAndroid='transparent'
             style={styles.textInput}
@@ -108,8 +107,8 @@ class Createacc extends React.Component {
               onPress={this.handleProfile}>
               <Text style={styles.textBut}>Create Account</Text>
         </TouchableOpacity>
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   </View>
     );
   }

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput, ScrollView, } from 'react-native';
 import {Camera, Constants, Permissions, Location, ImagePicker, MapView, LinearGradient, Font} from 'expo';
@@ -30,7 +31,14 @@ class GroupP extends React.Component {
     group_name:"",
     passcode:"",
     image:null,
+    initialPosition:{
+     latitude: 49.2485,
+     longitude: -123.0014,
+     latitudeDelta: 0.9122,
+     longitudeDelta: 0.421},
   }
+
+
     componentWillMount=()=>{
     this.handleUsers();
     //this.handlePoints();
@@ -72,7 +80,7 @@ this.props.dispatch(ChangePage(13));
       method:"POST",
       body:fd
     });
-    
+      //console.log(resp);
       var json=await resp.json();
       console.log(json);
       if (json.length > 0) {
@@ -175,20 +183,39 @@ this.props.dispatch(ChangePage(13));
                );
   }
 
-
       render(){
         const state = this.state;
+        var markers = [];
         var allusers=this.state.userid.map((obj, index)=> {
+          console.log(obj);
+          if(obj.latitude){
+            var comp = (
+              <MapView.Marker
+               coordinate={{
+                latitude: parseFloat(obj.latitude),
+                longitude: parseFloat(obj.longitude),
+                latitudeDelta: 0.9122,
+                longitudeDelta: 0.421
+              }}
+               title={obj.username}
+               description="test"
+                ></MapView.Marker>
+            );
+            markers.push(comp)
+          }
+          
+          
           return (
             <TouchableOpacity onPress={() => this.handleOnPress(index)}>
               <View style={{flexDirection:'row'}}>
-                <Text>{obj.username}</Text>
-                <Text>{" "}{obj.score}</Text>
+                <Text>{obj.score}</Text>
+                <Text>{" "}{obj.username}</Text>
               </View>
             </TouchableOpacity>
           )
         })
-          
+        
+        //console.log(markers);
         return ( 
                     
       <View style={styles.container}>
@@ -229,12 +256,21 @@ this.props.dispatch(ChangePage(13));
                   textAlign:'center', 
                 //  backgroundColor:'yellow'
                 }}>
-              <Text style={{color: 'red', textAlign:'center' }}> Members </Text>
+              <Text style={{color: 'red', textAlign:'center' }}> Scoreboard </Text>
                 </View>
                 {allusers}
-            </View>           
-            <View style={styles.groupMembers}>
-            </View>           
+            </View> 
+                     
+            <View>
+              <MapView
+                style={styles.map}
+                initialRegion={this.state.initialPosition}
+                region={this.state.initialPosition}>
+              >
+                {markers}
+              </MapView>
+            </View>          
+                      
       </View>
       </View>
     );
@@ -256,23 +292,10 @@ const styles = StyleSheet.create({
     //borderRightWidth:1,
     //borderColor:'rgba(100,100,225,0.4)',
     width:130,
-    height:300,
-    top:10,
+    height:100,
+    top:30,
     zIndex:0,
-    marginRight:10,
-  },
-  
-  groupPoints: {
-    left:170,
-    position:'relative',
-    flex:1,
-    flexDirection:'row',
-    backgroundColor:'#ffffff',
-    borderRadius:10,
-    width:100,
-    height:300,
-    zIndex:0,
-    padding:30,
+    marginLeft:40,
   },
   
   membersText: {
@@ -285,13 +308,13 @@ const styles = StyleSheet.create({
     color:'#4B7CB0',
     left:20,
     top:20,
-    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'Raleway-Regular',
   },
     
   text: { 
     margin: 6,
     textAlign: 'center',
-    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'Raleway-Regular',
   },
     
   row: { 
@@ -382,7 +405,15 @@ const styles = StyleSheet.create({
     top: 20,
     alignSelf: 'stretch',
     marginLeft: 35,
-      },
+  },
+  
+  map: {
+    width:280, 
+    height:120,
+    margin: 25,
+    top:130,
+    left:-150,
+  },
   
     
 });

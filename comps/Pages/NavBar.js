@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
   
   touch: {
     zIndex: 15,
-    backgroundColor:'red',
+    backgroundColor:'',
     borderRadius: 4,
     height: '66%',
     width:'12%',

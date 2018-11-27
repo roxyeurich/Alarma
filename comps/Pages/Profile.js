@@ -100,26 +100,6 @@ class Profile extends React.Component {
   handleAtHome=async (id)=>{
     this.props.dispatch(ChangePage(11));
     
-   
-//    var fd= new FormData();
-//        fd.append("userid", userid);
-//      
-//        var resp=await fetch("https://alarmaproj2.herokuapp.com/getUser.php", {
-//          method:"POST",
-//          body:fd
-//        });
-//    
-//        var json=await resp.json();
-//        console.log(json);
-//        if (json === true) {
-//            this.setState({
-//            home:atHome
-//          });
-//        } else {
-//
-//        }
-  
-    
   }
   
   handleAlert=async ()=>{
@@ -200,7 +180,17 @@ class Profile extends React.Component {
           <AlertLocation/>
         }
           
-          
+        
+        var fd= new FormData();
+        fd.append("user_id", this.props.id);
+        fd.append("latitude", location.coords.latitude);
+        fd.append("longitude", location.coords.longitude);
+            
+        var resp=await fetch("https://alarmaproj2.herokuapp.com/UpdateLocation.php", {
+          method:"POST",
+          body:fd
+        });
+          console.log(resp);
 //for testing
 //          if(lat_difference < 0.08 && long_difference < 0.08){
 //            this.handleAlert();
@@ -249,7 +239,7 @@ class Profile extends React.Component {
       var newlvl = false;
       console.log(score, this.nextlvl);
     if (score > this.nextlvl && this.nextlvl != null){
-        alert("You've reached a new level!");
+        //alert("You've reached a new level!");
         this.props.dispatch(ChangePage(17));
         newlvl = true;
       }
@@ -379,12 +369,12 @@ handleOpacity=()=>{
           
           <View style={styles.scoresCont}>
             <TouchableOpacity style={styles.score}>
-              <Text style={styles.textScore}>Total {"\n"} {this.state.scoreT}</Text>
+              <Text style={styles.textScore}>Total {"\n"} {(this.state.scoreT)?this.state.scoreT : 0}</Text>
             </TouchableOpacity>
           </View>
           
             <View style={styles.lvlCont}>
-              <Text style={styles.lvlText}>Level: {this.state.lvlTitle}</Text>
+              <Text style={styles.lvlText}>Level: {(this.state.lvlTitle)? this.state.lvlTitle : 'Recruit'}</Text>
            </View>
            
            <View style={styles.switchCont}>
