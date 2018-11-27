@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, S
 import NavBar from './NavBar';
 import HamMenu from './HamMenu';
 import AlertLocation from './AlertLocation';
+import ABox from './AlertBox';
+
 
 import {connect} from 'react-redux';
 import {ChangePage, ChangeAvatar} from '../../redux/actions';
@@ -10,6 +12,7 @@ import {Camera, Constants, Permissions, Location, ImagePicker, MapView, LinearGr
 import LottieView from 'lottie-react-native';
 
 import firebase from 'firebase';
+
 //import RNFetchBlob from 'rn-fetch-blob';
 //
 //const Blob = RNFetchBlob.polyfill.Blob;
@@ -243,11 +246,11 @@ class Profile extends React.Component {
       alert ("Something is wrong!");
     } 
     
-
       var newlvl = false;
-    console.log(score, this.nextlvl);
+      console.log(score, this.nextlvl);
     if (score > this.nextlvl && this.nextlvl != null){
         alert("You've reached a new level!");
+        this.props.dispatch(ChangePage(17));
         newlvl = true;
       }
     

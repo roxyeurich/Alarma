@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, T
 import {connect} from 'react-redux';
 import {ChangePage} from '../../redux/actions';
 
-import { Asset, Font} from 'expo';
+import {Asset, Font} from 'expo';
 
 
 import NavBar from './NavBar'

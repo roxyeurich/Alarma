@@ -24,6 +24,7 @@ import Camera from './Pages/Camera';
 import CreateReward from './Pages/CreateReward';
 import Rewards from './Pages/Rewards';
 import ChooseAdd from './Pages/ChooseAdd';
+import ABox from './Pages/AlertBox';
 
 
 import { Svg } from 'expo';
@@ -100,6 +101,9 @@ class Nav extends React.Component {
     }
       if (this.props.compPage === 16){
       comp = <ChooseAdd />
+    }
+      if (this.props.compPage === 17){
+      comp = <ABox />
     }
     
     return(

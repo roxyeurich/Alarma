@@ -303,7 +303,7 @@ const styles = StyleSheet.create({
   },  
     
     locText: {
-    color: '#4d4d4d',
+      color: '#4d4d4d',
     fontSize: 15,
     height: 60,
     width: 298,

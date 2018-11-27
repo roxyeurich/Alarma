@@ -16,11 +16,8 @@ state={
   rewards:[],
   reward_title:"",
   reward_points:0,
+  score:0,
 }
-    constructor(props) {
-      super(props);
-      this.state = { text: this.setState.text };
-  }
   
   handleProfile=()=>{
     this.props.dispatch(ChangePage(4));
@@ -32,9 +29,9 @@ state={
   
   componentWillMount=()=>{
     this.handleRewards();
-    this.timer = setInterval(()=>{
+    /*this.timer = setInterval(()=>{
       this.handleRewards();
-    },1000);
+    },1000);*/
   }
   
   componentWillUnmount=()=>{
@@ -42,6 +39,22 @@ state={
   }
       
   handleRewards=async ()=>{
+    
+    var fd= new FormData();
+    fd.append("id", this.props.userid);
+      
+      
+    var resp=await fetch("https://alarmaproj2.herokuapp.com/getScore.php", {
+      method:"POST",
+      body:fd
+    });
+    //console.log(resp);
+    var json=await resp.json();
+    var score = 0;
+    if (json.length > 0) {
+      score = parseInt(json[0].score);
+    }
+    
     var fd= new FormData();
      //change id to group_id
       fd.append("group_id", this.props.group_id);
@@ -65,12 +78,23 @@ state={
           return obj.reward_title;
         });
         
-        var rewardPts = this.state.reward_points;
-        var newreward = false;
+        //rewardPts = this.state.reward_points;
+        //newreward = false;
+        console.log("score", score);
+        var titles = [];
         
-        if (score === rewardPts && newreward === false){
-          alert("You have received a reward: "+ str.join("\n"))
-          newreward = true;
+        var filter = json.filter((obj,index)=>{
+          if(score >= parseInt(obj.reward_points)){
+             titles.push(obj.reward_title)
+             }
+          return (score >= parseInt(obj.reward_points))
+        });
+        
+        if (filter.length > 0){
+          alert("You have received a reward "+titles.join(", "));
+          //newreward = true;
+          
+          //make it disappear
         }
         
       } else {
@@ -224,7 +248,8 @@ const styles = StyleSheet.create({
 function mapStateToProps(state){
   return{
     compPage:state.Page.page,
-    group_id:state.Page.group_id
+    group_id:state.Page.group_id,
+    userid:state.Page.userid
   }
 
 }
