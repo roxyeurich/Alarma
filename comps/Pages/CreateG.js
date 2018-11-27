@@ -107,11 +107,21 @@ handleTextInput= async(text)=>{
       
 var allP = this.state.predictions.map((obj,index)=>{
       return(
-        
-        <TouchableOpacity key={index}
+        <TouchableOpacity key={index} style={{ borderBottomWidth:1,
+                borderLeftWidth:1,
+                borderRightWidth:1, 
+                borderColor:'#49CBC6', 
+                padding:8,
+                borderBottomLeftRadius:2,
+                borderBottomRightRadius:2,
+
+                
+    
+                                             
+                                }}
          onPress={this.handleTouchLoc.bind(this, obj)}
          >
-          <Text> {obj.description} </Text>
+          <Text style={{ color: '#49CBC6'}}> {obj.description} </Text>
         </TouchableOpacity>
       )
       
@@ -130,7 +140,6 @@ var allP = this.state.predictions.map((obj,index)=>{
           <Text style={styles.title}>Create Group</Text>
         </View>
 
-        <ScrollView>
           <View style={styles.middleContainer}>
             <TouchableOpacity style={styles.touch} onPress={this.handlePic}>
               <Image style={styles.cameraImg} source={require('../Content/icons/PNG/takepic.png')} />
@@ -175,7 +184,6 @@ var allP = this.state.predictions.map((obj,index)=>{
               <Text style={styles.textBut}>Create</Text>
             </TouchableOpacity>
           </View>
-        </ScrollView>
       </View>
     );
   }
@@ -203,8 +211,17 @@ const styles = StyleSheet.create({
     width: 300,
     marginRight: 40,
     position: 'absolute',
-    top: 290,
-    backgroundColor: '#fff',
+    top: 280,
+    backgroundColor: '#E8FFFF',
+    borderColor: '#FFF',
+    
+    borderTopWidth:0,
+    borderRightWidth:1,
+    borderLeftWidth:1,
+    borderBottomWidth:1,
+    borderBottomLeftRadius:2,
+    borderBottomRightRadius:2,
+    
    
   }, 
   
@@ -242,7 +259,7 @@ const styles = StyleSheet.create({
     marginTop: -65,
     fontSize: 30,
     textAlign: 'center',
-    fontFamily: 'Raleway-Regular',
+ //   fontFamily: 'Raleway-Regular',
   },
   
   middleContainer: {
@@ -264,7 +281,7 @@ const styles = StyleSheet.create({
     color: '#4d4d4d',
     fontSize: 20,
       marginTop:-10,
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
   },
   
   textInput: {
@@ -282,20 +299,20 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingLeft: 10,
     borderRadius: 8,
-    fontFamily: 'Raleway-Regular',
+   // fontFamily: 'Raleway-Regular',
   },  
     
     locText: {
     color: '#4d4d4d',
     fontSize: 15,
     height: 60,
-    width: 300,
+    width: 298,
     alignSelf: 'center',
     borderWidth: 1,
     borderColor: '#49CBC6',
     borderRadius: 8,
     marginTop: 5,
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
     paddingLeft: 10,
   },
   
@@ -335,7 +352,7 @@ const styles = StyleSheet.create({
   textBut: {
     fontSize: 20,
     color: 'white',
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
   },
 });
 
