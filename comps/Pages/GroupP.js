@@ -409,10 +409,11 @@ const styles = StyleSheet.create({
   
   map: {
     width:280, 
-    height:120,
+    height:150,
     margin: 25,
     top:130,
     left:-150,
+    borderRadius:10,
   },
   
     

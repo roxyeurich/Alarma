@@ -465,6 +465,7 @@ const styles = StyleSheet.create({
       margin: 25,
       top:270,
       position:'absolute',
+      borderRadius:10,
     },
   
     container: {

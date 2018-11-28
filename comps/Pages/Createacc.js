@@ -1,11 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput, ScrollView  } from 'react-native';
-
+import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput, ScrollView, KeyboardAvoidingView } from 'react-native';
 import {connect} from 'react-redux';
 import {ChangePage, ChangeUserId} from '../../redux/actions';
-import NavBar from './NavBar';
-
 import { Asset, Font} from 'expo';
+
+import NavBar from './NavBar';
 
 class Createacc extends React.Component {
   username = "";
@@ -79,8 +78,8 @@ class Createacc extends React.Component {
 
           <Text style={styles.title}>Create Account</Text>
         </View>
-        <ScrollView>
-          <View style={styles.middleContainer}>
+        <KeyboardAvoidingView style={styles.middleContainer} 
+           behavior="position" enabled>
             <Text style={styles.textLabel}>Username</Text>
           
             <TextInput underlineColorAndroid='transparent'
@@ -107,8 +106,7 @@ class Createacc extends React.Component {
               onPress={this.handleProfile}>
               <Text style={styles.textBut}>Create Account</Text>
         </TouchableOpacity>
-      </View>
-    </ScrollView>
+    </KeyboardAvoidingView>
   </View>
     );
   }

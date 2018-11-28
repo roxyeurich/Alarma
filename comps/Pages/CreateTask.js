@@ -19,7 +19,6 @@ class CreateTask extends React.Component {
     constructor(props) {
       super(props);
       this.state = { 
-        text: this.setState.text,
         date:"2018-11-23",
       };
   }
