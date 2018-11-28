@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Modal, Text, TouchableHighlight, View, Alert, StyleSheet, Button} from 'react-native';
 import {connect} from 'react-redux';
 import {LinearGradient} from 'expo';
+// npm install react-native-linear-gradient --save
 
 
 class GroupP extends Component {
@@ -74,15 +75,18 @@ container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    },
+  },
     
 alertBox: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    
     height:200,
-    top:0,   
-    },
+    
+    
+    
+},
                                  
 linearGradient: {
     flex: 1,
@@ -91,6 +95,9 @@ linearGradient: {
     width:300,
     height:280,
     position: 'absolute',
+    top:30,
+    left:30,
+    
     },
                                  
 taskText: {
@@ -101,24 +108,32 @@ taskText: {
     width:290,
     height:150,
     marginTop:7,
+
+
+    
     },
     
 taskTitle: {
-    fontSize:25,
-    marginTop:7,
-    }, 
-  
+   fontSize:25,
+        marginTop:7,
+
+
+    
+    },    
 taskDue: {
-    fontSize:15,
+   fontSize:15,
     color: 'grey',
-    marginTop:7,
+        marginTop:7,
+
+    
     },
     
 taskDesc: {
-    fontSize:25,
+   fontSize:25,
     marginTop:15,
-    },  
-  
+
+    
+    },                                 
 buttonCon: {
     flexDirection: 'row',
     width:290,
@@ -128,8 +143,12 @@ buttonCon: {
     backgroundColor: 'rgba(225, 255, 255, 0.5)',
     marginBottom:7,
     marginTop:2,
-    },  
-  
+
+
+
+
+    
+    },                                 
 doneBut: {
     flex: 1,
     flexDirection: 'row',
@@ -137,15 +156,26 @@ doneBut: {
     alignItems: 'center',
     borderColor:'rgba(150, 150, 150, 0.5)',
     marginRight:1,
-    },
+
+
+      
+
+
   
+
+    
+    },                                 
 cancelBut: {
     flex: 1,
     flexDirection: 'row',
     borderWidth:1,
     borderColor:'rgba(150, 150, 150, 0.5)',
     alignItems: 'center',
-    marginLeft:1,
+        marginLeft:1,
+
+
+
+    
     }
     
     

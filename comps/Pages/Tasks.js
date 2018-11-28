@@ -1,10 +1,12 @@
 import React from 'react';
-import {Modal, StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput, ScrollView, Font} from 'react-native';
+import {Modal, StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput, ScrollView, } from 'react-native';
 
 import {connect} from 'react-redux';
 import {ChangePage, ChangeUserId} from '../../redux/actions';
 import CheckBox from 'react-native-check-box'
 import { Rating } from 'react-native-ratings';
+
+import { Asset, Font } from "expo";
 
 import NavBar from './NavBar';
 import AlertTask from './Alerts/AlertTask';
@@ -38,18 +40,22 @@ class Tasks extends React.Component {
     score:0,
     end_time:"",
     modalVisible: false,
+    curTask:null
       //change to false later
   }
 
-  setModalVisible(visible) {
-    this.setState({modalVisible: visible});
+  setModalVisible(visible,task) {
+    this.setState({
+      modalVisible: visible,
+      curTask:task
+    });
   }
   
   componentWillMount=()=>{
     this.handleTasks();
     this.timer = setInterval(()=>{
       this.handleTasks();
-    },1000);
+    },5000);
   }
   
   componentWillUnmount=()=>{
@@ -103,7 +109,7 @@ class Tasks extends React.Component {
         fd.append("user_id", this.props.userid);
         fd.append("task_id", id);
       
-        var resp=await fetch("https://alarmaproj2.herokuapp.com/score.php", {
+        var resp=await fetch("http://localhost:8888/alarma_DB/score.php", {
           method:"POST",
           body:fd
         });
@@ -114,8 +120,8 @@ class Tasks extends React.Component {
         //json.id 
         //alert ("Task Created");
           this.setState({
-            score:json
-
+            score:json,
+            modalVisible:false
           });
         } else {
 
@@ -141,7 +147,6 @@ class Tasks extends React.Component {
   }
    
    
-   
 renderTasks=(tasks)=> {
 
    var tasks = tasks || [];
@@ -150,7 +155,7 @@ renderTasks=(tasks)=> {
      <View style={styles.taskCont} key={task.task_id}>
                         
         <CheckBox
-          style={{flex: 1, padding: 15, top:0,}}
+          style={{flex: 1, padding: 15}}
           onClick={()=>{
            var checkarr = this.state.isChecked;
            if(checkarr[index]){
@@ -172,23 +177,26 @@ renderTasks=(tasks)=> {
                         
     {/*Adding the AlertTask for the description*/}
                         
-  
+      <TouchableOpacity onPress={() => {
+            this.setModalVisible(true, task);
+          }}>
 
-  <View style={styles.contTitle}>
-    <Text style={styles.taskName}>{task.task_title}</Text>
-  </View>
-  
-  <View style={styles.contDesc}>       
-    <ScrollView>
-      <Text style={{fontSize:13,}}>{task.end_time.split(" ")[0]}</Text>
+          <View style={styles.contTitle}>
+            <Text style={styles.taskName}>{task.task_title}</Text>
+          </View>
+      </TouchableOpacity>
+{/* <View style={styles.contDesc}>
+        <Text style={styles.taskDesc}>{task.task_description}</Text>*/}
+    
+    
+        <Text>{task.end_time.split(" ")[0]}</Text>
 
-      <Text style={styles.taskDesc}>    
-          {task.task_description}
-      </Text>
-    </ScrollView>
-  </View>
 
-       
+        {(this.props.admin === 2) ?
+            <TouchableOpacity style={styles.verify} 
+                  onPress={this.handleVerify.bind(this,task.task_id)}>
+                  <Text style={styles.verifyText}>Verify Task</Text>
+            </TouchableOpacity> : null}
         
       <Text style={styles.starStyle}>
           <Rating
@@ -196,18 +204,27 @@ renderTasks=(tasks)=> {
            ratingColor='#3498db'
            ratingBackgroundColor='#c8c7c8'
             ratingCount={5}
-            startingValue={task.score}
+            startingValue={parseInt(task.score)}
             readonly= {true}
-            imageSize={18}
+            imageSize={20}
             style={{ paddingVertical: 10, }}
           /> 
         </Text>
-                         {(this.props.admin === 2) ?
-            <TouchableOpacity style={styles.verify} 
-                  onPress={this.handleVerify.bind(this,task.task_id)}>
-                  <Text style={styles.verifyText}>Verify Task</Text>
-            </TouchableOpacity> : null}
- 
+        <Modal
+          animationType="none"
+          transparent={true}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {
+            Alert.alert('Modal has been closed.');
+                            }}>
+            <AlertTask task={this.state.curTask} close={()=>{
+              this.setState({
+                modalVisible:false
+              })}}
+              done={this.handleScore}
+              />
+                        
+        </Modal>
      </View>
                         
                     
@@ -277,14 +294,14 @@ const styles = StyleSheet.create({
     height: 30,
   },
    
-sortImg: {
+    sortImg: {
     marginLeft:20,
     width: 30,
     height: 40,
   },
   
   
-title: {
+  title: {
     color: 'white',
     marginTop: -65,
     fontSize: 30,
@@ -293,20 +310,20 @@ title: {
   },
   
   
-middleContainer: {
+  middleContainer: {
     marginTop:20,
     height:'70%',
   },
   
   
-taskName: {
+   taskName: {
+    color: 'grey',
     fontSize: 16,
-    marginTop: 18,
-    fontWeight: 'bold',
-    fontFamily: 'Raleway-Regular',
+    marginTop: 23,
+    left: 10,
   },
   
-textLabel: {
+  textLabel: {
     color: 'black',
     fontSize: 20,
     textAlign: 'left',
@@ -314,12 +331,11 @@ textLabel: {
     fontFamily: 'Raleway-Regular',
   },
   
-contTitle: {
+  contTitle: {
     width: 100,
     height: 60,
-    position:'absolute',
-    left:50,
-    fontFamily: 'Raleway-Regular',
+    right:0,
+    
   },
   
  taskCont: {
@@ -333,37 +349,30 @@ contTitle: {
     top:20,
     left: 0,
     margin:10,
-    marginBottom:50,
-
   },
     
-starStyle: {
-    position: "absolute",
-    left: 15,
-    bottom:-5,
+    starStyle: {
+    marginTop: 15,
+    position: "relative",
+    left: -200,
   },
   
-contDesc: {
-    flex:1,
-    width:145,
-    position:'absolute',
-    right:10,
-    marginTop:10,
+  contDesc: {
+    width:150,
+    marginTop:50,
     borderColor:'grey',
-    flexDirection:'column',
-    
   },
     
-taskDesc: {
-    height:40,
-    fontFamily: 'Raleway-Regular',
+    taskDesc: {
+    width:80,
+    position: "relative",
+    borderColor:'grey',
   },
   
-verify: {
+  verify: {
     padding: 5,
-    position:'absolute',
-    right: 5,
-    bottom: -35,
+    left: -100,
+    top: 50,
     borderRadius: 7,
     backgroundColor: '#49CBC6',
     width:90,
@@ -393,6 +402,7 @@ function mapStateToProps(state){
     userid:state.Page.userid,
     admin:parseInt(state.Page.admin),
   }
+
 }
 
 //export after connecting to redux
