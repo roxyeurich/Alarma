@@ -372,9 +372,19 @@ handleOpacity=()=>{
               <Text style={styles.textScore}>Total {"\n"} {(this.state.scoreT)?this.state.scoreT : 0}</Text>
             </TouchableOpacity>
           </View>
-          
+            
             <View style={styles.lvlCont}>
+             <TouchableOpacity style={styles.touchPic}
+                onPress={this._pickImage}>
+              
+            </TouchableOpacity>
               <Text style={styles.lvlText}>Level: {(this.state.lvlTitle)? this.state.lvlTitle : 'Recruit'}</Text>
+              <LottieView
+                source={require('../Content/Imgs/trophy.json')}
+                style={{width:50, height:50, top:-10, left:-1}}
+                autoPlay
+                loop
+              />
            </View>
            
            <View style={styles.switchCont}>
@@ -500,6 +510,7 @@ const styles = StyleSheet.create({
       left:-60,
       padding:4,
       zIndex:21,
+      flexDirection: 'row',
     },
   
     lvlText:{

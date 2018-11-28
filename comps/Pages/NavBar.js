@@ -109,7 +109,7 @@ handleReward=()=>{
 const styles = StyleSheet.create({
    
   container: {
-      width:'110%',
+    width:'110%',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
@@ -118,7 +118,6 @@ const styles = StyleSheet.create({
     left:0,
     alignSelf:'stretch',
     height: '11%',
-      
   },
   
   navbox: {
@@ -132,7 +131,7 @@ const styles = StyleSheet.create({
   profilephoto: {
     width: '90%',
     height: '58%',
-    borderRadius: 15,
+    borderRadius: 20,
     borderColor:'#49CBC6',
     borderWidth:2,
     position:'relative',
@@ -149,9 +148,6 @@ const styles = StyleSheet.create({
     position: 'relative',
     top:2,
     margin:'3.5%',
-    
-
-                
   
   },
    

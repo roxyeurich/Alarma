@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput, ScrollView } from 'react-native';
 import {connect} from 'react-redux';
-import {ChangePage, ChangeUserId} from '../../redux/actions';
-import {MapView, Asset, Font} from 'expo';
+import {ChangePage, ChangePasscode, ChangeUserId} from '../../redux/actions';
+import {MapView, Asset, Font, ImagePicker} from 'expo';
 
 
 class CreateG extends React.Component {
@@ -59,10 +59,11 @@ handleChooseG=()=>{
   };
 
    state={
-        predictions:[],
-       description:"",
-      show:false,
-    }
+    predictions:[],
+    description:"",
+    show:false,
+    image:null,
+  }
   
     
 handleTextInput= async(text)=>{
@@ -103,6 +104,27 @@ handleTextInput= async(text)=>{
       show:false
     })
   }
+    
+    
+    _pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      allowsEditing: true,
+      aspect: [4, 3]
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      this.setState({ image: result.uri });
+//      var data = await fs.readFile(results.uri,'base64');
+//      var blob = await Blob.build(data, {type: 'image/jpg;BASE64'}); 
+//      var ref = storageRef.child('avatar/ava'+this.props.id+'.jpg');
+//      var snapshot = await ref.put(blob, 'image/jpg');
+//      console.log("fin");
+
+      
+    }
+  };
   render() {
       
 var allP = this.state.predictions.map((obj,index)=>{
@@ -141,9 +163,15 @@ var allP = this.state.predictions.map((obj,index)=>{
         </View>
 
           <View style={styles.middleContainer}>
-            <TouchableOpacity style={styles.touch} onPress={this.handlePic}>
-              <Image style={styles.cameraImg} source={require('../Content/icons/PNG/takepic.png')} />
-            </TouchableOpacity>
+            
+            <TouchableOpacity style={styles.touch} onPress={this._pickImage}>
+              <Image 
+                   source={(this.state.image) ? {uri:this.state.image} : require('../Content/icons/PNG/takepic.png')}
+                    style={styles.cameraImg}
+                    resizeMode="cover"
+                />
+             
+               </TouchableOpacity>
 
             <TextInput underlineColorAndroid='transparent'
               style={styles.textInput}
@@ -214,7 +242,6 @@ const styles = StyleSheet.create({
     top: 280,
     backgroundColor: '#E8FFFF',
     borderColor: '#FFF',
-    
     borderTopWidth:0,
     borderRightWidth:1,
     borderLeftWidth:1,
@@ -237,6 +264,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     width: 70,
     height: 50,
+    alignSelf: 'stretch',
   },
   
   pinImg: {

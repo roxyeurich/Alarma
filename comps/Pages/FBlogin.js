@@ -6,57 +6,10 @@ import {ChangePage} from '../../redux/actions';
 
 class FBlogin extends React.Component {
   
-    constructor(props) {
-      super(props);
-      this.state = { text: this.setState.text };
-  }
-  
-    handleProfile=()=>{
-    this.props.dispatch(ChangePage(4));
-    
-  }
-  
-  handleLanding=()=>{
-    this.props.dispatch(ChangePage(0));
-    
-  }
 
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.containerTop}>
-          <TouchableHighlight onPress={this.handleLanding}>
-            <Image style={styles.backImg} source={require('../Content/icons/PNG/leftarrow.png')} />
-          </TouchableHighlight>
-          <Text style={styles.title}>Log In with Facebook</Text>
-        </View>
-        
-      <View style={styles.middleContainer}>
-       
-        {/*facebook logo not working for some reason
-       <Image style={styles.fbLogo} source={require('../Content/icons/PNG/fb.png')} /> */}
-                                              
-        <Text style={styles.textLabel}>Email</Text>
-        
-        <TextInput underlineColorAndroid='transparent'
-        style={styles.textInput}
-        onChangeText={(text) => this.setState({text})}
-        value={this.state.text}
-      />
-        <Text style={styles.textLabel}>Password</Text>
-        
-        <TextInput underlineColorAndroid='transparent'
-        style={styles.textInput}
-        onChangeText={(text) => this.setState({text})}
-        value={this.state.text}
-      />
-      
-          <TouchableOpacity style={styles.loginBut} 
-            onPress={this.handleProfile}>
-            <Text style={styles.textBut}>Log In</Text>
-          </TouchableOpacity>
-      
-        </View>
       </View>
     );
   }

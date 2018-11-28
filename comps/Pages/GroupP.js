@@ -2,14 +2,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput, ScrollView, } from 'react-native';
 import {Camera, Constants, Permissions, Location, ImagePicker, MapView, LinearGradient, Font} from 'expo';
-// npm install react-native-dialogbox --save;
+import LottieView from 'lottie-react-native';
 //https://www.npmjs.com/package/react-native-dialogbox
 
 import {connect} from 'react-redux';
 import {ChangePage, ChangePasscode, ChangeUserId} from '../../redux/actions';
-
-// npm install react-native-table-component
-// https://www.npmjs.com/package/react-native-table-component
 import NavBar from './NavBar'
 
 class GroupP extends React.Component {
@@ -236,9 +233,10 @@ this.props.dispatch(ChangePage(13));
                    source={(this.state.image) ? {uri:this.state.image} : require('../Content/Imgs/family.jpeg')}
                     style={styles.groupPhoto}
                     resizeMode="cover"
-                    
                 />
-               </TouchableOpacity>
+            </TouchableOpacity>
+               
+               
                 <TouchableOpacity>
                     <Text style={styles.textBtn}>Group Pin: {this.state.pin}</Text>
                 </TouchableOpacity>
@@ -247,6 +245,12 @@ this.props.dispatch(ChangePage(13));
             <View style={styles.groupMembers}>
                 <Text style={styles.scoreTxt}> Scoreboard </Text>
                 {allusers}
+                 <LottieView
+                source={require('../Content/Imgs/star.json')}
+                style={{width:80, height:80, top:-25, left:25}}
+                autoPlay
+                loop
+              />
             </View> 
                      
             <View>
@@ -413,7 +417,7 @@ const styles = StyleSheet.create({
   
   usersTxt: {
     marginTop:5,
-    fontSize: 20,
+    fontSize: 18,
     textAlign: 'center',
     flexDirection: "row",
     fontFamily: 'Raleway-Regular',

@@ -43,7 +43,7 @@ class Createacc extends React.Component {
   }
   
   handleLanding=()=>{
-    this.props.dispatch(ChangePage(0));
+    this.props.dispatch(ChangePage(18));
     
   }
   //*************************************

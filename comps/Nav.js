@@ -25,6 +25,9 @@ import CreateReward from './Pages/CreateReward';
 import Rewards from './Pages/Rewards';
 import ChooseAdd from './Pages/ChooseAdd';
 import ABox from './Pages/AlertBox';
+import Intro from './Pages/Intro';
+import IntroLoc from './Pages/IntroLoc';
+import IntroTrophy from './Pages/IntroTrophy';
 
 
 import { Svg } from 'expo';
@@ -34,7 +37,7 @@ class Nav extends React.Component {
     var comp = null;
     var NB = <NavBar />;
     if(this.props.compPage === 0){
-      comp = <Landing />;
+      comp = <Intro />;
       NB = null;
     } 
     
@@ -101,9 +104,23 @@ class Nav extends React.Component {
     }
       if (this.props.compPage === 16){
       comp = <ChooseAdd />
+      
     }
       if (this.props.compPage === 17){
       comp = <ABox />
+      NB = null;
+    }
+      if (this.props.compPage === 18){
+      comp = <Landing />
+      NB = null;
+    }
+      if (this.props.compPage === 19){
+      comp = <IntroLoc />
+        NB = null;
+    }
+      if (this.props.compPage === 20){
+      comp = <IntroTrophy />
+        NB = null;
     }
     
     return(
