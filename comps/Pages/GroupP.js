@@ -161,42 +161,52 @@ this.props.dispatch(ChangePage(13));
 
   alertIndex(index) {
     Alert.alert(
-        
-
-  'Task Title',
-  'Task Description',
-  [
-    {
-      text: 'Done task',
-      onPress: () => console.log('Done Pressed'),
-      style: 'cancel',
-    },
-    {
-      text: 'Cancel',
-      onPress: () => console.log('Cancel Pressed'),
-    },
-  ],               
+      'Task Title',
+      'Task Description',
+      [
+        {
+          text: 'Done task',
+          onPress: () => console.log('Done Pressed'),
+          style: 'cancel',
+        },
+        {
+          text: 'Cancel',
+          onPress: () => console.log('Cancel Pressed'),
+        },
+      ],               
                
-               );
+    );
   }
+
+SortArray=async (score)=>{
+  newScore.sort();
+  newScore.reverse();
+  
+  return (newScore)
+}
+
 
       render(){
         const state = this.state;
         var markers = [];
+        
+        //sort before map
+       var newScore = this.SortArray(this.state.userid);
         var allusers=this.state.userid.map((obj, index)=> {
-          console.log(obj);
+          
           if(obj.latitude){
+            console.log(obj.latitude, obj.longitude);
             var comp = (
               <MapView.Marker
                coordinate={{
-                latitude: parseFloat(obj.latitude),
-                longitude: parseFloat(obj.longitude),
+                latitude: obj.latitude,
+                longitude: obj.longitude,
                 latitudeDelta: 0.9122,
                 longitudeDelta: 0.421
               }}
                title={obj.username}
                description="test"
-                ></MapView.Marker>
+                />
             );
             markers.push(comp)
           }
@@ -205,8 +215,8 @@ this.props.dispatch(ChangePage(13));
           return (
             <TouchableOpacity onPress={() => this.handleOnPress(index)}>
               <View style={styles.usersTxt}>
-                <Text>{(obj.score)? obj.score : 0} </Text>
-                <Text>{"  "}{obj.username}</Text>
+                <Text style={{fontFamily: 'Raleway-Regular', color:'#6f6f6f', fontSize:20,}}>{(obj.score)? obj.score : 0} </Text>
+                <Text style={{fontFamily: 'Raleway-Regular', color:'#6f6f6f', fontSize:20,}}>{"  "}{obj.username}</Text>
               </View>
             </TouchableOpacity>
           )
@@ -247,7 +257,7 @@ this.props.dispatch(ChangePage(13));
                 {allusers}
                  <LottieView
                 source={require('../Content/Imgs/star.json')}
-                style={{width:80, height:80, top:-25, left:25}}
+                style={{width:80, height:80, top:-27, left:25}}
                 autoPlay
                 loop
               />
@@ -260,7 +270,10 @@ this.props.dispatch(ChangePage(13));
                 initialRegion={this.state.initialPosition}
                 region={this.state.initialPosition}>
               >
-                {markers}
+                  {markers}
+               title={"test2"}
+               description="test2"
+                />
               </MapView>
             </View>          
                       
@@ -417,10 +430,8 @@ const styles = StyleSheet.create({
   
   usersTxt: {
     marginTop:5,
-    fontSize: 18,
     textAlign: 'center',
     flexDirection: "row",
-    fontFamily: 'Raleway-Regular',
   },
   
   
