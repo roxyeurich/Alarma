@@ -32,10 +32,10 @@ class GroupP extends React.Component {
     passcode:"",
     image:null,
     initialPosition:{
-     latitude: 49.2485,
-     longitude: -123.0014,
-     latitudeDelta: 0.9122,
-     longitudeDelta: 0.421},
+       latitude: 49.2485,
+       longitude: -123.0014,
+       latitudeDelta: 0.9122,
+       longitudeDelta: 0.421},
   }
 
 
@@ -207,7 +207,7 @@ this.props.dispatch(ChangePage(13));
           
           return (
             <TouchableOpacity onPress={() => this.handleOnPress(index)}>
-              <View style={{flexDirection:'row'}}>
+              <View style={styles.usersTxt}>
                 <Text>{(obj.score)? obj.score : 0} </Text>
                 <Text>{"  "}{obj.username}</Text>
               </View>
@@ -240,28 +240,17 @@ this.props.dispatch(ChangePage(13));
                 />
                </TouchableOpacity>
                 <TouchableOpacity>
-                    <Text style={styles.textBtn}>Group ID: {this.state.pin}</Text>
+                    <Text style={styles.textBtn}>Group Pin: {this.state.pin}</Text>
                 </TouchableOpacity>
             </View>
-    <View style={{
-                flexDirection:'row',
-               // backgroundColor:'red', 
-                width:300,
-                position:'absolute', 
-                left:35,
-                top:220}}>
+  
             <View style={styles.groupMembers}>
-              <View style={{ 
-                  borderBottomWidth:1,
-                  textAlign:'center', 
-                //  backgroundColor:'yellow'
-                }}>
-              <Text style={{color: 'red', textAlign:'center' }}> Scoreboard </Text>
-                </View>
+                <Text style={styles.scoreTxt}> Scoreboard </Text>
                 {allusers}
             </View> 
                      
             <View>
+             <Text style={styles.locText}>Users location</Text>
               <MapView
                 style={styles.map}
                 initialRegion={this.state.initialPosition}
@@ -272,7 +261,7 @@ this.props.dispatch(ChangePage(13));
             </View>          
                       
       </View>
-      </View>
+     
     );
   }
 }
@@ -286,28 +275,21 @@ const styles = StyleSheet.create({
   },
   
   groupMembers: {
-    left:0,
-    position:'relative',
-    backgroundColor:'rgba(100,100,225,0.05)',
-    //borderRightWidth:1,
-    //borderColor:'rgba(100,100,225,0.4)',
+    alignItems:'center',
+    position:'absolute',
+    //backgroundColor:'rgba(100,100,225,0.05)',
     width:130,
-    height:100,
-    top:30,
+    height:135,
+    top:230,
+    alignSelf:'center',
     zIndex:0,
-    marginLeft:40,
   },
   
   membersText: {
     fontSize:20,
-    //backgroundColor:'green',
-    // flexDirection:'column',
-    // paddingTop:90,
     zIndex:2,
     position:'absolute',
     color:'#4B7CB0',
-    left:20,
-    top:20,
     fontFamily: 'Raleway-Regular',
   },
     
@@ -342,7 +324,7 @@ const styles = StyleSheet.create({
     position:'relative',
     left:125,
     top:-30,
-   // fontFamily: 'Raleway-Regular',
+   //fontFamily: 'Raleway-Regular',
   },
     
   containerTop: {
@@ -381,7 +363,7 @@ const styles = StyleSheet.create({
     marginTop: -65,
     fontSize: 30,
     textAlign: 'center',
-   // fontFamily: 'Raleway-Regular',
+    fontFamily: 'Raleway-Regular',
   },
   
   hamMenu: {
@@ -411,10 +393,32 @@ const styles = StyleSheet.create({
     width:280, 
     height:150,
     margin: 25,
-    top:130,
-    left:-150,
+    top:-10,
     borderRadius:10,
+    alignSelf:'center',
   },
+  
+  locText: {
+    color: '#49CBC6',
+    marginTop: 120,
+    fontSize: 20,
+    textAlign: 'center',
+  },
+  
+  scoreTxt: {
+    color: '#49CBC6',
+    fontSize: 20,
+    textAlign: 'center',
+  },
+  
+  usersTxt: {
+    marginTop:5,
+    fontSize: 20,
+    textAlign: 'center',
+    flexDirection: "row",
+    fontFamily: 'Raleway-Regular',
+  },
+  
   
     
 });
