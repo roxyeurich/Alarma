@@ -8,8 +8,9 @@ import {createStore, applyMiddleware} from 'redux';
 import { Font, Asset } from 'expo';
 
 import combine from './redux/combine';
-//import Nav from './comps/Nav';
 import Nav from './comps/Nav';
+
+
 const store = createStore(
   combine,
   applyMiddleware(
