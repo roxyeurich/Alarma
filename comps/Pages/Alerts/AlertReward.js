@@ -39,7 +39,7 @@ class AlertReward extends Component {
                  <View style={styles.rewardText}>
                         <Text style={styles.rewardTitle}>Reward Sent!</Text>
                             <Image 
-                    source={(this.state.image) ? {uri:this.state.image} : require('../../Content/icons/PNG/rewardSent.png')}
+                    source={(this.state.image) ? {uri:this.state.image} : require('../../Content/icons/PNG/reward.png')}
                     style={styles.rewardIcon}
                     resizeMode="contain"
               /> 

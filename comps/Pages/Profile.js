@@ -239,7 +239,7 @@ class Profile extends React.Component {
       var newlvl = false;
       console.log(score, this.nextlvl);
     if (score > this.nextlvl && this.nextlvl != null){
-        //alert("You've reached a new level!");
+        alert("You've reached a new level!");
         this.props.dispatch(ChangePage(17));
         newlvl = true;
       }
@@ -342,7 +342,6 @@ handleOpacity=()=>{
              <HamMenu />
             <View style={styles.topNav}> 
               
-                
             </View>
            <View style={styles.profileBox}>
               <Text style={styles.title}>
@@ -380,8 +379,8 @@ handleOpacity=()=>{
             </TouchableOpacity>
               <Text style={styles.lvlText}>Level: {(this.state.lvlTitle)? this.state.lvlTitle : 'Recruit'}</Text>
               <LottieView
-                source={require('../Content/Imgs/trophy.json')}
-                style={{width:50, height:50, top:-10, left:-1}}
+                source={require('../Content/Imgs/star.json')}
+                style={{width:50, height:50, top:-5, left:0}}
                 autoPlay
                 loop
               />

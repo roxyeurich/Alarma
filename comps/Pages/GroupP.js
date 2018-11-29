@@ -29,10 +29,10 @@ class GroupP extends React.Component {
     passcode:"",
     image:null,
     initialPosition:{
-       latitude: 49.2485,
-       longitude: -123.0014,
-       latitudeDelta: 0.9122,
-       longitudeDelta: 0.421},
+     latitude: 49.2485,
+     longitude: -123.0014,
+     latitudeDelta: 0.9122,
+     longitudeDelta: 0.421},
   }
 
 
@@ -178,11 +178,16 @@ this.props.dispatch(ChangePage(13));
     );
   }
 
-SortArray=async (score)=>{
-  newScore.sort();
-  newScore.reverse();
+
+
+SortArray=async (getScore)=>{
+  sortedScore = getScore;
   
-  return (newScore)
+  sortedScore.sort();
+  sortedScore.reverse();
+  
+  sortedScore = obj;
+  return sortedScore;
 }
 
 
@@ -191,7 +196,7 @@ SortArray=async (score)=>{
         var markers = [];
         
         //sort before map
-       var newScore = this.SortArray(this.state.userid);
+        var sortedScore = this.SortArray(this.state.userid);
         var allusers=this.state.userid.map((obj, index)=> {
           
           if(obj.latitude){
@@ -256,8 +261,8 @@ SortArray=async (score)=>{
                 <Text style={styles.scoreTxt}> Scoreboard </Text>
                 {allusers}
                  <LottieView
-                source={require('../Content/Imgs/star.json')}
-                style={{width:80, height:80, top:-27, left:25}}
+                source={require('../Content/Imgs/trophy.json')}
+                style={{width:40, height:40, top:-21, left:-30}}
                 autoPlay
                 loop
               />
@@ -341,7 +346,7 @@ const styles = StyleSheet.create({
     position:'relative',
     left:125,
     top:-30,
-   //fontFamily: 'Raleway-Regular',
+   fontFamily: 'Raleway-Regular',
   },
     
   containerTop: {

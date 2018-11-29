@@ -18,7 +18,6 @@ class Login extends React.Component {
 
     constructor(props) {
       super(props);
-      this.state = { text: this.setState.text };
   }
   
     handleProfile=async ()=>{

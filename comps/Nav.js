@@ -121,7 +121,8 @@ class Nav extends React.Component {
       if (this.props.compPage === 20){
       comp = <IntroTrophy />
         NB = null;
-    }
+    }      
+   
     
     return(
       <View style={{

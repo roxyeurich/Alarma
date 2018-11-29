@@ -11,7 +11,7 @@ class CreateTask extends React.Component {
 
   task_title = "";
   task_description = "";
-  rating=3;
+  rating=0;
   end_time="";
   
 
@@ -19,13 +19,13 @@ class CreateTask extends React.Component {
     constructor(props) {
       super(props);
       this.state = { 
-        date:"2018-11-23",
+      date:"2018-12-01",
       };
   }
 
   
     handleProfile=async ()=>{
-    if (this.task_title === '' || this.task_description === ''){
+    if (this.task_title === '' || this.task_description === '' || this.date === '' || this.rating === 0){
       alert("Please fill in the inputs");
       return false;
     }
@@ -96,7 +96,7 @@ class CreateTask extends React.Component {
             mode="date"
             placeholder="select date"
             format="YYYY-MM-DD"
-            minDate="2018-01-01"
+            minDate="2018-12-01"
             maxDate="2031-12-31"
             confirmBtnText="Confirm"
             cancelBtnText="Cancel"
@@ -129,9 +129,10 @@ class CreateTask extends React.Component {
 
 
        <Rating
-           type="star"
-           ratingColor='#3498db'
+           type="custom"
+           ratingColor='#49cbc6'
            ratingBackgroundColor='#c8c7c8'
+            startingValue={0}
             ratingCount={5}
             imageSize={30}
             onFinishRating={this.ratingCompleted}
