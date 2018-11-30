@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput  } from 'react-native';
+import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, KeyboardAvoidingView,ScrollView, TouchableHighlight, TextInput  } from 'react-native';
 import {connect} from 'react-redux';
 import {ChangePage, ChangeUserId} from '../../redux/actions';
 import { Asset, Font } from "expo";
@@ -54,7 +54,11 @@ class Login extends React.Component {
           <Text style={styles.title}>Log In</Text>
         </View>
         
+        <KeyboardAvoidingView style={styles.KeyboardView} 
+           behavior="padding" enabled>
+                      <ScrollView > 
       <View style={styles.middleContainer}>
+          
         <Text style={styles.textLabel}>Email</Text>
         
         <TextInput underlineColorAndroid='transparent'
@@ -76,6 +80,9 @@ class Login extends React.Component {
           </TouchableOpacity>
       
         </View>
+                             </ScrollView>
+
+              </KeyboardAvoidingView>
       </View>
     );
   }
@@ -88,6 +95,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
   },
+    
   
   containerTop: {
     marginTop:0,
@@ -122,7 +130,20 @@ const styles = StyleSheet.create({
     marginTop:50,
     alignItems: 'center',
   },
-  
+    
+    KeyboardView: {
+    position:'absolute',
+        width:'300%',
+    bottom:20,
+    flex:1,
+    marginBottom: 30,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+   // backgroundColor:'red',
+    zIndex:-1,
+    height:'70%'
+        
+  },
   textLabel: {
     color: '#4d4d4d',
     fontSize: 20,

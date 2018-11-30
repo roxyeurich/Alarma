@@ -5,7 +5,7 @@ import {ChangePage, ChangeUserId} from '../../redux/actions';
 import { Asset, Font} from 'expo';
 
 import NavBar from './NavBar';
-
+//npm i react-native-keyboard-aware-scroll-view --save
 class Createacc extends React.Component {
   username = "";
   email= "";
@@ -78,8 +78,11 @@ class Createacc extends React.Component {
 
           <Text style={styles.title}>Create Account</Text>
         </View>
-        <KeyboardAvoidingView style={styles.middleContainer} 
-           behavior="position" enabled>
+
+        <KeyboardAvoidingView style={styles.KeyboardView} 
+           behavior="padding" enabled>
+                      <ScrollView > 
+            
             <Text style={styles.textLabel}>Username</Text>
           
             <TextInput underlineColorAndroid='transparent'
@@ -106,6 +109,8 @@ class Createacc extends React.Component {
               onPress={this.handleProfile}>
               <Text style={styles.textBut}>Create Account</Text>
         </TouchableOpacity>
+                 </ScrollView>
+
     </KeyboardAvoidingView>
   </View>
     );
@@ -156,9 +161,16 @@ const styles = StyleSheet.create({
     fontFamily: 'Raleway-Regular',
   },
   
-  middleContainer: {
-   marginTop: 30,
-   alignItems: 'center',
+    KeyboardView: {
+    position:'absolute',
+    bottom:20,
+    flex:1,
+    marginBottom: 30,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    //backgroundColor:'red',
+    zIndex:-1,
+    height:'70%'
   },
   
   textLabel: {
@@ -169,8 +181,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignSelf: 'stretch',
     marginTop: 15,
-    marginBottom: -5,
     fontFamily: 'Raleway-Regular',
+    paddingBottom:'1%'
   },
   
   textInput: {

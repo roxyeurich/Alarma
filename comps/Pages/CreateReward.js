@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput, DatePickerIOS  } from 'react-native';
+import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput, DatePickerIOS, KeyboardAvoidingView,ScrollView  } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 import {connect} from 'react-redux';
 import {ChangePage} from '../../redux/actions';
@@ -69,7 +69,10 @@ class CreateReward extends React.Component {
           </TouchableOpacity>
           <Text style={styles.title}>Create Reward</Text>
         </View>
-        
+
+        <KeyboardAvoidingView style={styles.KeyboardView} 
+           behavior="padding" enabled>
+                      <ScrollView > 
         <View style={styles.middleContainer}>
           <Text style={styles.textLabel}>Title</Text>
 
@@ -91,6 +94,9 @@ class CreateReward extends React.Component {
           </TouchableOpacity>
 
         </View>
+               </ScrollView>
+
+    </KeyboardAvoidingView>
       </View>
 
     );
@@ -105,6 +111,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   
+     KeyboardView: {
+    position:'absolute',
+    bottom:20,
+    flex:1,
+         width:'300%',
+    marginBottom: 30,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    //backgroundColor:'red',
+    zIndex:-1,
+    height:'70%'
+  },
   containerTop: {
     marginTop:0,
     backgroundColor: '#49CBC6',
@@ -137,6 +155,7 @@ const styles = StyleSheet.create({
   middleContainer: {
    marginTop: 5,
    alignItems: 'center',
+
   },
   
    textLabel: {

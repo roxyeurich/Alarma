@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput, ScrollView, KeyboardAvoidingView} from 'react-native';
 import {connect} from 'react-redux';
 import {ChangePage, ChangePasscode, ChangeUserId} from '../../redux/actions';
 import {MapView, Asset, Font, ImagePicker} from 'expo';
@@ -161,7 +161,9 @@ var allP = this.state.predictions.map((obj,index)=>{
           </TouchableOpacity>
           <Text style={styles.title}>Create Group</Text>
         </View>
-
+ <KeyboardAvoidingView style={styles.KeyboardView} 
+           behavior="padding" enabled>
+                      <ScrollView > 
           <View style={styles.middleContainer}>
             
             <TouchableOpacity style={styles.touch} onPress={this._pickImage}>
@@ -212,6 +214,8 @@ var allP = this.state.predictions.map((obj,index)=>{
               <Text style={styles.textBut}>Create</Text>
             </TouchableOpacity>
           </View>
+     </ScrollView>
+            </KeyboardAvoidingView>
       </View>
     );
   }

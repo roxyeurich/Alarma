@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput, DatePickerIOS  } from 'react-native';
+import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput, DatePickerIOS,  ScrollView, KeyboardAvoidingView   } from 'react-native';
 import DatePicker from 'react-native-datepicker'
 import {connect} from 'react-redux';
 import {ChangePage} from '../../redux/actions';
@@ -79,6 +79,9 @@ class CreateTask extends React.Component {
           <Text style={styles.title}>Create Task</Text>
         </View>
         
+        <KeyboardAvoidingView style={styles.KeyboardView} 
+           behavior="padding" enabled>
+                      <ScrollView > 
         <View style={styles.middleContainer}>
           <Text style={styles.textLabel}>Title</Text>
 
@@ -146,6 +149,8 @@ class CreateTask extends React.Component {
           </TouchableOpacity>
       
         </View>
+            </ScrollView>
+            </KeyboardAvoidingView>
       </View>
 
     );
