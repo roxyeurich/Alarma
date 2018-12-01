@@ -534,7 +534,8 @@ this.props.dispatch(ChangePage(13));
      textBut: {
       fontSize: 25,
       color: 'white',
-      fontFamily: 'Raleway-Regular',
+      //fontFamily: 'Raleway-Regular',
+      fontFamily: 'NunitoSans-Regular',
       },
   
     textScore: {
@@ -542,10 +543,11 @@ this.props.dispatch(ChangePage(13));
       color: 'white',
       margin:1,
       padding:2,
-      fontFamily: 'Raleway-Regular',
+      //fontFamily: 'Raleway-Regular',
+      fontFamily: 'NunitoSans-Regular',
       textAlign:'center',
       //fontWeight: 'bold', //OPTIONAL
-      fontFamily: 'Raleway-Bold',
+      
       },
   
   
@@ -562,7 +564,7 @@ this.props.dispatch(ChangePage(13));
     
     title: {
       marginTop: 45,
-      fontSize: 22,
+      fontSize: 24,
 //      left: 95,
       color: 'white',
       flexDirection: 'row',
@@ -570,7 +572,8 @@ this.props.dispatch(ChangePage(13));
       alignSelf: 'center',//or 'stretch' to put on left side
 //      textAlign: 'left',
       marginBottom: -10,
-      fontFamily: 'Raleway-Regular',
+      //fontFamily: 'Raleway-Regular',
+      fontFamily: 'NunitoSans-Regular',
       },
  
     
@@ -602,7 +605,8 @@ this.props.dispatch(ChangePage(13));
       fontSize: 18,
       fontWeight:'500',
       color: 'white',
-      fontFamily: 'Raleway-Regular',
+      //fontFamily: 'Raleway-Regular',
+      fontFamily: 'NunitoSans-Regular',
       zIndex:10,
     },
   
@@ -624,7 +628,8 @@ this.props.dispatch(ChangePage(13));
       marginBottom: 150,
       borderRadius: 15,
       padding:8,
-      fontFamily: 'Raleway-Regular',
+      //fontFamily: 'Raleway-Regular',
+       fontFamily: 'NunitoSans-Regular',
       },
 });
  function mapStateToProps(state){

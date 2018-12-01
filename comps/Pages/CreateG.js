@@ -291,7 +291,8 @@ const styles = StyleSheet.create({
     marginTop: -65,
     fontSize: 30,
     textAlign: 'center',
- //   fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },
   
   middleContainer: {
@@ -317,9 +318,9 @@ const styles = StyleSheet.create({
   },
   
   textInput: {
-      position: 'absolute',
-      top:15,
-      right:0,
+    position: 'absolute',
+    top:15,
+    right:0,
     color: '#4d4d4d',
     fontSize: 15,
     height: 60,
@@ -331,7 +332,8 @@ const styles = StyleSheet.create({
     padding: 5,
     paddingLeft: 10,
     borderRadius: 8,
-   // fontFamily: 'Raleway-Regular',
+    // fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },  
     
     locText: {
@@ -345,6 +347,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginTop: 5,
     //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
     paddingLeft: 10,
   },
   

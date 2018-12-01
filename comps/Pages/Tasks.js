@@ -295,7 +295,8 @@ renderTasks=(tasks)=> {
     marginTop: -65,
     fontSize: 30,
     textAlign: 'center',
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },
   
   
@@ -317,7 +318,8 @@ renderTasks=(tasks)=> {
     fontSize: 20,
     textAlign: 'left',
     marginTop: 25,
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },
   
   contTitle: {
@@ -377,7 +379,8 @@ renderTasks=(tasks)=> {
     fontSize: 14,
     color: 'white',
     alignSelf: 'center',
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },
    
    taskDate: {

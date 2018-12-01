@@ -171,7 +171,7 @@ cancelBut: {
     borderWidth:1,
     borderColor:'rgba(150, 150, 150, 0.5)',
     alignItems: 'center',
-        marginLeft:1,
+    marginLeft:1,
 
 
 

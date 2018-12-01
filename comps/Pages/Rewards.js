@@ -247,7 +247,8 @@ containerTop: {
     marginTop: -65,
     fontSize: 30,
     textAlign: 'center',
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },
   
   
@@ -256,7 +257,8 @@ containerTop: {
     fontSize: 16,
     textAlign: 'center',
     marginTop: 4,
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },
   
   taskDesc: {
@@ -265,6 +267,7 @@ containerTop: {
     textAlign: 'right',
     marginRight: 10,
     fontFamily: 'Raleway-Regular',
+    //fontFamily: 'NunitoSans-Regular',
     zIndex:20,
   },
   

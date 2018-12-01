@@ -135,7 +135,7 @@ container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 0, 0.5)',
+    backgroundColor:"rgba(75, 124, 176, 0.3)",
     marginTop: 66,
     zIndex:15,
     position: 'absolute',
@@ -153,7 +153,8 @@ button: {
 buttonText: {
     fontSize: 17,
     color: "#007AFF",
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },
     
 img: {
@@ -167,10 +168,12 @@ subView: {
     top: 10,
     left: 0,
     right: 0,
-    backgroundColor: 'rgba(15, 111, 108,0.8)',
-    height: 600,
+    backgroundColor:"rgba(75, 124, 176, 0.3)",
+    height: 520,
     width:200,
     borderTopLeftRadius:5,
+    borderBottomLeftRadius:5,
+    zIndex:15,
   },
     
 subViewText: {
@@ -178,8 +181,8 @@ subViewText: {
     fontSize:20,
     marginLeft:10,
     height:30,
-    fontFamily: 'Raleway-Regular',
-
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },
     
     

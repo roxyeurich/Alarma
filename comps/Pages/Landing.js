@@ -97,7 +97,8 @@ const styles = StyleSheet.create({
     color: 'white',
     marginTop: 20,
     fontSize: 50,
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },
   
   buttonContainer: {
@@ -139,7 +140,8 @@ const styles = StyleSheet.create({
   textBut: {
     fontSize: 20,
     color: '#4d4d4d',
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },
   
 });

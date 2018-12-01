@@ -133,7 +133,8 @@ const styles = StyleSheet.create({
     marginTop: -65,
     fontSize: 30,
     textAlign: 'center',
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },
   
   hamMenu: {
@@ -149,7 +150,8 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     textAlign: 'left',
     marginTop: 10,
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },
   
   middleContainer: {
@@ -166,7 +168,8 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     marginTop: 5,
     marginBottom: -5,
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+      fontFamily: 'NunitoSans-Regular',
   },
   
     taskCont: {
@@ -184,7 +187,8 @@ const styles = StyleSheet.create({
     textBut: {
     fontSize: 20,
     color: 'white',
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },
     
 });

@@ -51,7 +51,8 @@ const styles = StyleSheet.create({
     color: 'white',
     top: 150,
     fontSize: 50,
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
     textAlign:'center',
   },
 
@@ -66,7 +67,8 @@ const styles = StyleSheet.create({
   textBut: {
     fontSize: 20,
     color: 'white',
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
     lineHeight:30,
     textAlign: 'center',
   },

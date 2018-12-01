@@ -150,6 +150,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     textAlign: 'center',
     //fontFamily: 'Raleway',
+    fontFamily: 'NunitoSans-Regular',
   },
   
   middleContainer: {
@@ -189,6 +190,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     textAlign: 'left',
     //fontFamily: 'Raleway',
+    fontFamily: 'NunitoSans-Regular',
   },
   
     textInput2: {

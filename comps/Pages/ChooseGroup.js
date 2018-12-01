@@ -75,7 +75,8 @@ const styles = StyleSheet.create({
     color: 'white',
     marginTop: 0,
     fontSize: 50,
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },
   
   buttonContainer: {

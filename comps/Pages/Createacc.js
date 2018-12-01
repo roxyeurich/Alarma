@@ -158,7 +158,8 @@ const styles = StyleSheet.create({
     marginTop: -65,
     fontSize: 30,
     textAlign: 'center',
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },
   
     KeyboardView: {
@@ -181,7 +182,8 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignSelf: 'stretch',
     marginTop: 15,
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
     paddingBottom:'1%'
   },
   
@@ -196,7 +198,8 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 8,
     textAlign: 'left',
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },
   
   createaccBut: {
@@ -220,7 +223,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'white',
     alignSelf: 'center',
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },
 });
 

@@ -140,7 +140,7 @@ class Nav extends React.Component {
         {NB}
       
         {
-          <Loading loading={true} />
+          //<Loading loading={true} />
       
           }
     

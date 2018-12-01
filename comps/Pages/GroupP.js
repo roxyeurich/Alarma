@@ -31,8 +31,8 @@ class GroupP extends React.Component {
     initialPosition:{
        latitude: 49.2485,
        longitude: -123.0014,
-       latitudeDelta: 0.9122,
-       longitudeDelta: 0.421},
+       latitudeDelta: 0.1122,
+       longitudeDelta: 0.021},
   }
 
 
@@ -323,13 +323,15 @@ const styles = StyleSheet.create({
     zIndex:2,
     position:'absolute',
     color:'#4B7CB0',
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },
     
   text: { 
     margin: 6,
     textAlign: 'center',
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },
     
   row: { 
@@ -357,7 +359,8 @@ const styles = StyleSheet.create({
     position:'relative',
     left:125,
     top:-30,
-   fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },
     
   containerTop: {
@@ -396,7 +399,8 @@ const styles = StyleSheet.create({
     marginTop: -65,
     fontSize: 30,
     textAlign: 'center',
-    fontFamily: 'Raleway-Regular',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },
   
   hamMenu: {
