@@ -30,7 +30,7 @@ export default class App extends React.Component {
   
     async componentDidMount (){
     await Font.loadAsync({
-      'Raleway-Regular':require('./assets/fonts/Raleway/Raleway-Regular.ttf'),
+      'Raleway-Regular':require('./assets/fonts/Raleway/Raleway-Regular.ttf'),' NunitoSans-Regular':require('./assets/fonts/Nunito_Sans/NunitoSans-Regular.ttf'),
        'Raleway-Bold':require('./assets/fonts/Raleway/Raleway-Bold.ttf')
     }).then(()=> {
     this.setState({fontLoaded: true})
