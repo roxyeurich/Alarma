@@ -4,23 +4,18 @@ import NavBar from './NavBar';
 import HamMenu from './HamMenu';
 import AlertLocation from './AlertLocation';
 import ABox from './AlertBox';
-
-
-import {connect} from 'react-redux';
+ import {connect} from 'react-redux';
 import {ChangePage, ChangeAvatar} from '../../redux/actions';
 import {Camera, Constants, Permissions, Location, ImagePicker, MapView, LinearGradient} from 'expo';
 import LottieView from 'lottie-react-native';
-
-import firebase from 'firebase';
-
-//import RNFetchBlob from 'rn-fetch-blob';
+ import firebase from 'firebase';
+ //import RNFetchBlob from 'rn-fetch-blob';
 //
 //const Blob = RNFetchBlob.polyfill.Blob;
 //const fs = RNFetchBlob.fs
 //window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest
 //window.Blob = Blob
-
- var config = {
+  var config = {
   apiKey: "AIzaSyDxReimd3_IftGBdQAfS3qcIf1hTy8GTGA",
   authDomain: "alarma-221801.firebaseapp.com",
   databaseURL: "https://alarma-221801.firebaseio.com",
@@ -28,14 +23,11 @@ import firebase from 'firebase';
   storageBucket: "alarma-221801.appspot.com",
   messagingSenderId: "784964955754"
 };
-
-var fbapp = firebase.initializeApp(config);
+ var fbapp = firebase.initializeApp(config);
 var storageRef = firebase.storage().ref();
-
-class Profile extends React.Component {
+ class Profile extends React.Component {
   
-
-  nextlvl = null;
+   nextlvl = null;
   home = "";
   atHome = 2;
   state={
@@ -57,8 +49,7 @@ class Profile extends React.Component {
     alertOpacity:0,
     opacityChange:1,
   };
-
-  componentWillMount=async()=>{
+   componentWillMount=async()=>{
     
     var { status } = await Permissions.askAsync(Permissions.CAMERA);
     var { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
@@ -87,9 +78,7 @@ class Profile extends React.Component {
     //current location
    
   }
-
-
-  handleLanding=()=>{
+   handleLanding=()=>{
     this.props.dispatch(ChangePage(0)); 
   }
     
@@ -231,8 +220,7 @@ class Profile extends React.Component {
        this.setState({
           scoreT:json[0].score,
         })
-
-    } else {
+     } else {
       alert ("Something is wrong!");
     } 
     
@@ -240,7 +228,7 @@ class Profile extends React.Component {
       console.log(score, this.nextlvl);
     if (score > this.nextlvl && this.nextlvl != null){
         alert("You've reached a new level!");
-        this.props.dispatch(ChangePage(17));
+        //this.props.dispatch(ChangePage(17));
         newlvl = true;
       }
     
@@ -297,44 +285,35 @@ class Profile extends React.Component {
  
 }
   }
-
-  handleSettings=()=>{
+   handleSettings=()=>{
     
   }
   
 handleCamera=()=>{
 this.props.dispatch(ChangePage(13));
 }
-
-
-  _pickImage = async () => {
+   _pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       allowsEditing: true,
       aspect: [4, 3]
     });
-
-    console.log(result);
-
-    if (!result.cancelled) {
+     console.log(result);
+     if (!result.cancelled) {
       this.setState({ image: result.uri });
 //      var data = await fs.readFile(results.uri,'base64');
 //      var blob = await Blob.build(data, {type: 'image/jpg;BASE64'}); 
 //      var ref = storageRef.child('avatar/ava'+this.props.id+'.jpg');
 //      var snapshot = await ref.put(blob, 'image/jpg');
 //      console.log("fin");
-
-      
+       
     }
   };
-
-
-handleOpacity=()=>{
+ handleOpacity=()=>{
   this.setState({
     alertOpacity:this.state.opacityChange
   })
 }
-
-  render() {
+   render() {
     return (
           <View  style={styles.container}> 
          <LinearGradient   colors={['#49CBC6', '#4B7CB0']}
@@ -349,11 +328,13 @@ handleOpacity=()=>{
               </Text>
             <TouchableOpacity style={styles.touchPic}
              onPress={this._pickImage}>
+            
               <Image 
                     source={(this.state.image) ? {uri:this.state.image} : require('../Content/Imgs/ProfilePic.png')}
                     style={styles.profilePhoto}
                     resizeMode="cover"
               />
+              
             </TouchableOpacity>
             <TouchableOpacity style={styles.touchPic}
                 onPress={this._pickImage}>
@@ -386,7 +367,7 @@ handleOpacity=()=>{
               />
            </View>
            
-           <View style={styles.switchCont}>
+{/*<View style={styles.switchCont}>
              
               <Text style={styles.textatHome}>Home</Text>
               <Switch
@@ -394,7 +375,7 @@ handleOpacity=()=>{
               value={ this.state.value }
               onValueChange={(value) => this.handleAtHome({value: true})}
               />
-           </View>
+           </View>*/}
     
             <MapView
                 style={styles.map}
@@ -418,22 +399,12 @@ handleOpacity=()=>{
         </LinearGradient>
       </View>
       
-
-    );
+     );
   }
 }
-
-
-
-
-const styles = StyleSheet.create({
+ const styles = StyleSheet.create({
     
-    profileBox: {
-      alignItems: 'center',
-      alignSelf: 'stretch',
-      bottom: 20,
-    },
-    
+  
     locationContainer: {
       top:70,
       width:280,
@@ -450,31 +421,20 @@ const styles = StyleSheet.create({
     },
     
     touch: {
-      width: 50,
-      height: 50,
+      width: 100,
+      height: 100,
       zIndex: 15,
       bottom: 0,
       marginBottom: 0,
     },
   
-    touchPic: {
-    left:-100,
-    },
+   
   
     img: {
       width: 45,
       height: 45,
       margin: 10,
       position:'absolute',
-    },
-  
-    map: {
-      width:280, 
-      height:120,
-      margin: 25,
-      top:270,
-      position:'absolute',
-      borderRadius:10,
     },
   
     container: {
@@ -487,7 +447,7 @@ const styles = StyleSheet.create({
   
     scoresCont: {
       top:-100,
-      right:20,
+      right:30,
       flex:1,
       flexDirection: 'column',
       alignSelf: 'stretch',
@@ -502,11 +462,137 @@ const styles = StyleSheet.create({
       alignItems: 'center',
     },
   
+   
+    score: {
+      width:47,
+      height:47,
+      //marginTop:-40,
+      padding:1,
+      //justifyContent:'center',
+      //alignItems:'center',
+      borderRadius: 10,
+      borderColor:'#fff',
+      borderWidth:1,
+      //margin:80,
+      right:290,
+      bottom: 237,
+},
+  
+   editP: {
+       width: 35, 
+       height: 35, 
+       borderRadius: 5, 
+       borderColor: '#FFF',
+       position:'absolute',
+       top: 100,
+       left:10,
+       alignSelf: 'stretch',
+       marginLeft: 70,
+       backgroundColor:'rgba(255, 255, 255, 0.1)',
+       },
+  
+      reward: {
+       width: 70, 
+       height: 70, 
+       borderRadius: 5, 
+       borderColor: '#FFF',
+       position:'absolute',
+      },
+    
+   
+  /*
+    switchCont: {
+      flex:1,
+      flexDirection:'row',
+      top:-220,
+      left:77,
+      zIndex:10,
+      width:100,
+      justifyContent: 'center',
+      },
+  
+    toogle: {
+      //alignSelf:'center',
+      shadowColor: 'rgba(0,0,0, .6)', // IOS
+      shadowOffset: { height: 1, width: 1 }, // IOS
+      shadowOpacity: 0.5, // IOS
+      shadowRadius: 5, //IOS
+      elevation: 2, // Android
+      transform: [{ scaleX: .8 }, { scaleY: .8 }],
+      bottom:105,
+      left:15,
+      },
+  
+    textatHome:{
+      fontSize: 15,
+      color: 'white',
+      textAlign:'center',
+      marginTop:-76,
+      right:-62,
+      fontFamily: 'Raleway-Regular',
+      }, */
+     textBut: {
+      fontSize: 25,
+      color: 'white',
+      fontFamily: 'Raleway-Regular',
+      },
+  
+    textScore: {
+      fontSize: 15,
+      color: 'white',
+      margin:1,
+      padding:2,
+      fontFamily: 'Raleway-Regular',
+      textAlign:'center',
+      //fontWeight: 'bold', //OPTIONAL
+      fontFamily: 'Raleway-Bold',
+      },
+  
+  
+    profileBox: {
+      alignItems: 'center',
+      alignSelf: 'stretch',
+      top: 20,
+    },
+  
+   touchPic: {
+    right: 40,
+    top: 30,
+    },
+    
+    title: {
+      marginTop: 45,
+      fontSize: 22,
+//      left: 95,
+      color: 'white',
+      flexDirection: 'row',
+      justifyContent: 'flex-start',
+      alignSelf: 'center',//or 'stretch' to put on left side
+//      textAlign: 'left',
+      marginBottom: -10,
+      fontFamily: 'Raleway-Regular',
+      },
+ 
+    
+   
+  
+    profilePhoto: {
+      width: 180, 
+      height: 180, 
+      borderRadius: 90, 
+      borderColor: '#49CBC6',
+      borderWidth:2,
+      bottom: -10,
+      alignSelf: 'stretch',
+      marginLeft: 70,
+      backgroundColor:'rgba(255, 255, 255, 0.2)',
+      },
+  
     lvlCont: {
       width:160,
       height:40,
-      top:-235,
-      left:-60,
+      bottom:80,
+      left: 10,
       padding:4,
       zIndex:21,
       flexDirection: 'row',
@@ -520,144 +606,34 @@ const styles = StyleSheet.create({
       zIndex:10,
     },
   
-    score: {
-      width:60,
-      height:45,
-      marginTop:-40,
-      padding:1,
-      justifyContent:'center',
-      alignItems:'center',
-      borderRadius: 10,
-      borderColor:'#49CBC6',
-      borderWidth:2,
-      margin:80,
-      left:7,
-      top: -110,
-},
-  
-    title: {
-      marginTop: 45,
-      fontSize: 22,
-//      left: 95,
-      color: 'white',
-      flexDirection: 'row',
-      justifyContent: 'flex-start',
-      alignSelf: 'center',//or 'stretch' to put on left side
-//      textAlign: 'left',
-      marginBottom: -10,
-      fontFamily: 'Raleway-Regular',
-      },
-  
-    profilePhoto: {
-      width: 150, 
-      height: 150, 
-      borderRadius: 75, 
-      borderColor: '#49CBC6',
-      borderWidth:2,
-      top: 20,
-      alignSelf: 'stretch',
-      marginLeft: 70,
-      backgroundColor:'rgba(255, 255, 255, 0.2)',
-      },
-    
-      editP: {
-       width: 35, 
-       height: 35, 
-       borderRadius: 5, 
-       borderColor: '#FFF',
-       position:'absolute',
-       top: -12,
-       left:10,
-       alignSelf: 'stretch',
-       marginLeft: 70,
-       backgroundColor:'rgba(255, 255, 255, 0.1)',
-
-      },
-  
-      reward: {
-       width: 70, 
-       height: 70, 
-       borderRadius: 5, 
-       borderColor: '#FFF',
-       position:'absolute',
-      },
-    
-  
-    toogle: {
-      alignSelf:'center',
-      shadowColor: 'rgba(0,0,0, .6)', // IOS
-      shadowOffset: { height: 1, width: 1 }, // IOS
-      shadowOpacity: 0.5, // IOS
-      shadowRadius: 5, //IOS
-      elevation: 2, // Android
-      transform: [{ scaleX: .8 }, { scaleY: .8 }],
-      top:-175,
-      right:10,
-      },
-
-    textBut: {
-      fontSize: 20,
-      color: 'white',
-      fontFamily: 'Raleway-Regular',
-      },
-  
-    textScore: {
-      fontSize: 14,
-      color: 'white',
-      margin:1,
-      padding:2,
-      fontFamily: 'Raleway-Regular',
-      
-      textAlign:'center',
-      //fontWeight: 'bold', //OPTIONAL
-      fontFamily: 'Raleway-Regular',
-      },
-  
-    textatHome:{
-      fontSize: 15,
-      color: 'white',
-      textAlign:'center',
-      marginTop:-85,
-      right:-40,
-      fontFamily: 'Raleway-Regular',
-      },
-  
-    switchCont: {
-      flex:1,
-      flexDirection:'row',
-      top:-220,
-      left:77,
-      zIndex:10,
-      width:100,
-      justifyContent: 'center',
-      },
-
-    locationText: {
+      map: {
+      width:280, 
+      height:120,
+      margin: 25,
+      bottom:160,
+      position:'absolute',
+      borderRadius:10,
+    },
+     locationText: {
       height:80,
       fontSize: 15,
       color: 'white',
       justifyContent: 'center',
       borderColor:'#49CBC6',
       borderWidth:2,
-      marginTop: -280,
+      marginBottom: 150,
       borderRadius: 15,
       padding:8,
       fontFamily: 'Raleway-Regular',
       },
 });
-
-
-
-
-function mapStateToProps(state){
+ function mapStateToProps(state){
   return{
     compPage:state.Page.page,
     id:state.Page.userid,
     group_id:state.Page.group_id
     
   }
-
-}
-
-//export after connecting to redux
+ }
+ //export after connecting to redux
 export default connect(mapStateToProps)(Profile);

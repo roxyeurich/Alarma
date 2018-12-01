@@ -1,16 +1,16 @@
 import React from 'react';
-import {Modal, StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput, ScrollView, Font} from 'react-native';
-
-import {connect} from 'react-redux';
+import {Modal, StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput, ScrollView, } from 'react-native';
+ import {connect} from 'react-redux';
 import {ChangePage, ChangeUserId} from '../../redux/actions';
 import CheckBox from 'react-native-check-box'
 import { Rating } from 'react-native-ratings';
+import { Asset, Font } from "expo";
 
 import NavBar from './NavBar';
 import AlertTask from './Alerts/AlertTask';
 
 
-class Tasks extends React.Component {
+ class Tasks extends React.Component {
   
   admin ="";
   timer = null;
@@ -38,18 +38,21 @@ class Tasks extends React.Component {
     score:0,
     end_time:"",
     modalVisible: false,
+    curTask:null
       //change to false later
   }
-
-  setModalVisible(visible) {
-    this.setState({modalVisible: visible});
+   setModalVisible(visible,task) {
+    this.setState({
+      modalVisible: visible,
+      curTask:task
+    });
   }
   
   componentWillMount=()=>{
     this.handleTasks();
     this.timer = setInterval(()=>{
       this.handleTasks();
-    },1000);
+    },2000);
   }
   
   componentWillUnmount=()=>{
@@ -114,12 +117,11 @@ class Tasks extends React.Component {
         //json.id 
         //alert ("Task Created");
           this.setState({
-            score:json
-
+            score:json,
+            modalVisible:false
           });
         } else {
-
-        }
+         }
     }
   
   handleVerify=async (id)=>{
@@ -136,22 +138,18 @@ class Tasks extends React.Component {
         if (json === true) {
             
         } else {
-
-        }
-    
+         }
   }
    
    
-   
 renderTasks=(tasks)=> {
-
-   var tasks = tasks || [];
+    var tasks = tasks || [];
   
    return tasks.map((task,index) => 
      <View style={styles.taskCont} key={task.task_id}>
                         
         <CheckBox
-          style={{flex: 1, padding: 15, top:0,}}
+          style={{flex: 1, padding: 15}}
           onClick={()=>{
            var checkarr = this.state.isChecked;
            if(checkarr[index]){
@@ -161,8 +159,7 @@ renderTasks=(tasks)=> {
              checkarr[index] = true;
              this.handleScore(task.task_id);
              
-
-           }
+            }
             this.setState({
                 isChecked:checkarr
             })
@@ -173,23 +170,23 @@ renderTasks=(tasks)=> {
                         
     {/*Adding the AlertTask for the description*/}
                         
-  
-
-  <View style={styles.contTitle}>
-    <Text style={styles.taskName}>{task.task_title}</Text>
-  </View>
-  
-  <View style={styles.contDesc}>       
-    <ScrollView>
-      <Text style={{fontSize:13,}}>{task.end_time.split(" ")[0]}</Text>
-
-      <Text style={styles.taskDesc}>    
-          {task.task_description}
-      </Text>
-    </ScrollView>
-  </View>
-
-       
+      <TouchableOpacity onPress={() => {
+            this.setModalVisible(true, task);
+          }}>
+           <View style={styles.contTitle}>
+            <Text style={styles.taskName}>{task.task_title}</Text>
+          </View>
+      </TouchableOpacity>
+{/* <View style={styles.contDesc}>
+        <Text style={styles.taskDesc}>{task.task_description}</Text>*/}
+    
+    
+        <Text style={styles.taskDate}>{task.end_time.split(" ")[0]}</Text>
+         {(this.props.admin === 2) ?
+            <TouchableOpacity style={styles.verify} 
+                  onPress={this.handleVerify.bind(this,task.task_id)}>
+                  <Text style={styles.verifyText}>Verify Task</Text>
+            </TouchableOpacity> : null}
         
       <Text style={styles.starStyle}>
           <Rating
@@ -197,18 +194,27 @@ renderTasks=(tasks)=> {
            ratingColor='#3498db'
            ratingBackgroundColor='#c8c7c8'
             ratingCount={5}
-            startingValue={task.score}
+            startingValue={parseInt(task.score)}
             readonly= {true}
-            imageSize={18}
+            imageSize={20}
             style={{ paddingVertical: 10, }}
           /> 
         </Text>
-                         {(this.props.admin === 2) ?
-            <TouchableOpacity style={styles.verify} 
-                  onPress={this.handleVerify.bind(this,task.task_id)}>
-                  <Text style={styles.verifyText}>Verify Task</Text>
-            </TouchableOpacity> : null}
- 
+        <Modal
+          animationType="none"
+          transparent={true}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {
+            Alert.alert('Modal has been closed.');
+                            }}>
+            <AlertTask task={this.state.curTask} close={()=>{
+              this.setState({
+                modalVisible:false
+              })}}
+              done={this.handleScore}
+              />
+                        
+        </Modal>
      </View>
                         
                     
@@ -237,8 +243,7 @@ renderTasks=(tasks)=> {
     );
   }
 }
-
-const styles = StyleSheet.create({
+ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignSelf: 'stretch',
@@ -278,14 +283,14 @@ const styles = StyleSheet.create({
     height: 30,
   },
    
-sortImg: {
+  sortImg: {
     marginLeft:20,
     width: 30,
     height: 40,
   },
   
   
-title: {
+  title: {
     color: 'white',
     marginTop: -65,
     fontSize: 30,
@@ -294,20 +299,20 @@ title: {
   },
   
   
-middleContainer: {
+  middleContainer: {
     marginTop:20,
     height:'70%',
   },
   
   
-taskName: {
+   taskName: {
+    color: 'grey',
     fontSize: 16,
-    marginTop: 18,
-    fontWeight: 'bold',
-    fontFamily: 'Raleway-Regular',
+    marginTop: 23,
+    left: 30,
   },
   
-textLabel: {
+  textLabel: {
     color: 'black',
     fontSize: 20,
     textAlign: 'left',
@@ -315,12 +320,11 @@ textLabel: {
     fontFamily: 'Raleway-Regular',
   },
   
-contTitle: {
+  contTitle: {
     width: 100,
     height: 60,
-    position:'absolute',
-    left:50,
-    fontFamily: 'Raleway-Regular',
+    right:0,
+    
   },
   
  taskCont: {
@@ -333,38 +337,31 @@ contTitle: {
     position: "relative",
     top:20,
     left: 0,
-    margin:10,
-    marginBottom:50,
-
+    margin:15,
   },
     
-starStyle: {
-    position: "absolute",
-    left: 15,
-    bottom:-5,
+    starStyle: {
+    marginTop: 17,
+    position: "relative",
+    left: -130,
   },
   
-contDesc: {
-    flex:1,
-    width:145,
-    position:'absolute',
-    right:10,
-    marginTop:10,
+  contDesc: {
+    width:150,
+    marginTop:50,
     borderColor:'grey',
-    flexDirection:'column',
-    
   },
     
-taskDesc: {
-    height:40,
-    fontFamily: 'Raleway-Regular',
+    taskDesc: {
+    width:80,
+    position: "relative",
+    borderColor:'grey',
   },
   
-verify: {
+  verify: {
     padding: 5,
-    position:'absolute',
-    right: 5,
-    bottom: -35,
+    left: -35,
+    top: 55,
     borderRadius: 7,
     backgroundColor: '#49CBC6',
     width:90,
@@ -382,19 +379,21 @@ verify: {
     alignSelf: 'center',
     fontFamily: 'Raleway-Regular',
   },
+   
+   taskDate: {
+     left:50,
+     top:3,
+   }
   
     
 });
-
-
-function mapStateToProps(state){
+ function mapStateToProps(state){
   return{
     compPage:state.Page.page,
     group_id:state.Page.group_id,
     userid:state.Page.userid,
     admin:parseInt(state.Page.admin),
   }
-}
-
-//export after connecting to redux
+ }
+ //export after connecting to redux
 export default connect(mapStateToProps)(Tasks);

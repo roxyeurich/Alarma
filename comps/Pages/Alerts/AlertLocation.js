@@ -3,8 +3,7 @@ import {Modal, Text, TouchableHighlight, View, Alert, StyleSheet, Button, Toucha
 import {connect} from 'react-redux';
 import {LinearGradient} from 'expo';
 // npm install react-native-linear-gradient --save
-
-class AlertTask extends Component {
+ class AlertTask extends Component {
     
     
      state={
@@ -15,19 +14,16 @@ class AlertTask extends Component {
       HandleOpacity=(value)=>{
     this.setState({
         bgOpacity:this.state.bgOpacity=0
-
-        
+         
     })
     
     
 }
-
-  
+   
   render() {
     return (
        
-
-            
+             
             
           <View style={{  justifyContent: 'center',
             width:400,
@@ -56,9 +52,7 @@ class AlertTask extends Component {
                              style={styles.butText}>
                             Done Task</Text>
                         </TouchableOpacity>
-
-
-                        <TouchableOpacity
+                         <TouchableOpacity
                             onPress={this.bgOpacity}
                             style={styles.button}>
                                 <Text 
@@ -70,12 +64,10 @@ class AlertTask extends Component {
          
               </LinearGradient>
           </View>
-
-    );
+     );
   }
 }
-
-const styles = StyleSheet.create({
+ const styles = StyleSheet.create({
     
 container: {
     justifyContent: 'center',
@@ -112,23 +104,19 @@ taskText: {
 taskTitle: {
    fontSize:25,
         marginTop:7,
-
-
-    
+     
     },    
 taskDue: {
     fontSize:15,
     color: 'grey',
     marginTop:7,
-
-    
+     
     },
     
 taskDesc: {
    fontSize:25,
     marginTop:15,
-
-    
+     
     },                                 
  
     
@@ -141,8 +129,7 @@ button: {
     marginTop:30,
     
     
-
-    
+     
 },                              
     
 butText: {
@@ -152,24 +139,16 @@ butText: {
     top:6,
     color:'white', 
     textAlign:'center',
-
-
-    
+     
 },                              
-
-    
+     
     
 });
-
-
-
-function mapStateToProps(state){
+ function mapStateToProps(state){
   return{
     compPage:state.Page.page,
     admin:parseInt(state.Page.admin)
   }
-
-}
-
-//export after connecting to redux
+ }
+ //export after connecting to redux
 export default connect(mapStateToProps)(AlertTask);

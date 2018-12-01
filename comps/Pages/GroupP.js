@@ -29,10 +29,10 @@ class GroupP extends React.Component {
     passcode:"",
     image:null,
     initialPosition:{
-     latitude: 49.2485,
-     longitude: -123.0014,
-     latitudeDelta: 0.9122,
-     longitudeDelta: 0.421},
+       latitude: 49.2485,
+       longitude: -123.0014,
+       latitudeDelta: 0.9122,
+       longitudeDelta: 0.421},
   }
 
 
@@ -183,11 +183,21 @@ this.props.dispatch(ChangePage(13));
 SortArray=async (getScore)=>{
   sortedScore = getScore;
   
-  sortedScore.sort();
-  sortedScore.reverse();
+  sortedScore.sort(this.sortByScore);
+  //sortedScore.reverse();
   
-  sortedScore = obj;
+  //sortedScore = obj;
   return sortedScore;
+}
+
+sortByScore=(a, b)=>{
+  if (parseInt(a.score) > parseInt(b.score)){
+    return -1;
+  }
+  if (parseInt(a.score) < parseInt(b.score)){
+    return 1;
+  }
+    return 0;
 }
 
 
@@ -197,6 +207,7 @@ SortArray=async (getScore)=>{
         
         //sort before map
         var sortedScore = this.SortArray(this.state.userid);
+        
         var allusers=this.state.userid.map((obj, index)=> {
           
           if(obj.latitude){

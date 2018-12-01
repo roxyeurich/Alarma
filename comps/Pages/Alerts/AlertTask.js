@@ -4,11 +4,8 @@ import {connect} from 'react-redux';
 import {LinearGradient} from 'expo';
 import { Rating } from 'react-native-ratings';
 import {ChangePage, ChangeUserId} from '../../../redux/actions';
-
-
-// npm install react-native-linear-gradient --save
-
-class AlertTask extends Component {
+ // npm install react-native-linear-gradient --save
+ class AlertTask extends Component {
     
       constructor(props) {
       super(props);
@@ -21,13 +18,12 @@ class AlertTask extends Component {
         userid:"",
         score:0,
         end_time:"",
+        task_id:"",
     }
-
-HandleOpacity=()=>{
+ HandleOpacity=()=>{
     this.setState({
         bgOpacity:this.state.opacityOne
-
-        
+         
     })
     
     
@@ -41,6 +37,8 @@ HandleOpacity=()=>{
     var fd= new FormData();
      //change id to group_id
       fd.append("group_id", this.props.group_id);
+      fd.append("task_id", this.props.task_id);
+      
       
     var resp=await fetch("https://alarmaproj2.herokuapp.com/getTask.php", {
       method:"POST",
@@ -63,59 +61,10 @@ HandleOpacity=()=>{
    
    
       
-renderTasks=(tasks)=> {
-
-   var tasks = tasks || [];
-  
-   return tasks.map((task,index) => 
-     <View style={styles.taskCont} key={task.task_id}>
-
-                        
-    {/*Adding the AlertTask for the description*/}
-                        
-      <TouchableOpacity onPress={() => {
-            this.setModalVisible(true);
-          }}>
-
-          <View style={styles.contTitle}>
-            <Text style={styles.taskName}>{task.task_title}</Text>
-              <Text style={styles.taskName}>{task.task_description}</Text>
-          </View>
-      </TouchableOpacity>
-{/* <View style={styles.contDesc}>
-        <Text style={styles.taskDesc}>{task.task_description}</Text>*/}
-    
-    
-        <Text>{task.end_time.split(" ")[0]}</Text>
-
-        
-      <Text style={styles.starStyle}>
-          <Rating
-           type="star"
-           ratingColor='#3498db'
-           ratingBackgroundColor='#c8c7c8'
-            ratingCount={5}
-            startingValue={task.score}
-            readonly= {true}
-            imageSize={20}
-            style={{ paddingVertical: 10, }}
-          /> 
-        </Text>
-   
-     </View>
-                        
-                    
-   );
- }   
-      
-     
-
-  
-  render() {
+   render() {
     return (
        
-
-            
+             
             
           <View style={{  justifyContent: 'center',
             width:400,
@@ -135,23 +84,43 @@ renderTasks=(tasks)=> {
                         style={styles.linearGradient}>
   
                  <View style={styles.taskText}>
+                       
+                   <View>
+                    <Text style={styles.taskName}>
+                     {this.props.task.task_title}
+                     </Text>
                      
-                     {/*
-                        <Text style={styles.taskTitle}>fuck</Text>
-                        <Text style={styles.taskDue}>{this.state.end_time}</Text>
-                        <Text style={styles.stars}>**insert Stars Here**</Text>
-                        <Text style={styles.taskDisc}>Task Description</Text>
-                     */}
-                       <View style={{width:100, height:100, backgroundColor:'red'}}> {this.renderTasks(this.state.tasks)}</View>
-                    <TouchableOpacity style={styles.button}>
+                     <Text>
+                     {this.props.task.task_description}
+                     </Text>
+                     
+                     <Text>
+                     {this.props.task.end_time.split(" ")[0]}
+                     </Text>
+                     
+                     <Text style={styles.starStyle}>
+                        <Rating
+                          type="star"
+                          ratingColor='#3498db'
+                          ratingBackgroundColor='#c8c7c8'
+                          ratingCount={5}
+                          startingValue={parseInt(this.props.task.score)}
+                          readonly= {true}
+                          imageSize={20}
+                          style={{ paddingVertical: 10, }}
+                        /> 
+                      </Text>
+                     
+                   </View>
+                    <TouchableOpacity 
+                        onPress={this.props.done.bind(this, this.props.task.task_id)}
+                        style={styles.button}>
                         <Text
                              style={styles.butText}>
                             Done Task</Text>
                         </TouchableOpacity>
-
-
-                        <TouchableOpacity
-                            onPress={this.HandleOpacity}
+                         <TouchableOpacity
+                            onPress={this.props.close}
                             style={styles.button}>
                                 <Text 
                                     style={styles.butText}
@@ -163,12 +132,10 @@ renderTasks=(tasks)=> {
          
               </LinearGradient>
           </View>
-
-    );
+     );
   }
 }
-
-const styles = StyleSheet.create({
+ const styles = StyleSheet.create({
     
 container: {
     justifyContent: 'center',
@@ -193,7 +160,6 @@ linearGradient: {
     },
                                  
 contTitle: {
-    backgroundColor:'red',
     justifyContent: 'center',
     alignItems: 'center',
     width:290,
@@ -214,23 +180,19 @@ taskText: {
 taskTitle: {
    fontSize:25,
         marginTop:7,
-
-
-    
+     
     },    
 taskDue: {
     fontSize:15,
     color: 'grey',
     marginTop:7,
-
-    
+     
     },
     
 taskDesc: {
    fontSize:25,
     marginTop:15,
-
-    
+     
     },                                 
  
     
@@ -243,8 +205,7 @@ button: {
     marginTop:30,
     
     
-
-    
+     
 },                              
     
 butText: {
@@ -254,24 +215,18 @@ butText: {
     top:6,
     color:'white', 
     textAlign:'center',
-
-
-    
+     
 },                              
-
-    
+     
     
 });
-
-
-
-function mapStateToProps(state){
+ function mapStateToProps(state){
   return{
     compPage:state.Page.page,
-    admin:parseInt(state.Page.admin)
+    group_id:state.Page.group_id,
+    userid:state.Page.userid,
+    admin:parseInt(state.Page.admin),
   }
-
-}
-
-//export after connecting to redux
+ }
+ //export after connecting to redux
 export default connect(mapStateToProps)(AlertTask);

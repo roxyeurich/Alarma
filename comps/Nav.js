@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
 import {connect} from 'react-redux';
-import {ChangePage} from '../redux/actions';
+import {ChangePage, ChangeLoad} from '../redux/actions';
 
 import NavBar from './Pages/NavBar';
 import NavBar3C from './Pages/NavBar3C';
@@ -28,20 +28,23 @@ import ABox from './Pages/AlertBox';
 import Intro from './Pages/Intro';
 import IntroLoc from './Pages/IntroLoc';
 import IntroTrophy from './Pages/IntroTrophy';
-
+import Loading from './Pages/Loading';
 
 import { Svg } from 'expo';
 
 class Nav extends React.Component {
+  
+  
   render(){
     var comp = null;
     var NB = <NavBar />;
+    
+    
     if(this.props.compPage === 0){
       comp = <Intro />;
       NB = null;
     } 
-    
-    
+
     if (this.props.compPage === 1){
       comp = <Login />
       NB = null;
@@ -104,7 +107,6 @@ class Nav extends React.Component {
     }
       if (this.props.compPage === 16){
       comp = <ChooseAdd />
-      
     }
       if (this.props.compPage === 17){
       comp = <ABox />
@@ -122,16 +124,26 @@ class Nav extends React.Component {
       comp = <IntroTrophy />
         NB = null;
     }      
-   
     
+      if (this.props.loading === true){
+        <Loading  style={{position:'absolute'}}/>
+      }
+   
+        
     return(
       <View style={{
-        flex:1, 
+        flex:1,
         justifyContent:"center",
         alignItems:"center",
       }}>
         {comp}
         {NB}
+      
+        {
+          <Loading loading={true} />
+      
+          }
+    
       </View>
     )
   }
@@ -141,7 +153,8 @@ function mapStateToProps(state){
   
   return{
     group_id:state.Page.group_id,
-    compPage:state.Page.page
+    compPage:state.Page.page,
+    loading: state.Page.loading
   }
 
 }

@@ -3,19 +3,15 @@ import {Modal, Text, TouchableHighlight, View, Alert, StyleSheet, Button, Toucha
 import {connect} from 'react-redux';
 import {LinearGradient} from 'expo';
 // npm install react-native-linear-gradient --save
-
-
-class AlertReward extends Component {
+ class AlertReward extends Component {
   state = {
     modalVisible: true,
       //change to false later
   };
-
-  setModalVisible(visible) {
+   setModalVisible(visible) {
     this.setState({modalVisible: visible});
   }
-
-  render() {
+   render() {
     return (
 <View style={styles.container}>
        
@@ -39,7 +35,7 @@ class AlertReward extends Component {
                  <View style={styles.rewardText}>
                         <Text style={styles.rewardTitle}>Reward Sent!</Text>
                             <Image 
-                    source={(this.state.image) ? {uri:this.state.image} : require('../../Content/icons/PNG/reward.png')}
+                    source={(this.state.image) ? {uri:this.state.image} : require('../../Content/icons/PNG/rewardSent.png')}
                     style={styles.rewardIcon}
                     resizeMode="contain"
               /> 
@@ -49,9 +45,7 @@ class AlertReward extends Component {
                     style={styles.profilePhoto}
                     resizeMode="contain"
               />
-
-
-                        <TouchableOpacity style={styles.button}>
+                         <TouchableOpacity style={styles.button}>
                         <Text 
                             style={styles.butText}
                             >
@@ -62,8 +56,7 @@ class AlertReward extends Component {
               </LinearGradient>
           </View>
         </Modal>
-
-        <TouchableHighlight
+         <TouchableHighlight
           onPress={() => {
             this.setModalVisible(true);
           }}>
@@ -74,8 +67,7 @@ class AlertReward extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
+ const styles = StyleSheet.create({
     
 container: {
     flex: 1,
@@ -154,18 +146,12 @@ butText: {
     color:'white', 
     textAlign:'center',
 },                              
-
-});
-
-
-
-function mapStateToProps(state){
+ });
+ function mapStateToProps(state){
   return{
     compPage:state.Page.page,
     admin:parseInt(state.Page.admin)
   }
-
-}
-
-//export after connecting to redux
+ }
+ //export after connecting to redux
 export default connect(mapStateToProps)(AlertReward);
