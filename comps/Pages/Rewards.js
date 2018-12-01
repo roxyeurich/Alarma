@@ -1,24 +1,34 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput, ScrollView, Timer, Font } from 'react-native';
-
+import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput, ScrollView, Timer, Font, PanResponder } from 'react-native';
+import {CircularProgress, AnimatedCircularProgress } from 'react-native-circular-progress';
+// npm i --save react-native-circular-progress react-native-svg
+// react-native link react-native-svg
 import {connect} from 'react-redux';
 import {ChangePage, ChangeUserId} from '../../redux/actions';
 
 
-import NavBar from './NavBar'
+import NavBar from './NavBar';
+const Max_Points = '';
 
+//Need to connect the idk what to the the rewards..
+//and ask henry about the flex thing, row and collumns, doesnt go past two
 class Rewards extends React.Component {
   
   
 timer = null;
 
 state={
-  rewards:[],
-  reward_title:"",
-  reward_points:0,
-  score:0,
+    isMoving: false,
+    pointsDelta: 0,
+    rewards:[],
+    reward_title:"",
+    reward_points:500,
+    scoreT:0,
+    //points:325,
 }
-  
+    componentDidMount() {
+        //alert("test");
+  }
   handleProfile=()=>{
     this.props.dispatch(ChangePage(4));
   }
@@ -53,7 +63,14 @@ state={
     var score = 0;
     if (json.length > 0) {
       score = parseInt(json[0].score);
+         this.setState({
+          scoreT:json[0].score,
+        })
+        
+        //
     }
+    
+    
     
     var fd= new FormData();
      //change id to group_id
@@ -91,7 +108,7 @@ state={
         });
         
         if (filter.length > 0){
-          alert("You have received reward(s): "+titles.join(", "));
+          alert("You have received a reward "+titles.join(", "));
           //newreward = true;
           
           //make it disappear
@@ -102,30 +119,61 @@ state={
       }
   }
 renderRewards=(rewards)=> {
+    const fill = this.state.score;
+   // const prefill = this.state.score
+  //  const Max_Points = this.state.rewards;
+
+
 
    var rewards = rewards || [];
   
-   return rewards.map((reward,index) => 
-     <View style={styles.taskCont} key={reward.id}>
+   return rewards.map((reward,index) => {
+        var pr = Math.round(this.state.scoreT / parseInt(reward.reward_points)*100);
+        //alert(this.state.score);
+     return(<View style={styles.taskCont} key={reward.id}>
      
-<View style={styles.contTitle}>
-    <Text style={styles.taskName}>{reward.reward_title}</Text>
-  </View>
+            <View style={styles.contTitle}>
+                <Text style={styles.taskName}>{reward.reward_title}</Text>
+            </View>
   
-  <View style={styles.contDesc}>       
-    <ScrollView>
-
+{/*
       <Text style={styles.taskDesc}>    
           {reward.reward_points} points
       </Text>
-    </ScrollView>
-  </View>
+*/}
+      <View style={{
+            position:'absolute', 
+            bottom:10,
+            left:19,
+                   }}>
+
+          <AnimatedCircularProgress
+               size={116}
+               width={7}
+               fill={pr}
+             // prefill={1000}
+               tintColor="#49CBC6"
+               backgroundColor="#4B7CB0"
+               ref={(ref) => this.circularProgress = ref}
+               >
+                  {
+                    (fill) => (
+                      <Text style={styles.points}>
+                            {reward.reward_points}
+                           {/* { Math.round(Max_Points * fill / 100) }*/}
+                      </Text>
+                    )
+                  }
+          </AnimatedCircularProgress>
+        </View>
      
-    </View>
-   );
+    </View>)
+   });
  }      
 
   render() {
+const fill = this.state.points / Max_Points * 50;
+
     return (
       <View style={styles.container}>
        
@@ -138,9 +186,15 @@ renderRewards=(rewards)=> {
         </View>
 
         <View style={styles.middleContainer}>
-          <ScrollView>
-           {this.renderRewards(this.state.rewards)}
-          </ScrollView>
+                         <ScrollView>
+
+
+              <View style={styles.rewardsCon}>
+
+                {this.renderRewards(this.state.rewards)} 
+              </View>
+                    </ScrollView>
+
       </View>
   </View>
     );
@@ -148,15 +202,26 @@ renderRewards=(rewards)=> {
 }
 
 const styles = StyleSheet.create({
-  container: {
-   flex: 1,
+  container: {    
+    flex: 1,
     alignSelf: 'stretch',
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'flex-start',
   },
-  
-  containerTop: {
+    
+    
+    points: {
+    backgroundColor: 'transparent',
+    position: 'absolute',
+    width: 90,
+    height:38,    
+    textAlign: 'center',
+    color: '#49CBC6',
+    fontSize: 30,
+    fontWeight: "500"
+  },
+
+containerTop: {
     marginTop:0,
     backgroundColor: '#49CBC6',
     top: 0,
@@ -185,19 +250,12 @@ const styles = StyleSheet.create({
     fontFamily: 'Raleway-Regular',
   },
   
-  hamMenu: {
-    marginRight:20,
-    marginTop: 40,
-    width: 30,
-    height: 30,
-  },
   
   taskName: {
     color: 'black',
     fontSize: 16,
-    marginLeft: 10,
-    textAlign: 'left',
-    marginTop: 10,
+    textAlign: 'center',
+    marginTop: 4,
     fontFamily: 'Raleway-Regular',
   },
   
@@ -212,36 +270,31 @@ const styles = StyleSheet.create({
   
   middleContainer: {
     marginTop:20,
-    height:'70%',
+      padding:10,
+      height:'70%',
+      
   },
-  
-  textLabel: {
-    color: 'black',
-    fontSize: 20,
-    textAlign: 'left',
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignSelf: 'stretch',
-    marginTop: 5,
-    marginBottom: -5,
-    fontFamily: 'Raleway-Regular',
+    
+rewardsCon: {
+   //     backgroundColor:'yellow', 
+        flexDirection:'row',
+    flexWrap:'wrap',
+    height:'150%',
+    width:'100%',
   },
   
   taskCont: {
-    height: 67,
-    width: 350,
+    height: '18.5%',
+    width: '44%',
     borderWidth: 1,
     marginTop: 10,
+    marginLeft: 10,
+    marginRight: 10,
     borderColor: '#49CBC6',
     padding: 10,
-    borderRadius: 8,
+    borderRadius: 4,
   },
   
-  textBut: {
-    fontSize: 20,
-    color: 'white',
-    fontFamily: 'Raleway-Regular',
-  },  
 });
 
 
