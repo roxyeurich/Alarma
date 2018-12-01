@@ -108,7 +108,7 @@ state={
         });
         
         if (filter.length > 0){
-          alert("You have received a reward "+titles.join(", "));
+          alert("You have received the rewards: "+('\n')+titles.join(", \n"));
           //newreward = true;
           
           //make it disappear

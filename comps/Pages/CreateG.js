@@ -139,10 +139,7 @@ var allP = this.state.predictions.map((obj,index)=>{
                 borderBottomLeftRadius:2,
                 borderBottomRightRadius:2,
 
-                
-    
-                                             
-                                }}
+          }}
          onPress={this.handleTouchLoc.bind(this, obj)}
          >
           <Text style={{ color: '#49CBC6'}}> {obj.description} </Text>

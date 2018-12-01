@@ -267,32 +267,32 @@ sortByScore=(a, b)=>{
                     <Text style={styles.textBtn}>Group Pin: {this.state.pin}</Text>
                 </TouchableOpacity>
             </View>
-  
-            <View style={styles.groupMembers}>
-                <Text style={styles.scoreTxt}> Scoreboard </Text>
-                {allusers}
-                 <LottieView
-                source={require('../Content/Imgs/trophy.json')}
-                style={{width:40, height:40, top:-21, left:-30}}
-                autoPlay
-                loop
-              />
-            </View> 
-                     
-            <View>
-             <Text style={styles.locText}>Users location</Text>
-              <MapView
-                style={styles.map}
-                initialRegion={this.state.initialPosition}
-                region={this.state.initialPosition}>
-              >
-                  {markers}
-               title={"test2"}
-               description="test2"
+            <View style={styles.middleContainer}>
+              <View style={styles.groupMembers}>
+                  <Text style={styles.scoreTxt}> Scoreboard </Text>
+                  {allusers}
+                   <LottieView
+                  source={require('../Content/Imgs/trophy.json')}
+                  style={{width:40, height:40, top:-21, left:-30}}
+                  autoPlay
+                  loop
                 />
-              </MapView>
-            </View>          
-                      
+              </View> 
+
+              <View>
+               <Text style={styles.locText}>Users location</Text>
+                <MapView
+                  style={styles.map}
+                  initialRegion={this.state.initialPosition}
+                  region={this.state.initialPosition}>
+                >
+                    {markers}
+                 title={"test2"}
+                 description="test2"
+                  />
+                </MapView>
+              </View>          
+            </View>
       </View>
      
     );
@@ -300,11 +300,11 @@ sortByScore=(a, b)=>{
 }
 
 const styles = StyleSheet.create({
-  container: { 
-    flex: 1, 
-    padding: 16, 
-    paddingTop: 30, 
+  container: {    
+    flex: 1,
+    alignSelf: 'stretch',
     backgroundColor: '#fff',
+    alignItems: 'center',
   },
   
   groupMembers: {
@@ -313,9 +313,9 @@ const styles = StyleSheet.create({
     //backgroundColor:'rgba(100,100,225,0.05)',
     width:130,
     height:135,
-    top:230,
+    top:0,
     alignSelf:'center',
-    zIndex:0,
+    zIndex:5,
   },
   
   membersText: {
@@ -356,19 +356,26 @@ const styles = StyleSheet.create({
     width:230,
     color:'#49CBC6',
     fontSize:20,
-    position:'relative',
-    left:125,
+    position:'absolute',
+    right:0,
     top:-30,
     //fontFamily: 'Raleway-Regular',
     fontFamily: 'NunitoSans-Regular',
   },
     
-  containerTop: {
+containerTop: {
     marginTop:0,
     backgroundColor: '#49CBC6',
     top: 0,
     width:412,
     height:100,
+  },
+  
+  middleContainer: {
+    marginTop:20,
+    padding:10,
+    height:'70%',
+    width:'100%',
   },
   
   touch: {
@@ -411,7 +418,8 @@ const styles = StyleSheet.create({
   },
   
   groupBox: {
-      bottom: 20,
+    bottom: 20,
+    width:'100%',
     },
     
   groupPhoto: {
@@ -423,7 +431,7 @@ const styles = StyleSheet.create({
     borderWidth:2,
     top: 20,
     alignSelf: 'stretch',
-    marginLeft: 35,
+    left:'10%',
   },
   
   map: {

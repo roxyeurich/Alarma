@@ -7,7 +7,7 @@ import { Asset, Font } from "expo";
 class Login extends React.Component {
   
    handleLanding=()=>{
-    this.props.dispatch(ChangePage(18));
+    this.props.dispatch(ChangePage(21));
     
   }
    
