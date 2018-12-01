@@ -76,14 +76,14 @@ class CreateReward extends React.Component {
         <View style={styles.middleContainer}>
           <Text style={styles.textLabel}>Title</Text>
 
-          <TextInput underlineColorAndroid='transparent'
+          <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
           style={styles.textInput}
           onChangeText={(text) => this.reward_title=text}
           />
 
           <Text style={styles.textLabel}>Points to be reached:</Text>
 
-          <TextInput underlineColorAndroid='transparent'
+          <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
           style={styles.textInput}
           onChangeText={(text) => this.reward_points=text}
           />

@@ -7,37 +7,30 @@ import {connect} from 'react-redux';
 import {ChangePage} from '../../redux/actions';
 
 
-class IntroTrophy extends React.Component {
+class Welcome extends React.Component {
  handleIntro=()=>{
-   this.props.dispatch(ChangePage(21));
+   this.props.dispatch(ChangePage(18));
  }
   
+ 
   render() {
     return (
       
-   
+      
   <LinearGradient
       colors={['#49CBC6', '#4B7CB0']}
       style={{width: '100%', height:'100%', alignItems: 'center'}}>
     <TouchableOpacity onPress={this.handleIntro}>
       <View style={styles.container}> 
         
+        <Image style={styles.logoImg} source={require('../Content/icons/PNG/AlarmaLogo.png')} />
+        
+        
          <Text style={styles.titleAlarma} ><Text style={{fontSize:65}}>A</Text>LARMA</Text>
-        
-         <LottieView
-          source={require('../Content/Imgs/giftbox.json')}
-          style={{width:300, height:300, top:30, left:0, justifyContent: 'center',}}
-          autoPlay
-          loop
-        />
-        
-        <View style={styles.buttonContainer}>   
 
-             <Text style={styles.textBut}>Create real rewards to make it more competitive!</Text>
-          
-        </View>
+      
       </View>
-  </TouchableOpacity>
+    </TouchableOpacity>
 </LinearGradient>
     );
   }
@@ -48,11 +41,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignSelf: 'stretch',
     alignItems: 'center',
+   
   },
   
   titleAlarma: {
     color: 'white',
-    top: 150,
+    top: '40%',
     fontSize: 50,
     //fontFamily: 'Raleway-Regular',
     fontFamily: 'NunitoSans-Regular',
@@ -73,8 +67,14 @@ const styles = StyleSheet.create({
     //fontFamily: 'Raleway-Regular',
     fontFamily: 'NunitoSans-Regular',
     lineHeight:30,
-    top:100,
-    textAlign:'center',
+    textAlign: 'center',
+    top:'40%',
+  },
+  
+  logoImg: {
+    top:'30%', 
+    width:163,
+    height: 172,
   },
   
 });
@@ -89,4 +89,4 @@ function mapStateToProps(state){
 }
 
 //export after connecting to redux
-export default connect(mapStateToProps)(IntroTrophy);
+export default connect(mapStateToProps)(Welcome);

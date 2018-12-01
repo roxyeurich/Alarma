@@ -13,10 +13,13 @@ class Createacc extends React.Component {
 
 
     handleProfile=async ()=>{
-    if (this.email == '' || this.password == '' || this.username == ''){
-      alert("Please fill the inputs with your info");
+      const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+          
+    if (this.email == '' || reg.test(this.email) === false || this.password == '' || this.username == ''){
+      alert("Something went wrong, please verify the info and try again!");
       return false;
-    }
+    } 
+    
    
     var fd= new FormData();
       fd.append("email", this.email);
@@ -40,6 +43,8 @@ class Createacc extends React.Component {
       } else {
         alert ("Something went wrong!");
       }
+      
+      
   }
   
   handleLanding=()=>{
@@ -85,21 +90,21 @@ class Createacc extends React.Component {
             
             <Text style={styles.textLabel}>Username</Text>
           
-            <TextInput underlineColorAndroid='transparent'
+            <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
             style={styles.textInput}
             onChangeText={(text) => this.username=text}
             />
 
           <Text style={styles.textLabel}>Email</Text>
 
-            <TextInput underlineColorAndroid='transparent'
+            <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
             style={styles.textInput}
             onChangeText={(text) => this.email=text}
             />
 
           <Text style={styles.textLabel}>Password</Text>
 
-            <TextInput underlineColorAndroid='transparent'
+            <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
             style={styles.textInput}
             onChangeText={(text) => this.password=text}
             secureTextEntry={true}

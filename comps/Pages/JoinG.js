@@ -61,7 +61,7 @@ class JoinG extends React.Component {
       <View style={styles.middleContainer}>
         <Text style={styles.textLabel}>Enter Group Pin number:</Text>
         
-        <TextInput 
+        <TextInput autoCapitalize="none" autoCorrect={false}
           underlineColorAndroid='transparent'
           style={styles.textInput}
           onChangeText={(text) => this.passcode=text}

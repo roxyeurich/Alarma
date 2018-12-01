@@ -29,6 +29,7 @@ import Intro from './Pages/Intro';
 import IntroLoc from './Pages/IntroLoc';
 import IntroTrophy from './Pages/IntroTrophy';
 import Loading from './Pages/Loading';
+import Welcome from './Pages/Welcome';
 
 import { Svg } from 'expo';
 
@@ -41,7 +42,7 @@ class Nav extends React.Component {
     
     
     if(this.props.compPage === 0){
-      comp = <Intro />;
+      comp = <Welcome />;
       NB = null;
     } 
 
@@ -113,17 +114,23 @@ class Nav extends React.Component {
       NB = null;
     }
       if (this.props.compPage === 18){
-      comp = <Landing />
-      NB = null;
+      comp = <Intro />
+        NB = null;
     }
       if (this.props.compPage === 19){
       comp = <IntroLoc />
         NB = null;
-    }
+    }      
       if (this.props.compPage === 20){
       comp = <IntroTrophy />
         NB = null;
-    }      
+    } 
+      if (this.props.compPage === 21){
+      comp = <Landing />
+      NB = null;
+    }
+        
+        
     
       if (this.props.loading === true){
         <Loading  style={{position:'absolute'}}/>

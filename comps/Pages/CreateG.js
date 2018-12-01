@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput, ScrollView, KeyboardAvoidingView} from 'react-native';
+import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput, ScrollView, KeyboardAvoidingView, Clipboard} from 'react-native';
 import {connect} from 'react-redux';
 import {ChangePage, ChangePasscode, ChangeUserId} from '../../redux/actions';
 import {MapView, Asset, Font, ImagePicker} from 'expo';
@@ -7,13 +7,22 @@ import {MapView, Asset, Font, ImagePicker} from 'expo';
 
 class CreateG extends React.Component {
 
+   state={
+    predictions:[],
+    description:"",
+    show:false,
+    image:null,
+
+  }
+
 handleChooseG=()=>{
   this.props.dispatch(ChangePage(7));
 }
   
-  handleCopy=()=>{
-
-    }  
+  handleCopy=async ()=>{
+    await Clipboard.setString(this.state.rannum);
+    alert('Copied to Clipboard!');
+  }  
   
 //DATABASE**********************
     group_name="";
@@ -57,13 +66,6 @@ handleChooseG=()=>{
     componentDidMount=()=>{
     this.random();
   };
-
-   state={
-    predictions:[],
-    description:"",
-    show:false,
-    image:null,
-  }
   
     
 handleTextInput= async(text)=>{

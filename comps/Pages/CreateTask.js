@@ -85,7 +85,7 @@ class CreateTask extends React.Component {
         <View style={styles.middleContainer}>
           <Text style={styles.textLabel}>Title</Text>
 
-          <TextInput underlineColorAndroid='transparent'
+          <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
           style={styles.textInput}
           onChangeText={(text) => this.task_title=text}
 
@@ -122,7 +122,7 @@ class CreateTask extends React.Component {
       />
           <Text style={styles.textLabel}>Description</Text>
 
-          <TextInput underlineColorAndroid='transparent'
+          <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
             style={styles.textInput2}
             onChangeText={(text) => this.task_description=text}
               multiline = {true}

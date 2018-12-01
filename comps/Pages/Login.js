@@ -61,14 +61,14 @@ class Login extends React.Component {
           
         <Text style={styles.textLabel}>Email</Text>
         
-        <TextInput underlineColorAndroid='transparent'
+        <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
         style={styles.textInput}
         onChangeText={(text) => this.email=text}
         
       />
         <Text style={styles.textLabel}>Password</Text>
         
-        <TextInput underlineColorAndroid='transparent'
+        <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
         style={styles.textInput}
         onChangeText={(text) => this.password=text}
         secureTextEntry={true}
