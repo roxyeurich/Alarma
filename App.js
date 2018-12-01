@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {ActivityIndicator, AppRegistry, StyleSheet, Text, View } from 'react-native';
 
 import {Provider} from 'react-redux';
 import Thunk from 'redux-thunk';
@@ -42,12 +42,13 @@ export default class App extends React.Component {
   render() {
     return (
       
-          <Provider store={store}>
+      <Provider store={store}>
         {this.state.fontLoaded ? <Nav /> : <View></View>}
       </Provider>
+      
+      
 
-
-    );
+    )
   }
 }
 
@@ -58,5 +59,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  
+  horizontal: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 10
+  }
 });
-//cyan color: #49CBC6
+
+AppRegistry.registerComponent('App', () => App)

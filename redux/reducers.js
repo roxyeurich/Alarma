@@ -8,6 +8,7 @@ const initialPage = {
   admin:1,
   rewardid:"",
   home:1,
+  loading:false,
 }
 
 export function Page(state=initialPage, action){
@@ -37,7 +38,12 @@ export function Page(state=initialPage, action){
       obj.group_name=action.group_name;
       obj.passcode=action.passcode;
       return obj;
+      
+    case "CHANGE_LOAD":
+      obj.loading=action.loading;
+      return obj;
 
+      
     default: 
       return state;
   }

@@ -30,3 +30,10 @@ export function ChangePasscode(group_name, passcode){
     passcode:passcode,
   }
 }
+
+export function ChangeLoad(loading){
+  return{
+    type:"CHANGE_LOAD",
+    loading:loading,
+  }
+}
