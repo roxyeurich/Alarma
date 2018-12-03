@@ -107,7 +107,7 @@ class CreateTask extends React.Component {
                 dateIcon: {
                 position: 'absolute',
                 left: 0,
-                top: 4,
+                top: -5,
                 marginLeft: 0,
                 marginTop:10
                 },
@@ -129,8 +129,8 @@ class CreateTask extends React.Component {
               maxLength={255}
               numberOfLines ={6}
           />
-
-
+   
+    <Text style={styles.textLabel}>Score</Text>
        <Rating
            type="custom"
            ratingColor='#49cbc6'
@@ -229,7 +229,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     borderColor: '#49CBC6',
     padding: 10,
-    borderRadius: 8,
+    borderRadius: 6,
     textAlign: 'left',
     //fontFamily: 'Raleway-Regular',
     fontFamily: 'NunitoSans-Regular',
@@ -238,19 +238,19 @@ const styles = StyleSheet.create({
    textInput2: {
     color: '#4d4d4d',
     fontSize: 15,
-    height: 120,
+    height: 100,
     width: 300,
     borderWidth: 1,
     marginTop: 10,
     borderColor: '#49CBC6',
     padding: 10,
-    borderRadius: 8,
+    borderRadius: 6,
     //fontFamily: 'Raleway-Regular',
     fontFamily: 'NunitoSans-Regular',
   },
   
     loginBut: {
-    marginTop: 15,
+    marginTop: 10,
     alignItems: 'center',
     padding: 5,
     paddingTop: 17,

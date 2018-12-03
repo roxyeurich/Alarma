@@ -28,8 +28,8 @@ import ABox from './Pages/AlertBox';
 import Intro from './Pages/Intro';
 import IntroLoc from './Pages/IntroLoc';
 import IntroTrophy from './Pages/IntroTrophy';
-import Loading from './Pages/Loading';
 import Welcome from './Pages/Welcome';
+import Loading from './Pages/Loading';
 
 import { Svg } from 'expo';
 

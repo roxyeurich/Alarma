@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
     fontFamily: 'NunitoSans-Regular',
   },
   
-    KeyboardView: {
+  KeyboardView: {
     position:'absolute',
     bottom:20,
     flex:1,

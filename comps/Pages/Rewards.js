@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
   },
     
     
-    points: {
+  points: {
     backgroundColor: 'transparent',
     position: 'absolute',
     width: 90,
@@ -273,22 +273,24 @@ containerTop: {
   
   middleContainer: {
     marginTop:20,
-      padding:10,
-      height:'70%',
+    padding:10,
+    height:'70%',
       
   },
     
 rewardsCon: {
    //     backgroundColor:'yellow', 
-        flexDirection:'row',
+    flexDirection:'row',
     flexWrap:'wrap',
     height:'150%',
     width:'100%',
   },
   
   taskCont: {
-    height: '18.5%',
+    height: '16%',
     width: '44%',
+    position:'relative',
+    flexDirection: "row",
     borderWidth: 1,
     marginTop: 10,
     marginLeft: 10,

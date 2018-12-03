@@ -26,7 +26,7 @@ class IntroTrophy extends React.Component {
         
          <LottieView
           source={require('../Content/Imgs/giftbox.json')}
-          style={{width:300, height:300, top:30, left:0, justifyContent: 'center',}}
+          style={styles.lottie}
           autoPlay
           loop
         />
@@ -50,6 +50,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   
+  lottie: {
+    width:300, 
+    height:300, 
+    top:30, left:0, 
+    justifyContent: 'center',
+    shadowColor: 'rgba(11, 51, 40, 0.91)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 1, //IOS
+    elevation: 2, // Android 
+  },
+  
   titleAlarma: {
     color: 'white',
     top: 150,
@@ -57,6 +69,11 @@ const styles = StyleSheet.create({
     //fontFamily: 'Raleway-Regular',
     fontFamily: 'NunitoSans-Regular',
     textAlign:'center',
+    shadowColor: 'rgba(11, 51, 40, 0.91)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 1, // IOS
+    shadowRadius: 1, //IOS
+    elevation: 2, // Android
   },
 
   buttonContainer: {

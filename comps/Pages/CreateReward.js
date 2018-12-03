@@ -81,7 +81,7 @@ class CreateReward extends React.Component {
           onChangeText={(text) => this.reward_title=text}
           />
 
-          <Text style={styles.textLabel}>Points to be reached:</Text>
+          <Text style={styles.textLabel}>Points to be reached</Text>
 
           <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
           style={styles.textInput}
@@ -111,11 +111,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   
-     KeyboardView: {
+  KeyboardView: {
     position:'absolute',
     bottom:20,
     flex:1,
-         width:'300%',
+    width:'300%',
     marginBottom: 30,
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
   },
   
    textLabel: {
-    color: 'black',
+    color: '#4d4d4d',
     fontSize: 20,
     textAlign: 'left',
     flexDirection: 'row',
@@ -169,6 +169,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
     marginBottom: -5,
     //fontFamily: 'Raleway',
+    fontFamily: 'NunitoSans-Regular',
   },
   
     labelContainer: {

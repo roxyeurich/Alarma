@@ -8,7 +8,7 @@ import ABox from './AlertBox';
 import {ChangePage, ChangeAvatar} from '../../redux/actions';
 import {Camera, Constants, Permissions, Location, ImagePicker, MapView, LinearGradient} from 'expo';
 import LottieView from 'lottie-react-native';
- import firebase from 'firebase';
+import firebase from 'firebase';
  //import RNFetchBlob from 'rn-fetch-blob';
 //
 //const Blob = RNFetchBlob.polyfill.Blob;
@@ -318,7 +318,9 @@ this.props.dispatch(ChangePage(13));
           <View  style={styles.container}> 
          <LinearGradient   colors={['#49CBC6', '#4B7CB0']}
           style={{width:420, height:'100%', alignItems: 'center'}}>
-             <HamMenu />
+          
+               <HamMenu />
+         
             <View style={styles.topNav}> 
               
             </View>
@@ -340,7 +342,7 @@ this.props.dispatch(ChangePage(13));
                 onPress={this._pickImage}>
               <LottieView
                 source={require('../Content/Imgs/cam.json')}
-                style={{width:130, height:130, top:-25, left:35, }}
+                style={styles.lottietwo}
                 autoPlay
                 loop
               />
@@ -361,7 +363,7 @@ this.props.dispatch(ChangePage(13));
               <Text style={styles.lvlText}>Level: {(this.state.lvlTitle)? this.state.lvlTitle : 'Recruit'}</Text>
               <LottieView
                 source={require('../Content/Imgs/star.json')}
-                style={{width:50, height:50, top:-5, left:0}}
+                style={styles.lottie}
                 autoPlay
                 loop
               />
@@ -403,234 +405,305 @@ this.props.dispatch(ChangePage(13));
   }
 }
  const styles = StyleSheet.create({
-    
-  
-    locationContainer: {
-      top:70,
-      width:280,
-      height:'auto',
-      top:60,
-    },
-  
-    topNav: {
-      position: "absolute",
-      top:10,
-      right: 50,
-      height: 50,
-      width:50
-    },
-    
-    touch: {
-      width: 100,
-      height: 100,
-      zIndex: 15,
-      bottom: 0,
-      marginBottom: 0,
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
     },
   
    
-  
-    img: {
-      width: 45,
-      height: 45,
-      margin: 10,
-      position:'absolute',
-    },
-  
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: '100%',
-      },
-  
-    scoresCont: {
-      top:-100,
-      right:30,
-      flex:1,
-      flexDirection: 'column',
-      alignSelf: 'stretch',
-      alignItems: 'flex-end',
-    },
-  
-    rewardCont: {
-      width:50,
-      height:50,
-      top:-120,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-  
+  lottie: {
+    width:50, 
+    height:50, 
+    top:-5, 
+    left:0,
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
+    elevation: 2, // Android
+    zIndex:1,
+  },
    
-    score: {
-      width:47,
-      height:47,
-      //marginTop:-40,
-      padding:1,
-      //justifyContent:'center',
-      //alignItems:'center',
-      borderRadius: 10,
-      borderColor:'#fff',
-      borderWidth:1,
-      //margin:80,
-      right:290,
-      bottom: 237,
+  lottietwo: {
+    width:130, 
+    height:130, 
+    top:-25, 
+    left:35,
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
+    elevation: 2, // Android
+    zIndex:1,
+  },
+    
+  locationContainer: {
+    top:70,
+    width:280,
+    height:'auto',
+    top:60,
+    
+  },
+
+  topNav: {
+    position: "absolute",
+    top:10,
+    right: 50,
+    height: 50,
+    width:50,
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
+    elevation: 2, // Android
+  },
+
+  touch: {
+    width: 100,
+    height: 100,
+    zIndex: 15,
+    bottom: 0,
+    marginBottom: 0,
+  },
+
+
+
+  img: {
+    width: 45,
+    height: 45,
+    margin: 10,
+    position:'absolute',
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
+    elevation: 2, // Android
+  },
+
+  scoresCont: {
+    top:-100,
+    right:30,
+    flex:1,
+    flexDirection: 'column',
+    alignSelf: 'stretch',
+    alignItems: 'flex-end',
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
+    elevation: 2, // Android
+  },
+
+  rewardCont: {
+    width:50,
+    height:50,
+    top:-120,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+
+  score: {
+    width:52,
+    height:52,
+    //marginTop:-40,
+    padding:1,
+    //justifyContent:'center',
+    //alignItems:'center',
+    borderRadius: 10,
+    borderColor:'#fff',
+    borderWidth:1,
+    //margin:80,
+    right:290,
+    bottom: 237,
 },
-  
-   editP: {
-       width: 35, 
-       height: 35, 
-       borderRadius: 5, 
-       borderColor: '#FFF',
-       position:'absolute',
-       top: 100,
-       left:10,
-       alignSelf: 'stretch',
-       marginLeft: 70,
-       backgroundColor:'rgba(255, 255, 255, 0.1)',
-       },
-  
-      reward: {
-       width: 70, 
-       height: 70, 
-       borderRadius: 5, 
-       borderColor: '#FFF',
-       position:'absolute',
-      },
-    
+
+ editP: {
+     width: 35, 
+     height: 35, 
+     borderRadius: 5, 
+     borderColor: '#FFF',
+     position:'absolute',
+     top: 100,
+     left:10,
+     alignSelf: 'stretch',
+     marginLeft: 70,
+     backgroundColor:'rgba(255, 255, 255, 0.6)',
+     },
+
+  reward: {
+     width: 70, 
+     height: 70, 
+     borderRadius: 5, 
+     borderColor: '#FFF',
+     position:'absolute',
+    },
+
+
+/*
+  switchCont: {
+    flex:1,
+    flexDirection:'row',
+    top:-220,
+    left:77,
+    zIndex:10,
+    width:100,
+    justifyContent: 'center',
+    },
+
+  toogle: {
+    //alignSelf:'center',
+    shadowColor: 'rgba(0,0,0, .6)', // IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 5, //IOS
+    elevation: 2, // Android
+    transform: [{ scaleX: .8 }, { scaleY: .8 }],
+    bottom:105,
+    left:15,
+    },
+
+  textatHome:{
+    fontSize: 15,
+    color: 'white',
+    textAlign:'center',
+    marginTop:-76,
+    right:-62,
+    fontFamily: 'Raleway-Regular',
+    }, */
    
-  /*
-    switchCont: {
-      flex:1,
-      flexDirection:'row',
-      top:-220,
-      left:77,
-      zIndex:10,
-      width:100,
-      justifyContent: 'center',
-      },
+   textBut: {
+    fontSize: 25,
+    color: 'white',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
+    },
+
+  textScore: {
+    fontSize: 14,
+    color: 'white',
+    margin:1,
+    padding:2,
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
+    textAlign:'center',
+    //fontWeight: 'bold', //OPTIONAL
+
+    },
   
-    toogle: {
-      //alignSelf:'center',
-      shadowColor: 'rgba(0,0,0, .6)', // IOS
-      shadowOffset: { height: 1, width: 1 }, // IOS
-      shadowOpacity: 0.5, // IOS
-      shadowRadius: 5, //IOS
-      elevation: 2, // Android
-      transform: [{ scaleX: .8 }, { scaleY: .8 }],
-      bottom:105,
-      left:15,
-      },
-  
-    textatHome:{
-      fontSize: 15,
-      color: 'white',
-      textAlign:'center',
-      marginTop:-76,
-      right:-62,
-      fontFamily: 'Raleway-Regular',
-      }, */
-     textBut: {
-      fontSize: 25,
-      color: 'white',
-      //fontFamily: 'Raleway-Regular',
-      fontFamily: 'NunitoSans-Regular',
-      },
-  
-    textScore: {
-      fontSize: 15,
-      color: 'white',
-      margin:1,
-      padding:2,
-      //fontFamily: 'Raleway-Regular',
-      fontFamily: 'NunitoSans-Regular',
-      textAlign:'center',
-      //fontWeight: 'bold', //OPTIONAL
-      
-      },
-  
-  
-    profileBox: {
-      alignItems: 'center',
-      alignSelf: 'stretch',
-      top: 20,
+  profileBox: {
+    alignItems: 'center',
+    alignSelf: 'stretch',
+    top: 20,
     },
   
    touchPic: {
     right: 40,
     top: 30,
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
+    elevation: 2, // Android
     },
     
-    title: {
-      marginTop: 45,
-      fontSize: 24,
-//      left: 95,
-      color: 'white',
-      flexDirection: 'row',
-      justifyContent: 'flex-start',
-      alignSelf: 'center',//or 'stretch' to put on left side
-//      textAlign: 'left',
-      marginBottom: -10,
-      //fontFamily: 'Raleway-Regular',
-      fontFamily: 'NunitoSans-Regular',
-      },
+  title: {
+    marginTop: 45,
+    fontSize: 24,
+//  left: 95,
+    color: 'white',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignSelf: 'center',//or 'stretch' to put on left side
+//  textAlign: 'left',
+    marginBottom: -10,
+//  fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
+    shadowColor: 'rgba(33, 11, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 1, // IOS
+    shadowRadius: 0.5, //IOS
+    elevation: 2, // Android
+    },
  
+
+  profilePhoto: {
+    width: 180, 
+    height: 180, 
+    borderRadius: 90, 
+    borderColor: '#49CBC6',
+    borderWidth:2,
+    bottom: -10,
+    alignSelf: 'stretch',
+    marginLeft: 70,
+    backgroundColor:'rgba(255, 255, 255, 0.2)',
+    },
+
+  lvlCont: {
+    width:160,
+    height:40,
+    bottom:80,
+    left: 10,
+    padding:4,
+    zIndex:21,
+    flexDirection: 'row',
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
+    elevation: 2, // Android
+  },
+
+  lvlText:{
+    fontSize: 18,
+    fontWeight:'500',
+    color: 'white',
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
+    zIndex:10,
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
+    elevation: 2, // Android
+  },
+
+  map: {
+    width:280, 
+    height:120,
+    margin: 25,
+    bottom:160,
+    position:'absolute',
+    borderRadius:10,
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 1, //IOS
+    elevation: 2, // Android
+  },
     
-   
-  
-    profilePhoto: {
-      width: 180, 
-      height: 180, 
-      borderRadius: 90, 
-      borderColor: '#49CBC6',
-      borderWidth:2,
-      bottom: -10,
-      alignSelf: 'stretch',
-      marginLeft: 70,
-      backgroundColor:'rgba(255, 255, 255, 0.2)',
-      },
-  
-    lvlCont: {
-      width:160,
-      height:40,
-      bottom:80,
-      left: 10,
-      padding:4,
-      zIndex:21,
-      flexDirection: 'row',
+  locationText: {
+    height:80,
+    fontSize: 15,
+    color: 'white',
+    justifyContent: 'center',
+    borderColor:'#49CBC6',
+    borderWidth:2,
+    marginBottom: 150,
+    borderRadius: 15,
+    padding:8,
+    //fontFamily: 'Raleway-Regular',
+    fontFamily: 'NunitoSans-Regular',
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
+    elevation: 2, // Android
     },
-  
-    lvlText:{
-      fontSize: 18,
-      fontWeight:'500',
-      color: 'white',
-      //fontFamily: 'Raleway-Regular',
-      fontFamily: 'NunitoSans-Regular',
-      zIndex:10,
-    },
-  
-      map: {
-      width:280, 
-      height:120,
-      margin: 25,
-      bottom:160,
-      position:'absolute',
-      borderRadius:10,
-    },
-     locationText: {
-      height:80,
-      fontSize: 15,
-      color: 'white',
-      justifyContent: 'center',
-      borderColor:'#49CBC6',
-      borderWidth:2,
-      marginBottom: 150,
-      borderRadius: 15,
-      padding:8,
-      //fontFamily: 'Raleway-Regular',
-       fontFamily: 'NunitoSans-Regular',
-      },
+    
 });
  function mapStateToProps(state){
   return{

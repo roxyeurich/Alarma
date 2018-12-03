@@ -128,13 +128,13 @@ const styles = StyleSheet.create({
   },
   
    middleContainer: {
-    marginTop:50,
+    marginTop:20,
     alignItems: 'center',
   },
     
-    KeyboardView: {
+  KeyboardView: {
     position:'absolute',
-        width:'300%',
+    width:'300%',
     bottom:20,
     flex:1,
     marginBottom: 30,
@@ -161,7 +161,7 @@ const styles = StyleSheet.create({
   textInput: {
     color: '#4d4d4d',
     fontSize: 15,
-    height: 60,
+    height: 50,
     width: 300,
     borderWidth: 1,
     marginTop: 10,

@@ -26,7 +26,7 @@ class IntroLoc extends React.Component {
         
          <LottieView
           source={require('../Content/Imgs/location.json')}
-          style={{width:180, height:180, top:50, left:0, justifyContent: 'center',}}
+          style={styles.lottie}
           autoPlay
           loop
         />
@@ -50,6 +50,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   
+  lottie: {
+    width:200, 
+    height:200, 
+    top:50, left:0, 
+    justifyContent: 'center',
+    shadowColor: 'rgba(11, 51, 40, 0.91)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 1, //IOS
+    elevation: 2, // Android 
+  },
+  
   titleAlarma: {
     color: 'white',
     top: 150,
@@ -57,6 +69,11 @@ const styles = StyleSheet.create({
     //fontFamily: 'Raleway-Regular',
     fontFamily: 'NunitoSans-Regular',
     textAlign:'center',
+    shadowColor: 'rgba(11, 51, 40, 0.91)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 1, // IOS
+    shadowRadius: 1, //IOS
+    elevation: 2, // Android
   },
 
   buttonContainer: {

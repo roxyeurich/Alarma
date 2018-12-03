@@ -32,6 +32,10 @@ ChangePage=(page)=>{
     })
 }
 
+handleCloseMenu=()=>{
+    this._toggleSubview();
+  }
+
 
 handleGroupP=()=>{
     this.props.dispatch(ChangePage(12)); 
@@ -95,6 +99,7 @@ handleLogOut=()=>{
                      source={require('../Content/icons/PNG/menu.png')}
                   /> 
           </TouchableHighlight>
+          
           <Animated.View
             style={[styles.subView,
               {transform: [{translateX: this.state.bounceValue}]}]}
@@ -137,7 +142,7 @@ container: {
     alignItems: 'center',
     backgroundColor:"rgba(75, 124, 176, 0.3)",
     marginTop: 66,
-    zIndex:15,
+    zIndex:20,
     position: 'absolute',
     left:20,
     
@@ -160,6 +165,11 @@ buttonText: {
 img: {
     width:35,
     height:35,
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 1, // IOS
+    shadowRadius: 0.5, //IOS
+    elevation: 2, // Android
     
 
 },
@@ -168,12 +178,18 @@ subView: {
     top: 10,
     left: 0,
     right: 0,
-    backgroundColor:"rgba(75, 124, 176, 0.3)",
+    backgroundColor:"rgba(75, 124, 176, 0.7)",
     height: 520,
     width:200,
     borderTopLeftRadius:5,
     borderBottomLeftRadius:5,
     zIndex:15,
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 1, // IOS
+    shadowRadius: 0.5, //IOS
+    elevation: 2, // Android
+    zIndex:50,
   },
     
 subViewText: {

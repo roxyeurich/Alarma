@@ -51,6 +51,11 @@ const styles = StyleSheet.create({
     //fontFamily: 'Raleway-Regular',
     fontFamily: 'NunitoSans-Regular',
     textAlign:'center',
+    shadowColor: 'rgba(11, 51, 40, 0.91)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 1, // IOS
+    shadowRadius: 1, //IOS
+    elevation: 2, // Android
   },
 
   buttonContainer: {
@@ -73,8 +78,13 @@ const styles = StyleSheet.create({
   
   logoImg: {
     top:'30%', 
-    width:163,
-    height: 172,
+    width:'77%',
+    height: '27%',
+    shadowColor: 'rgba(33, 11, 51, 0.85)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
+    elevation: 2, // Android
   },
   
 });

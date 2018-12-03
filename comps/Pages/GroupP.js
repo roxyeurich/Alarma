@@ -231,8 +231,8 @@ sortByScore=(a, b)=>{
           return (
             <TouchableOpacity onPress={() => this.handleOnPress(index)}>
               <View style={styles.usersTxt}>
-                <Text style={{fontFamily: 'Raleway-Regular', color:'#6f6f6f', fontSize:20,}}>{(obj.score)? obj.score : 0} </Text>
-                <Text style={{fontFamily: 'Raleway-Regular', color:'#6f6f6f', fontSize:20,}}>{"  "}{obj.username}</Text>
+                <Text style={{fontFamily: 'NunitoSans-Regular', color:'#6f6f6f', fontSize:20,}}>{(obj.score)? obj.score : 0} </Text>
+                <Text style={{fontFamily: 'NunitoSans-Regular', color:'#6f6f6f', fontSize:20,}}>{"  "}{obj.username}</Text>
               </View>
             </TouchableOpacity>
           )
@@ -273,7 +273,7 @@ sortByScore=(a, b)=>{
                   {allusers}
                    <LottieView
                   source={require('../Content/Imgs/trophy.json')}
-                  style={{width:40, height:40, top:-21, left:-30}}
+                  style={{width:40, height:40, top:-24, left:-30}}
                   autoPlay
                   loop
                 />

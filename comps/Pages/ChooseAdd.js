@@ -67,13 +67,23 @@ const styles = StyleSheet.create({
     width:85,
     height: 85,
     padding:10,
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 1, // IOS
+    shadowRadius: 0.5, //IOS
+    elevation: 2, // Android
   },
   
   createRImg: {
     marginTop:70, 
     width:85,
     height: 85,
-    padding:10
+    padding:10,
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 1, // IOS
+    shadowRadius: 0.5, //IOS
+    elevation: 2, // Android
   },
   
   titleAlarma: {
@@ -82,6 +92,11 @@ const styles = StyleSheet.create({
     fontSize: 50,
     //fontFamily: 'Raleway-Regular',
     fontFamily: 'NunitoSans-Regular',
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 1, // IOS
+    shadowRadius: 0.5, //IOS
+    elevation: 2, // Android
   },
   
   buttonContainer: {

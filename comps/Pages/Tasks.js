@@ -306,7 +306,7 @@ renderTasks=(tasks)=> {
   },
   
   
-   taskName: {
+  taskName: {
     color: 'grey',
     fontSize: 16,
     marginTop: 23,
@@ -334,7 +334,7 @@ renderTasks=(tasks)=> {
     height:70,
     borderWidth: 1,
     borderColor: '#49CBC6',
-    borderRadius: 8,
+    borderRadius: 6,
     flexDirection: "row",
     position: "relative",
     top:20,
@@ -342,7 +342,7 @@ renderTasks=(tasks)=> {
     margin:15,
   },
     
-    starStyle: {
+  starStyle: {
     marginTop: 17,
     position: "relative",
     left: -130,
@@ -354,7 +354,7 @@ renderTasks=(tasks)=> {
     borderColor:'grey',
   },
     
-    taskDesc: {
+  taskDesc: {
     width:80,
     position: "relative",
     borderColor:'grey',

@@ -146,10 +146,10 @@ const styles = StyleSheet.create({
   
   taskName: {
     color: '#4d4d4d',
-    fontSize: 20,
+    fontSize: 16,
     marginLeft: 10,
     textAlign: 'left',
-    marginTop: 10,
+    padding:3,
     //fontFamily: 'Raleway-Regular',
     fontFamily: 'NunitoSans-Regular',
   },
@@ -159,28 +159,28 @@ const styles = StyleSheet.create({
    alignItems: 'center',
   },
   
-    textLabel: {
+  textLabel: {
     color: '#4d4d4d',
-    fontSize: 20,
+    fontSize: 18,
     textAlign: 'left',
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignSelf: 'stretch',
     marginTop: 5,
-    marginBottom: -5,
+    marginBottom: 5,
     //fontFamily: 'Raleway-Regular',
-      fontFamily: 'NunitoSans-Regular',
+    fontFamily: 'NunitoSans-Regular',
   },
   
     taskCont: {
-    height: 70,
-    width: 350,
-
+    height: 55,
+    width: 300,
     borderWidth: 1,
     marginTop: 10,
+    marginBottom: 10,
     borderColor: '#49CBC6',
-    padding: 10,
-    borderRadius: 8,
+    padding: 12,
+    borderRadius: 6,
     
   },
   

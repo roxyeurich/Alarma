@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, } from 'react-native';
+import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, Modal, Activity} from 'react-native';
 import {Camera, Permissions, LinearGradient, Facebook, Asset, Font} from 'expo';
 import LottieView from 'lottie-react-native';
 

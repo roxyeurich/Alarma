@@ -24,7 +24,7 @@ class Intro extends React.Component {
          <Text style={styles.titleAlarma} ><Text style={{fontSize:65}}>A</Text>LARMA</Text>
          <LottieView
           source={require('../Content/Imgs/task_done.json')}
-          style={{width:400, height:400, top:20, left:0, justifyContent: 'center',}}
+          style={styles.lottie}
           autoPlay
           loop
         />
@@ -54,10 +54,27 @@ const styles = StyleSheet.create({
     //fontFamily: 'Raleway-Regular',
     fontFamily: 'NunitoSans-Regular',
     textAlign:'center',
+    shadowColor: 'rgba(9, 49, 38, 0.67)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 1, // IOS
+    shadowRadius: 1, //IOS
+    elevation: 2, // Android
+  },
+  
+  lottie: {
+    width:300, 
+    height:300, 
+    top:30, left:0, 
+    justifyContent: 'center',
+    shadowColor: 'rgba(11, 51, 40, 0.91)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 1, //IOS
+    elevation: 2, // Android 
   },
 
   buttonContainer: {
-    top:-100,
+    top:0,
     width: 300,
     height: 200,
     justifyContent: 'center',

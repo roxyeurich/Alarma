@@ -89,8 +89,13 @@ const styles = StyleSheet.create({
   
   logoImg: {
     marginTop:50, 
-    width:163,
-    height: 172
+    width:166,
+    height: 173,
+    shadowColor: 'rgba(33, 11, 51, 0.85)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
+    elevation: 2, // Android
   },
   
   titleAlarma: {
@@ -99,6 +104,11 @@ const styles = StyleSheet.create({
     fontSize: 50,
     //fontFamily: 'Raleway-Regular',
     fontFamily: 'NunitoSans-Regular',
+    shadowColor: 'rgba(33, 11, 51, 0.85)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
+    elevation: 2, // Android
   },
   
   buttonContainer: {
