@@ -273,7 +273,12 @@ sortByScore=(a, b)=>{
                   {allusers}
                    <LottieView
                   source={require('../Content/Imgs/trophy.json')}
-                  style={{width:40, height:40, top:-24, left:-30}}
+                    style={{width:40, height:40, top:-24, left:-30, shadowColor: 'rgba(33, 11, 51, 0.85)',// IOS
+                    shadowOffset: { height: 1, width: 1 }, // IOS
+                    shadowOpacity: 0.5, // IOS
+                    shadowRadius: 0.5, //IOS
+                    elevation: 2, // Android
+                  }}
                   autoPlay
                   loop
                 />
@@ -313,7 +318,7 @@ const styles = StyleSheet.create({
     //backgroundColor:'rgba(100,100,225,0.05)',
     width:130,
     height:135,
-    top:0,
+    top:10,
     alignSelf:'center',
     zIndex:5,
   },
@@ -358,7 +363,7 @@ const styles = StyleSheet.create({
     fontSize:20,
     position:'absolute',
     right:0,
-    top:-30,
+    top:-10,
     //fontFamily: 'Raleway-Regular',
     fontFamily: 'NunitoSans-Regular',
   },
@@ -429,23 +434,33 @@ containerTop: {
     borderRadius: 40, 
     borderColor: '#49CBC6',
     borderWidth:2,
-    top: 20,
+    top: 40,
     alignSelf: 'stretch',
     left:'10%',
+    shadowColor: 'rgba(11, 51, 51, 0.85)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
+    elevation: 2, // Android
   },
   
   map: {
     width:280, 
     height:150,
     margin: 25,
-    top:-10,
+    top:1,
     borderRadius:10,
     alignSelf:'center',
+    shadowColor: 'rgba(11, 45, 51, 0.85)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
+    elevation: 2, // Android
   },
   
   locText: {
     color: '#49CBC6',
-    marginTop: 120,
+    marginTop: 150,
     fontSize: 20,
     textAlign: 'center',
   },
