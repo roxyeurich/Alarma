@@ -76,16 +76,29 @@ class CreateReward extends React.Component {
         <View style={styles.middleContainer}>
           <Text style={styles.textLabel}>Title</Text>
 
-          <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
-          style={styles.textInput}
-          onChangeText={(text) => this.reward_title=text}
+          <TextInput 
+            autoCapitalize="none" 
+            autoCorrect={false} 
+            underlineColorAndroid='transparent'
+            style={styles.textInput}
+            onChangeText={(text) => this.reward_title=text}
+            autoFocus={true}
+            returnKeyType="next" 
+            onSubmitEditing={() => this.nextInput.focus()}
+
           />
 
           <Text style={styles.textLabel}>Points to be reached</Text>
 
-          <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
-          style={styles.textInput}
-          onChangeText={(text) => this.reward_points=text}
+          <TextInput autoCapitalize="none" 
+            autoCorrect={false} 
+            keyboardType='numeric'
+            underlineColorAndroid='transparent'
+            style={styles.textInput}
+            returnKeyType="go"
+            ref={(input) => this.nextInput = input}
+            maxLength={100}
+            onChangeText={(text) => this.reward_points=text}
           />
           
           <TouchableOpacity style={styles.createRBut} 

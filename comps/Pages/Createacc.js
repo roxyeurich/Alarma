@@ -1,15 +1,20 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput, ScrollView, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Text, View, Button, Alert, Link, Image, TouchableOpacity, TouchableHighlight, TextInput, ScrollView, KeyboardAvoidingView, StatusBar } from 'react-native';
 import {connect} from 'react-redux';
 import {ChangePage, ChangeUserId} from '../../redux/actions';
 import { Asset, Font} from 'expo';
 
 import NavBar from './NavBar';
 //npm i react-native-keyboard-aware-scroll-view --save
+
 class Createacc extends React.Component {
+    
+   
   username = "";
   email= "";
   password = "";
+
+
 
 
     handleProfile=async ()=>{
@@ -57,6 +62,7 @@ class Createacc extends React.Component {
         predictions:[],
         description:"",
         show:false,
+       backgroundColor: "",
     }
   
   
@@ -67,6 +73,14 @@ class Createacc extends React.Component {
     })
   }
   
+   onFocus() {
+   console.log('fuck')
+         alert ("clicked!");
+this.setState({
+      backgroundColor: 'green'
+  })
+   }
+  
   render() {
     
     
@@ -76,6 +90,8 @@ class Createacc extends React.Component {
     
     return (
       <View style={styles.container}>
+            <StatusBar 
+                barStyle="light-content"/>
         <View style={styles.containerTop}>
           <TouchableOpacity style={styles.touch} onPress={this.handleLanding}>
             <Image style={styles.backImg} source={require('../Content/icons/PNG/leftarrow.png')} />
@@ -90,24 +106,45 @@ class Createacc extends React.Component {
             
             <Text style={styles.textLabel}>Username</Text>
           
-            <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
-            style={styles.textInput}
-            onChangeText={(text) => this.username=text}
+            <TextInput 
+                autoCapitalize="none" 
+                autoCorrect="false"
+//                onPress={() => this.setState.onFocus}              
+                returnKeyType="next"
+                onSubmitEditing={() => this.nextInput.focus()}
+                underlineColorAndroid='transparent'
+                style={styles.textInput}
+                onChangeText={(text) => this.username=text}
+                autoFocus={true}
+    
             />
 
           <Text style={styles.textLabel}>Email</Text>
 
-            <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
+            <TextInput autoCapitalize="none" 
+            autoCorrect={false} 
+            underlineColorAndroid='transparent'
             style={styles.textInput}
+            ref={(input) => this.nextInput = input}
+            returnKeyType="next"
+            onSubmitEditing={() => this.nextInput3.focus()}
+
+
             onChangeText={(text) => this.email=text}
             />
 
           <Text style={styles.textLabel}>Password</Text>
 
-            <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
+            <TextInput 
+            autoCapitalize="none" 
+            autoCorrect={false} 
+            underlineColorAndroid='transparent'
             style={styles.textInput}
             onChangeText={(text) => this.password=text}
             secureTextEntry={true}
+            ref={(input) => this.nextInput3 = input}
+
+
             />
 
           <TouchableOpacity style={styles.createaccBut} 
@@ -189,7 +226,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     //fontFamily: 'Raleway-Regular',
     fontFamily: 'NunitoSans-Regular',
-    paddingBottom:'1%'
+    paddingBottom:'1%',
   },
   
   textInput: {
@@ -205,6 +242,7 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     //fontFamily: 'Raleway-Regular',
     fontFamily: 'NunitoSans-Regular',
+   // backgroundColor:'rgba(223,0,6,0.3)'
   },
   
   createaccBut: {

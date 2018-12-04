@@ -61,17 +61,28 @@ class Login extends React.Component {
           
         <Text style={styles.textLabel}>Email</Text>
         
-        <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
-        style={styles.textInput}
-        onChangeText={(text) => this.email=text}
-        
+        <TextInput 
+            autoCapitalize="none" 
+            autoCorrect={false} 
+            underlineColorAndroid='transparent'
+            style={styles.textInput}
+            onChangeText={(text) => this.email=text}
+            autoFocus={true}
+            returnKeyType="next" 
+            onSubmitEditing={() => this.nextInput.focus()}
       />
+
         <Text style={styles.textLabel}>Password</Text>
         
-        <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
-        style={styles.textInput}
-        onChangeText={(text) => this.password=text}
-        secureTextEntry={true}
+        <TextInput 
+            autoCapitalize="none" 
+            autoCorrect={false} 
+            underlineColorAndroid='transparent'
+            style={styles.textInput}
+            onChangeText={(text) => this.password=text}
+            secureTextEntry={true}
+            ref={(input) => this.nextInput = input}
+
       />
       
           <TouchableOpacity style={styles.loginBut} 

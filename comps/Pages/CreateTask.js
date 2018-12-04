@@ -85,9 +85,15 @@ class CreateTask extends React.Component {
         <View style={styles.middleContainer}>
           <Text style={styles.textLabel}>Title</Text>
 
-          <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
-          style={styles.textInput}
-          onChangeText={(text) => this.task_title=text}
+          <TextInput 
+            autoCapitalize="none" 
+            autoCorrect={false} 
+            underlineColorAndroid='transparent'
+            style={styles.textInput}
+            onChangeText={(text) => this.task_title=text}
+            autoFocus={true}
+            returnKeyType="next" onSubmitEditing={() => this.nextInput.focus()}
+
 
           />
           <Text style={styles.textLabel}>Due Date</Text>
@@ -122,12 +128,15 @@ class CreateTask extends React.Component {
       />
           <Text style={styles.textLabel}>Description</Text>
 
-          <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
+          <TextInput 
+            autoCapitalize="none" 
+            autoCorrect={false} underlineColorAndroid='transparent'
             style={styles.textInput2}
+            ref={(input) => this.nextInput = input}
             onChangeText={(text) => this.task_description=text}
-              multiline = {true}
-              maxLength={255}
-              numberOfLines ={6}
+            multiline = {true}
+            maxLength={255}
+            numberOfLines ={6}
           />
    
     <Text style={styles.textLabel}>Score</Text>

@@ -175,25 +175,31 @@ var allP = this.state.predictions.map((obj,index)=>{
                </TouchableOpacity>
 
             <TextInput underlineColorAndroid='transparent'
-              style={styles.textInput}
-              placeholder="Name The Group"
-              onChangeText={(text) => this.group_name=text}
+                style={styles.textInput}
+                placeholder="Name The Group"
+                onChangeText={(text) => this.group_name=text}
+                autoFocus={true}
+                returnKeyType="next" onSubmitEditing={() => this.nextInput.focus()}
             />
 
             <Text style={styles.textLabel}>Click to copy the group ID:</Text>
+            
             <TouchableOpacity style={styles.pinBut}
               onPress={this.handleCopy}>
               <Text style={styles.textBut}
               >{this.state.rannum}</Text>
               <Image style={styles.pinImg} source={require('../Content/icons/PNG/pin.png')} />
             </TouchableOpacity>
-                 <Text style={styles.textLabel}>Type in the location</Text>
+              
+            <Text style={styles.textLabel}>Type in the location</Text>
 
-                <TextInput underlineColorAndroid='transparent'
+            <TextInput underlineColorAndroid='transparent'
                 style={styles.locText}
                 onChangeText={this.handleTextInput}
                 value={this.state.description}
-                />
+                ref={(input) => this.nextInput = input}
+                
+            />
 
                 <View style={styles.dropDown}>
 
