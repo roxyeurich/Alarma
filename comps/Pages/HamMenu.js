@@ -165,10 +165,10 @@ buttonText: {
 img: {
     width:35,
     height:35,
-    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
-    shadowOffset: { height: 1, width: 1 }, // IOS
-    shadowOpacity: 1, // IOS
-    shadowRadius: 0.5, //IOS
+   // shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+   // shadowOffset: { height: 1, width: 1 }, // IOS
+   // shadowOpacity: 1, // IOS
+  //  shadowRadius: 0.5, //IOS
     elevation: 2, // Android
     
 
