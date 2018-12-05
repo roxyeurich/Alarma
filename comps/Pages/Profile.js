@@ -360,7 +360,6 @@ this.props.dispatch(ChangePage(13));
          <LinearGradient   colors={['#49CBC6', '#4B7CB0']}
           style={{width:420, height:'100%', alignItems: 'center'}}>
           
-               <HamMenu />
          
             <View style={styles.topNav}> 
               
@@ -438,7 +437,8 @@ this.props.dispatch(ChangePage(13));
               <Text style={styles.locationText}>Current Address: {this.state.address}</Text>
               
             </View>
- 
+                <HamMenu />
+
         </LinearGradient>
       </View>
       
@@ -460,12 +460,12 @@ this.props.dispatch(ChangePage(13));
     height:50, 
     top:-5, 
     left:0,
-    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
-    shadowOffset: { height: 1, width: 1 }, // IOS
-    shadowOpacity: 0.5, // IOS
-    shadowRadius: 0.5, //IOS
+   // shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+  //  shadowOffset: { height: 1, width: 1 }, // IOS
+  //  shadowOpacity: 0.5, // IOS
+  //  shadowRadius: 0.5, //IOS
     elevation: 2, // Android
-    zIndex:1,
+    zIndex:-100,
   },
    
   lottietwo: {
@@ -473,10 +473,10 @@ this.props.dispatch(ChangePage(13));
     height:130, 
     top:-25, 
     left:35,
-    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
-    shadowOffset: { height: 1, width: 1 }, // IOS
-    shadowOpacity: 0.5, // IOS
-    shadowRadius: 0.5, //IOS
+   // shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+  //  shadowOffset: { height: 1, width: 1 }, // IOS
+   // shadowOpacity: 0.5, // IOS
+   // shadowRadius: 0.5, //IOS
     elevation: 2, // Android
     zIndex:1,
   },
@@ -495,10 +495,10 @@ this.props.dispatch(ChangePage(13));
     right: 50,
     height: 50,
     width:50,
-    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
-    shadowOffset: { height: 1, width: 1 }, // IOS
-    shadowOpacity: 0.5, // IOS
-    shadowRadius: 0.5, //IOS
+  //  shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+  //  shadowOffset: { height: 1, width: 1 }, // IOS
+  //  shadowOpacity: 0.5, // IOS
+  //  shadowRadius: 0.5, //IOS
     elevation: 2, // Android
   },
 
@@ -517,10 +517,10 @@ this.props.dispatch(ChangePage(13));
     height: 45,
     margin: 10,
     position:'absolute',
-    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
-    shadowOffset: { height: 1, width: 1 }, // IOS
-    shadowOpacity: 0.5, // IOS
-    shadowRadius: 0.5, //IOS
+   // shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+   // shadowOffset: { height: 1, width: 1 }, // IOS
+   // shadowOpacity: 0.5, // IOS
+  //  shadowRadius: 0.5, //IOS
     elevation: 2, // Android
   },
 
@@ -531,10 +531,10 @@ this.props.dispatch(ChangePage(13));
     flexDirection: 'column',
     alignSelf: 'stretch',
     alignItems: 'flex-end',
-    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
-    shadowOffset: { height: 1, width: 1 }, // IOS
-    shadowOpacity: 0.5, // IOS
-    shadowRadius: 0.5, //IOS
+   // shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+  //  shadowOffset: { height: 1, width: 1 }, // IOS
+  //  shadowOpacity: 0.5, // IOS
+  //  shadowRadius: 0.5, //IOS
     elevation: 2, // Android
   },
 
@@ -644,10 +644,10 @@ this.props.dispatch(ChangePage(13));
    touchPic: {
     right: 40,
     top: 30,
-    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
-    shadowOffset: { height: 1, width: 1 }, // IOS
-    shadowOpacity: 0.5, // IOS
-    shadowRadius: 0.5, //IOS
+   // shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+  //  shadowOffset: { height: 1, width: 1 }, // IOS
+  //  shadowOpacity: 0.5, // IOS
+   // shadowRadius: 0.5, //IOS
     elevation: 2, // Android
     },
     
@@ -663,10 +663,10 @@ this.props.dispatch(ChangePage(13));
     marginBottom: -10,
 //  fontFamily: 'Raleway-Regular',
     fontFamily: 'NunitoSans-Regular',
-    shadowColor: 'rgba(33, 11, 51, 0.6)',// IOS
-    shadowOffset: { height: 1, width: 1 }, // IOS
-    shadowOpacity: 1, // IOS
-    shadowRadius: 0.5, //IOS
+  //  shadowColor: 'rgba(33, 11, 51, 0.6)',// IOS
+  //  shadowOffset: { height: 1, width: 1 }, // IOS
+  //  shadowOpacity: 1, // IOS
+  //  shadowRadius: 0.5, //IOS
     elevation: 2, // Android
     },
  
@@ -689,26 +689,27 @@ this.props.dispatch(ChangePage(13));
     bottom:80,
     left: 10,
     padding:4,
-    zIndex:21,
+    zIndex:-21,
     flexDirection: 'row',
-    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
-    shadowOffset: { height: 1, width: 1 }, // IOS
-    shadowOpacity: 0.5, // IOS
-    shadowRadius: 0.5, //IOS
+   // shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+  //  shadowOffset: { height: 1, width: 1 }, // IOS
+   // shadowOpacity: 0.5, // IOS
+   // shadowRadius: 0.5, //IOS
     elevation: 2, // Android
   },
 
   lvlText:{
+      position:'relative',
     fontSize: 18,
     fontWeight:'500',
     color: 'white',
     //fontFamily: 'Raleway-Regular',
     fontFamily: 'NunitoSans-Regular',
-    zIndex:10,
-    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
-    shadowOffset: { height: 1, width: 1 }, // IOS
-    shadowOpacity: 0.5, // IOS
-    shadowRadius: 0.5, //IOS
+    zIndex:-100,
+   // shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+   // shadowOffset: { height: 1, width: 1 }, // IOS
+   // shadowOpacity: 0.5, // IOS
+  //  shadowRadius: 0.5, //IOS
     elevation: 2, // Android
   },
 
@@ -719,10 +720,10 @@ this.props.dispatch(ChangePage(13));
     bottom:160,
     position:'absolute',
     borderRadius:10,
-    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
-    shadowOffset: { height: 1, width: 1 }, // IOS
-    shadowOpacity: 0.5, // IOS
-    shadowRadius: 1, //IOS
+   // shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+  //  shadowOffset: { height: 1, width: 1 }, // IOS
+  //  shadowOpacity: 0.5, // IOS
+  //  shadowRadius: 1, //IOS
     elevation: 2, // Android
   },
     
@@ -738,10 +739,10 @@ this.props.dispatch(ChangePage(13));
     padding:8,
     //fontFamily: 'Raleway-Regular',
     fontFamily: 'NunitoSans-Regular',
-    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
-    shadowOffset: { height: 1, width: 1 }, // IOS
-    shadowOpacity: 0.5, // IOS
-    shadowRadius: 0.5, //IOS
+  //  shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+  //  shadowOffset: { height: 1, width: 1 }, // IOS
+   // shadowOpacity: 0.5, // IOS
+   // shadowRadius: 0.5, //IOS
     elevation: 2, // Android
     },
     
