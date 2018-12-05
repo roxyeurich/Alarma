@@ -110,12 +110,7 @@ handleLogOut=()=>{
                 style={styles.subViewSections} >
                     <Text  style={styles.subViewText}>Group</Text>
             </TouchableOpacity > 
-            
-            <TouchableOpacity 
-                onPress={this.handleSettings}
-                style={styles.subViewSections} >
-                    <Text  style={styles.subViewText}>Settings</Text>
-            </TouchableOpacity >  
+
               
             <TouchableOpacity
                 onPress={this.handleLeaveGroup}
