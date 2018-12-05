@@ -5,31 +5,29 @@ import HamMenu from './HamMenu';
 import AlertLocation from './AlertLocation';
 import ABox from './AlertBox';
  import {connect} from 'react-redux';
-import {ChangePage, ChangeAvatar} from '../../redux/actions';
+import {ChangePage, ChangeUserId} from '../../redux/actions';
 import {Camera, Constants, Permissions, Location, ImagePicker, MapView, LinearGradient} from 'expo';
 import LottieView from 'lottie-react-native';
 import firebase from 'firebase';
- //import RNFetchBlob from 'rn-fetch-blob';
+//import firebase from 'react-native-firebase';
+//import RNFetchBlob from 'react-native-fetch-blob';
 //
 //const Blob = RNFetchBlob.polyfill.Blob;
 //const fs = RNFetchBlob.fs
 //window.XMLHttpRequest = RNFetchBlob.polyfill.XMLHttpRequest
 //window.Blob = Blob
-  var config = {
-  apiKey: "AIzaSyDxReimd3_IftGBdQAfS3qcIf1hTy8GTGA",
-  authDomain: "alarma-221801.firebaseapp.com",
-  databaseURL: "https://alarma-221801.firebaseio.com",
-  projectId: "alarma-221801",
-  storageBucket: "alarma-221801.appspot.com",
-  messagingSenderId: "784964955754"
+var config = {
+  storageBucket: "alarma-221801.appspot.com"
 };
- var fbapp = firebase.initializeApp(config);
+var fbapp = firebase.initializeApp(config);
 var storageRef = firebase.storage().ref();
+
  class Profile extends React.Component {
   
-   nextlvl = null;
+  nextlvl = null;
   home = "";
   atHome = 2;
+  avatar = "";
   state={
     
     initialPosition:{
@@ -43,7 +41,8 @@ var storageRef = firebase.storage().ref();
     scoreT:0,
     lvlTitle:"",
     value:null,
-    image:null,
+    //image: "",
+    image: this.props.avatar,
     location: null,
     errorMessage: null,
     alertOpacity:0,
@@ -118,6 +117,7 @@ var storageRef = firebase.storage().ref();
    
       
   handleProfile=async ()=>{
+    
     var fd= new FormData();
       fd.append("id", this.props.id);
       
@@ -174,7 +174,7 @@ var storageRef = firebase.storage().ref();
         fd.append("user_id", this.props.id);
         fd.append("latitude", location.coords.latitude);
         fd.append("longitude", location.coords.longitude);
-            
+          
         var resp=await fetch("https://alarmaproj2.herokuapp.com/UpdateLocation.php", {
           method:"POST",
           body:fd
@@ -300,10 +300,51 @@ this.props.dispatch(ChangePage(13));
      console.log(result);
      if (!result.cancelled) {
       this.setState({ image: result.uri });
+      const blob = await new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+          resolve(xhr.response);
+        };
+        xhr.onerror = function(e) {
+          console.log(e);
+          reject(new TypeError('Network request failed'));
+        };
+        xhr.responseType = 'blob';
+        xhr.open('GET', result.uri, true);
+        xhr.send(null);
+      });
+       console.log("blob", blob);
 //      var data = await fs.readFile(results.uri,'base64');
 //      var blob = await Blob.build(data, {type: 'image/jpg;BASE64'}); 
-//      var ref = storageRef.child('avatar/ava'+this.props.id+'.jpg');
-//      var snapshot = await ref.put(blob, 'image/jpg');
+      var ref = storageRef.child('avatar/ava'+this.props.id+'.jpg');
+        console.log("ref", ref);
+        try {
+          var snapshot = await ref.put(blob, {contentType:"image/jpg"});
+          console.log(snapshot)
+          var url = await snapshot.ref.getDownloadURL();
+          
+          console.log(url);
+          //update user avatar in mysql
+          
+          var fd= new FormData();
+          fd.append("user_id", this.props.id);
+          fd.append("avatar", url);
+
+          var resp=await fetch("https://alarmaproj2.herokuapp.com/avatar.php", {
+            method:"POST",
+            body:fd
+          });
+
+          var json=await resp.json();
+          //setState for the image
+          this.setState({
+          image:url,
+        })
+          
+        } catch(err) {
+          console.log(err)
+        }
+       //console.log("snap", snapshot);
 //      console.log("fin");
        
     }
@@ -419,10 +460,10 @@ this.props.dispatch(ChangePage(13));
     height:50, 
     top:-5, 
     left:0,
-    //shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
-    //shadowOffset: { height: 1, width: 1 }, // IOS
-    //shadowOpacity: 0.5, // IOS
-   // shadowRadius: 0.5, //IOS
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
     elevation: 2, // Android
     zIndex:1,
   },
@@ -432,10 +473,10 @@ this.props.dispatch(ChangePage(13));
     height:130, 
     top:-25, 
     left:35,
-   // shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
- //   shadowOffset: { height: 1, width: 1 }, // IOS
-  //  shadowOpacity: 0.5, // IOS
-  // shadowRadius: 0.5, //IOS
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
     elevation: 2, // Android
     zIndex:1,
   },
@@ -454,10 +495,10 @@ this.props.dispatch(ChangePage(13));
     right: 50,
     height: 50,
     width:50,
- //   shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
-   // shadowOffset: { height: 1, width: 1 }, // IOS
-  //  shadowOpacity: 0.5, // IOS
- //   shadowRadius: 0.5, //IOS
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
     elevation: 2, // Android
   },
 
@@ -476,10 +517,10 @@ this.props.dispatch(ChangePage(13));
     height: 45,
     margin: 10,
     position:'absolute',
-  //  shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
-  //  shadowOffset: { height: 1, width: 1 }, // IOS
-   // shadowOpacity: 0.5, // IOS
-   // shadowRadius: 0.5, //IOS
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
     elevation: 2, // Android
   },
 
@@ -490,10 +531,10 @@ this.props.dispatch(ChangePage(13));
     flexDirection: 'column',
     alignSelf: 'stretch',
     alignItems: 'flex-end',
-   // shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
-   // shadowOffset: { height: 1, width: 1 }, // IOS
-   // shadowOpacity: 0.5, // IOS
-// shadowRadius: 0.5, //IOS
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
     elevation: 2, // Android
   },
 
@@ -603,10 +644,10 @@ this.props.dispatch(ChangePage(13));
    touchPic: {
     right: 40,
     top: 30,
-   // shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
-  //  shadowOffset: { height: 1, width: 1 }, // IOS
-  //  shadowOpacity: 0.5, // IOS
-  //  shadowRadius: 0.5, //IOS
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
     elevation: 2, // Android
     },
     
@@ -622,10 +663,10 @@ this.props.dispatch(ChangePage(13));
     marginBottom: -10,
 //  fontFamily: 'Raleway-Regular',
     fontFamily: 'NunitoSans-Regular',
- //   shadowColor: 'rgba(33, 11, 51, 0.6)',// IOS
-   // shadowOffset: { height: 1, width: 1 }, // IOS
-  //  shadowOpacity: 1, // IOS
-  //  shadowRadius: 0.5, //IOS
+    shadowColor: 'rgba(33, 11, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 1, // IOS
+    shadowRadius: 0.5, //IOS
     elevation: 2, // Android
     },
  
@@ -650,10 +691,10 @@ this.props.dispatch(ChangePage(13));
     padding:4,
     zIndex:21,
     flexDirection: 'row',
-   // shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
-//shadowOffset: { height: 1, width: 1 }, // IOS
-  //  shadowOpacity: 0.5, // IOS
-  //  shadowRadius: 0.5, //IOS
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
     elevation: 2, // Android
   },
 
@@ -664,10 +705,10 @@ this.props.dispatch(ChangePage(13));
     //fontFamily: 'Raleway-Regular',
     fontFamily: 'NunitoSans-Regular',
     zIndex:10,
-   // shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
-   // shadowOffset: { height: 1, width: 1 }, // IOS
-   // shadowOpacity: 0.5, // IOS
-   // shadowRadius: 0.5, //IOS
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
     elevation: 2, // Android
   },
 
@@ -678,10 +719,10 @@ this.props.dispatch(ChangePage(13));
     bottom:160,
     position:'absolute',
     borderRadius:10,
-   // shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
- //   shadowOffset: { height: 1, width: 1 }, // IOS
-   // shadowOpacity: 0.5, // IOS
-  //  shadowRadius: 1, //IOS
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 1, //IOS
     elevation: 2, // Android
   },
     
@@ -697,10 +738,10 @@ this.props.dispatch(ChangePage(13));
     padding:8,
     //fontFamily: 'Raleway-Regular',
     fontFamily: 'NunitoSans-Regular',
-   // shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
-   // shadowOffset: { height: 1, width: 1 }, // IOS
-   // shadowOpacity: 0.5, // IOS
-   // shadowRadius: 0.5, //IOS
+    shadowColor: 'rgba(11, 28, 51, 0.6)',// IOS
+    shadowOffset: { height: 1, width: 1 }, // IOS
+    shadowOpacity: 0.5, // IOS
+    shadowRadius: 0.5, //IOS
     elevation: 2, // Android
     },
     
@@ -709,7 +750,8 @@ this.props.dispatch(ChangePage(13));
   return{
     compPage:state.Page.page,
     id:state.Page.userid,
-    group_id:state.Page.group_id
+    group_id:state.Page.group_id,
+    avatar:state.Page.avatar
     
   }
  }

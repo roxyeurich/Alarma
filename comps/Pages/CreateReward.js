@@ -74,31 +74,18 @@ class CreateReward extends React.Component {
            behavior="padding" enabled>
                       <ScrollView > 
         <View style={styles.middleContainer}>
-          <Text style={styles.textLabel}>Title</Text>
+          <Text style={styles.textLabel}>Reward name</Text>
 
-          <TextInput 
-            autoCapitalize="none" 
-            autoCorrect={false} 
-            underlineColorAndroid='transparent'
-            style={styles.textInput}
-            onChangeText={(text) => this.reward_title=text}
-            autoFocus={true}
-            returnKeyType="next" 
-            onSubmitEditing={() => this.nextInput.focus()}
-
+          <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
+          style={styles.textInput}
+          onChangeText={(text) => this.reward_title=text}
           />
 
-          <Text style={styles.textLabel}>Points to be reached</Text>
+          <Text style={styles.textLabel}>Total points to be reached</Text>
 
-          <TextInput autoCapitalize="none" 
-            autoCorrect={false} 
-            keyboardType='numeric'
-            underlineColorAndroid='transparent'
-            style={styles.textInput}
-            returnKeyType="go"
-            ref={(input) => this.nextInput = input}
-            maxLength={100}
-            onChangeText={(text) => this.reward_points=text}
+          <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
+          style={styles.textInput}
+          onChangeText={(text) => this.reward_points=text}
           />
           
           <TouchableOpacity style={styles.createRBut} 

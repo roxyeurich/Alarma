@@ -89,8 +89,8 @@ const styles = StyleSheet.create({
   
   logoImg: {
     marginTop:50, 
-    width:166,
-    height: 173,
+    width:167,
+    height: 175,
     shadowColor: 'rgba(33, 11, 51, 0.85)',// IOS
     shadowOffset: { height: 1, width: 1 }, // IOS
     shadowOpacity: 0.5, // IOS
@@ -104,9 +104,9 @@ const styles = StyleSheet.create({
     fontSize: 50,
     //fontFamily: 'Raleway-Regular',
     fontFamily: 'NunitoSans-Regular',
-    shadowColor: 'rgba(33, 11, 51, 0.85)',// IOS
+    shadowColor: 'rgba(11, 39, 51, 0.85)',// IOS
     shadowOffset: { height: 1, width: 1 }, // IOS
-    shadowOpacity: 0.5, // IOS
+    shadowOpacity: 1, // IOS
     shadowRadius: 0.5, //IOS
     elevation: 2, // Android
   },

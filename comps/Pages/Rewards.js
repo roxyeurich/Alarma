@@ -67,14 +67,11 @@ state={
           scoreT:json[0].score,
         })
         
-        //
     }
     
-    
-    
     var fd= new FormData();
-     //change id to group_id
-      fd.append("group_id", this.props.group_id);
+    //change id to group_id
+    fd.append("group_id", this.props.group_id);
       
     var resp=await fetch("https://alarmaproj2.herokuapp.com/getReward.php", {
       method:"POST",

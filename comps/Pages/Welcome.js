@@ -78,8 +78,8 @@ const styles = StyleSheet.create({
   
   logoImg: {
     top:'30%', 
-    width:'77%',
-    height: '27%',
+    width:'82.7%',
+    height: '28.7%',
     shadowColor: 'rgba(33, 11, 51, 0.85)',// IOS
     shadowOffset: { height: 1, width: 1 }, // IOS
     shadowOpacity: 0.5, // IOS

@@ -36,7 +36,7 @@ class Login extends React.Component {
       //json[0].id
       //alert ("Loged in!");
       var len = json.length -1;
-      this.props.dispatch(ChangeUserId(json[len].id, json[len].group_id, json[len].admin));
+      this.props.dispatch(ChangeUserId(json[len].id, json[len].group_id, json[len].admin, null, null, json[len].avatar, json[len].group_avatar));
       this.props.dispatch(ChangePage(4));
     } else {
       alert ("Something is wrong!");
@@ -61,28 +61,17 @@ class Login extends React.Component {
           
         <Text style={styles.textLabel}>Email</Text>
         
-        <TextInput 
-            autoCapitalize="none" 
-            autoCorrect={false} 
-            underlineColorAndroid='transparent'
-            style={styles.textInput}
-            onChangeText={(text) => this.email=text}
-            autoFocus={true}
-            returnKeyType="next" 
-            onSubmitEditing={() => this.nextInput.focus()}
+        <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
+        style={styles.textInput}
+        onChangeText={(text) => this.email=text}
+        
       />
-
         <Text style={styles.textLabel}>Password</Text>
         
-        <TextInput 
-            autoCapitalize="none" 
-            autoCorrect={false} 
-            underlineColorAndroid='transparent'
-            style={styles.textInput}
-            onChangeText={(text) => this.password=text}
-            secureTextEntry={true}
-            ref={(input) => this.nextInput = input}
-
+        <TextInput autoCapitalize="none" autoCorrect={false} underlineColorAndroid='transparent'
+        style={styles.textInput}
+        onChangeText={(text) => this.password=text}
+        secureTextEntry={true}
       />
       
           <TouchableOpacity style={styles.loginBut} 
