@@ -5,7 +5,7 @@ export function ChangePage(page){
   }
 }
 
-export function ChangeUserId(userid, group_id, admin, score, home){
+export function ChangeUserId(userid, group_id, admin, score, home, avatar, group_avatar){
   return{
     type:"CHANGE_USERID",
     userid:userid,
@@ -13,15 +13,11 @@ export function ChangeUserId(userid, group_id, admin, score, home){
     admin:admin,
     score:score,
     home:home,
+    avatar:avatar,
+    group_avatar:group_avatar,
   }
 }
 
-export function ChangeAvatar(avatar){
-  return{
-    type:"CHANGE_AVATAR",
-    avatar:avatar,
-  }
-}
 
 export function ChangePasscode(group_name, passcode){
   return{

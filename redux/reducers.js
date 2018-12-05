@@ -4,6 +4,7 @@ const initialPage = {
   group_id:null,
   score:0,
   avatar:null,
+  group_avatar:null,
   image:null,
   admin:1,
   rewardid:"",
@@ -28,11 +29,11 @@ export function Page(state=initialPage, action){
       obj.admin=action.admin;
       obj.score=action.score;
       obj.home=action.home;
+      obj.avatar=action.avatar;
+      obj.group_avatar=action.group_avatar;
       return obj;
       
-    case "CHANGE_AVATAR":
-      obj.avatar=action.avatar;
-      return obj;
+
       
     case "CHANGE_PASSCODE":
       obj.group_name=action.group_name;
